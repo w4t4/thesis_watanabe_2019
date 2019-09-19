@@ -39,14 +39,13 @@ try
     %combination = combnk(1:9,2);
     %cx2r = [0.0181365527295690,-0.00472277489810677,-0.00299881628665055;-0.00682250987579903,0.0151236917574939,0.000587260246761588;0.000470145690482612,-0.000600884921905937,0.00901996577061686];
     patchData = zeros(3,9);
-    C = makecform('xyz2xyl');
     
     % generate random order
     displayOrder = randperm(27);
     
     HideCursor(screenNumber);
     
-    for i = 1:27
+    for i = 1:9
         SetMouse(screenWidth/2,screenHeight/2);
         
         % wait key input  and  judge whether correct
@@ -57,8 +56,8 @@ try
             Screen('FillRect', windowPtr, transpose(transpose(ml(:,displayOrder(i))) * ccmatrix.xyz2rgb * 255), rightPosition);
             Screen('Flip', windowPtr);
             if any(buttons)
-                col = applycform([x/10 x/10 x/10] * ccmatrix.rgb2xyz / 255, C);
-                patchData(floor((displayOrder(i)-1)/9 + 1),mod(displayOrder(i),9) + 1) = col(3);
+                col = [x/10 x/10 x/10] * 
+                patchData(floor((displayOrder(i)-1)/9 + 1),mod(displayOrder(i),9) + 1) = x/10;
                 break;
             end
         end
