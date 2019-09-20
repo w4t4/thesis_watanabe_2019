@@ -4,10 +4,10 @@ close all
 % dragon size
 % width = 320*magnification
 % height = 240*magnification
-magnification = 3;
+magnification = 1;
 % select blend file
 % 'Dragon.blend' or 'Bunny2.blend' or 'sphere.blend'
-blendFile = 'Bunny2.blend';
+blendFile = 'Dragon.blend';
 
 % get mask and data
 run('../Dragon/dragonMask.m');

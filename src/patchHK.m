@@ -18,6 +18,7 @@ try
     % load stimulus meanLuminance
     load('ml.mat');
     load('luminance.mat');
+    load('ccmatrix.mat');
     
     % display initial text
     for i = 1:60*2
@@ -46,7 +47,7 @@ try
     
     HideCursor(screenNumber);
     
-    for i = 1:27
+    for i = 1:3
         SetMouse(screenWidth/2,screenHeight/2);
         
         % wait key input  and  judge whether correct
@@ -54,7 +55,7 @@ try
             [x,y,buttons] = GetMouse;
             Screen('FillRect', windowPtr, x/10, leftPosition);
             %Screen('FillRect', windowPtr, transpose(xyz2rgb(transpose(ml(:,displayOrder(i))))*16), rightPosition);
-            Screen('FillRect', windowPtr, transpose(transpose(ml(:,displayOrder(i))) * ccmatrix.xyz2rgb * 255), rightPosition);
+            Screen('FillRect', windowPtr, ccmatrix.xyz2rgb * ml(:,displayOrder(i)) * 255, rightPosition);
             Screen('Flip', windowPtr);
             if any(buttons)
                 col = applycform([x/10 x/10 x/10] * ccmatrix.rgb2xyz / 255, C);
