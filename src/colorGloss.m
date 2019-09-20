@@ -17,6 +17,7 @@ try
     % load stimulus data
     load('../img/mag1/SDsameDragon.mat');
     load('../img/mag1/SDdifferentDragon.mat');
+    load('ccmatrix.mat');
     
     % display initial text
     for i = 1:60*2
@@ -35,7 +36,6 @@ try
     intervalTime = 1;
     leftPosition = [mx-ix*scale-distance/2, my-iy*scale, mx+ix*scale-distance/2, my+iy*scale]; 
     rightPosition = [mx-ix*scale+distance/2, my-iy*scale, mx+ix*scale+distance/2, my+iy*scale];
-    cx2r = [0.0181365527295690,-0.00472277489810677,-0.00299881628665055;-0.00682250987579903,0.0151236917574939,0.000587260246761588;0.000470145690482612,-0.000600884921905937,0.00901996577061686];
     combination = combnk(1:9,2);
     data = zeros(36,3);
     

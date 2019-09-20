@@ -58,7 +58,7 @@ try
             Screen('FillRect', windowPtr, ccmatrix.xyz2rgb * ml(:,displayOrder(i)) * 255, rightPosition);
             Screen('Flip', windowPtr);
             if any(buttons)
-                col = applycform([x/10 x/10 x/10] * ccmatrix.rgb2xyz / 255, C);
+                col = applycform([x/10 x/10 x/10] * ccmatrix.rgb2xyz / 255, C)
                 patchData(floor((displayOrder(i)-1)/9 + 1),mod(displayOrder(i),9) + 1) = col(3);
                 break;
             end

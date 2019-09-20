@@ -6,8 +6,8 @@ figure;
 montage(xyz2rgb(SDsame)/16, 'size', [3 9]);
 figure;
 montage(xyz2rgb(SDdifferent)/16, 'size', [3 9]);
-save('SDsameBunny.mat','SDsame');
-save('SDdifferentBunny.mat','SDdifferent');
+save('SDsameDragon.mat','SDsame');
+save('SDdifferentDragon.mat','SDdifferent');
 
 function xyzData = colorize(xyzMaterial, flag)
     cx2u = makecform('xyz2upvpl');
@@ -18,7 +18,7 @@ function xyzData = colorize(xyzMaterial, flag)
     r2 = sqrt(2);
     uUnitCircle = [0 1 1/r2 0 -1/r2 -1 -1/r2 0 1/r2];
     vUnitCircle = [0 0 1/r2 1 1/r2 0 -1/r2 -1 -1/r2];
-    luminance = [1 0.25 0.0625];
+    luminance = [1 0.4 0.16];
     colorDistanceRate = 35;
     for i = 1:3
         for j = 1:9
