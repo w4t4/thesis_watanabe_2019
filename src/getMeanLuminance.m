@@ -1,4 +1,4 @@
-load('../img/mag1/SDsameDragon.mat');
+load('../img/mag1_0.4/SDsameDragon.mat');
 load('../img/mag1/SDdifferentDragon.mat');
 SDsameDragon = SDsame;
 SDdifferentDragon = SDdifferent;
