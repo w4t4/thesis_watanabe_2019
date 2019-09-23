@@ -1,12 +1,13 @@
 AssertOpenGL;
 ListenChar(2);
 bgColor = [0 0 0];
-screenWidth = 500;
+screenWidth = 1920;
+screenHeight = 1080;
 screenNumber=max(Screen('Screens'));
 InitializeMatlabOpenGL;
 try
     % set window
-    [windowPtr, windowRect] = Screen('OpenWindow', screenNumber, bgColor, [10 20 1200 700]);
+    [windowPtr, windowRect] = Screen('OpenWindow', screenNumber, bgColor, [0 0 screenWidth screenHeight]);
 
     % Key 
     myKeyCheck;
@@ -30,8 +31,8 @@ try
     % set parameter
     [mx,my] = RectCenter(windowRect);
     [iy,ix,iz] = size(SDsame(:,:,:,1));
-    distance = mx/3;
-    scale = 1/3;
+    distance = mx/2;
+    scale = 2/3;
     displayStimuliTime = 1;
     intervalTime = 1;
     leftPosition = [mx-ix*scale-distance/2, my-iy*scale, mx+ix*scale-distance/2, my+iy*scale]; 
@@ -41,6 +42,8 @@ try
     
     % generate random order
     displayOrder = randperm(nchoosek(9,2));
+    
+    HideCursor(screenNumber);
     
     for i = 1:3
         OneorTwo = randi([1 2]);

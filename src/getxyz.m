@@ -4,7 +4,7 @@ close all
 % dragon size
 % width = 320*magnification
 % height = 240*magnification
-magnification = 1;
+magnification = 3;
 % select blend file
 % 'Dragon.blend' or 'Bunny2.blend' or 'sphere.blend'
 blendFile = 'Dragon.blend';

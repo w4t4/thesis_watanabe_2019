@@ -1,4 +1,4 @@
-close all:
+
 
 AssertOpenGL;
 ListenChar(2);
@@ -32,15 +32,13 @@ try
     
     % set parameter
     [mx,my] = RectCenter(windowRect);
-    px = 200;
-    py = 200;
-    distance = mx/3;
+    px = 300;
+    py = 300;
+    distance = mx/2;
     scale = 1/3;
     intervalTime = 1;
     leftPosition = [mx-px*scale-distance/2, my-py*scale, mx+px*scale-distance/2, my+py*scale]; 
     rightPosition = [mx-px*scale+distance/2, my-py*scale, mx+px*scale+distance/2, my+py*scale];
-    %combination = combnk(1:9,2);
-    %cx2r = [0.0181365527295690,-0.00472277489810677,-0.00299881628665055;-0.00682250987579903,0.0151236917574939,0.000587260246761588;0.000470145690482612,-0.000600884921905937,0.00901996577061686];
     patchData = zeros(3,9);
     C = makecform('xyz2xyl');
     
@@ -49,7 +47,7 @@ try
     
     HideCursor(screenNumber);
     
-    for i = 1:27
+    for i = 1:2
         SetMouse(screenWidth/2,screenHeight/2);
         
         % wait key input  and  judge whether correct
@@ -58,7 +56,7 @@ try
             Screen('FillRect', windowPtr, x/10, leftPosition);
             %Screen('FillRect', windowPtr, transpose(xyz2rgb(transpose(ml(:,displayOrder(i))))*16), rightPosition);
             %Screen('FillRect', windowPtr, ccmatrix.xyz2rgb * ml(:,displayOrder(i)) * 256, rightPosition);
-            Screen('FillRect', windowPtr, ccmatrix.xyz2rgb * ml(:,i) * 256, rightPosition);
+            Screen('FillRect', windowPtr, ccmatrix.xyz2rgb * ml(:,i+7) * 256, rightPosition);
             Screen('Flip', windowPtr);
             if any(buttons)
                 col = applycform([x/10 x/10 x/10] * ccmatrix.rgb2xyz / 256, C)
