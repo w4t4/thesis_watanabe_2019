@@ -1,20 +1,24 @@
 load('ccmatrix.mat');
 load('../img/mag1_0.4/SDsameDragon.mat');
-[ix,iy,iz] = size(SDsame(:,:,:,1));
-permuted = permute(SDsame(:,:,:,9),[3 2 1]);
-reshaped = reshape(permuted,[3,ix*iy]);
-rgb = ccmatrix.xyz2rgb * reshaped * 256;
-maxLuminance = zeros(3,1);
-for i = 1:3
-    for j = ix * iy
-        if maxLuminance(i,1) < rgb(i,j)
-            maxLuminance(i,1) = rgb(i,j);
+a = SDsame(:,:,:,1);
+[ix,iy,iz] = size(SDsame(:,:,:,3));
+po = zeros(ix,iy,iz);
+for i = 1:ix
+    for j = 1:iy
+        for k = 1:iz
+            for l = 1:3
+                po(i,j,k) = po(i,j,k) + ccmatrix.xyz2rgb(k,l) * SDsame(i,j,l,9) / 3;
+            end
+            if po(i,j,k) > 1
+                po(i,j,k) = 1;
+            end
         end
-    end 
+    end
 end
-reshaped2 = reshape(rgb,3,iy,ix);
-permuted2 = permute(reshaped2,[3 2 1]);
+for m = 1:3
+    %po(:,:,m) = po(:,:,m) / max(max(max(po)));
+end
 figure;
-imshow(permuted2);
-figure;
-imshow(xyz2rgb(SDsame(:,:,:,1))/16);
+imshow(po);
+%figure;
+%imshow(xyz2rgb(SDsame(:,:,:,1))/16);

@@ -47,7 +47,7 @@ try
     
     HideCursor(screenNumber);
     
-    for i = 1:27
+    for i = 1:2
         SetMouse(screenWidth/2,screenHeight/2);
         
         % wait key input  and  judge whether correct
