@@ -47,7 +47,7 @@ try
     
     HideCursor(screenNumber);
     
-    for i = 1:2
+    for i = 1:27
         SetMouse(screenWidth/2,screenHeight/2);
         
         % wait key input  and  judge whether correct
@@ -55,13 +55,13 @@ try
             [x,y,buttons] = GetMouse;
             Screen('FillRect', windowPtr, x/10, leftPosition);
             %Screen('FillRect', windowPtr, transpose(xyz2rgb(transpose(ml(:,displayOrder(i))))*16), rightPosition);
-            %Screen('FillRect', windowPtr, ccmatrix.xyz2rgb * ml(:,displayOrder(i)) * 256, rightPosition);
-            Screen('FillRect', windowPtr, ccmatrix.xyz2rgb * ml(:,i+7) * 256, rightPosition);
+            Screen('FillRect', windowPtr, ccmatrix.xyz2rgb * ml(:,displayOrder(i)) * 256, rightPosition);
+            %Screen('FillRect', windowPtr, ccmatrix.xyz2rgb * ml(:,i) * 256, rightPosition);
             Screen('Flip', windowPtr);
             if any(buttons)
                 col = applycform([x/10 x/10 x/10] * ccmatrix.rgb2xyz / 256, C)
-                %patchData(floor((displayOrder(i)-1)/9 + 1),mod(displayOrder(i),9) + 1) = col(3);
-                patchData(floor((i-1)/9 + 1),mod(i,9) + 1) = col(3);
+                patchData(floor((displayOrder(i)-1)/9 + 1),mod(displayOrder(i),9) + 1) = col(3);
+                %patchData(floor((i-1)/9 + 1),mod(i,9) + 1) = col(3);
                 break;
             end
         end
