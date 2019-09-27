@@ -46,7 +46,7 @@ try
     % generate random order
     displayOrder = randperm(9*repeat);
     for i = 1:9*repeat
-        displayOrder(i) = mod(displayOrder(i)-1, 9) + 1;
+        displayOrder(i) = mod(i-1, 9) + 1;
     end
     
     HideCursor(screenNumber);
@@ -67,9 +67,9 @@ try
             Screen('Flip', windowPtr);
             if any(buttons)
                 col = applycform([x/10 x/10 x/10] * ccmatrix.rgb2xyz / 256, C)
-                patchData(1,displayOrder(i)) = patchData(1,displayOrder(i)) + col(3);
-                disp(displayOrder(i));
-                disp(x/10);
+                patchData(1,displayOrder(key)) = patchData(1,displayOrder(i)) + col(3);
+                do = disp(displayOrder(i));
+                x = disp(x/10
                 break;
             end
         end
