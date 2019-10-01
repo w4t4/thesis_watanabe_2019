@@ -9,8 +9,8 @@ montage(xyz2rgb(SDdifferent)/16, 'size', [1 9]);
 
 ss = strcat('../img/mag',num2str(magnification),'_dl/SDsame',erase(blendFile,'.blend'),'.mat');
 sd = strcat('../img/mag',num2str(magnification),'_dl/SDdifferent',erase(blendFile,'.blend'),'.mat');
-save(ss,'SDsame');
-save(sd,'SDdifferent');
+%save(ss,'SDsame');
+%save(sd,'SDdifferent');
 
 function xyzData = colorize(xyzMaterial, flag)
     cx2u = makecform('xyz2upvpl');
@@ -21,7 +21,7 @@ function xyzData = colorize(xyzMaterial, flag)
     r2 = sqrt(2);
     uUnitCircle = [0 1 1/r2 0 -1/r2 -1 -1/r2 0 1/r2];
     vUnitCircle = [0 0 1/r2 1 1/r2 0 -1/r2 -1 -1/r2];
-    colorDistanceRate = 35;
+    colorDistanceRate = 20;
     for j = 1:9
         r = uvlMaterial;
         if flag == 1
