@@ -8,3 +8,6 @@ for i = 1:5
 end
 permuted = permute(a,[3 2 1]);
 reshaped = reshape(permuted,[3,4*5]);
+reshaped2 = reshape(reshaped,[3 4 5]);
+permuted2 = permute(reshaped2,[3 2 1]);
+permuted2
