@@ -10,8 +10,8 @@ SDdifferentDragon = SDdifferent;
 %load('../img/mag1/SDdifferentSphere.mat');
 %SDsameSphere = SDsame;
 %SDdifferentSphere= SDdifferent;
-ml = zeros(3,9);
-luminance = zeros(1,9);
+ml = zeros(3,27);
+luminance = zeros(3,9);
 for i = 1:9
     ml(:,i) = calcMeanLuminance(SDsameDragon(:,:,:,i));
     luminance(floor((i-1)/9) + 1,mod(i,9) + 1) = getLuminance(transpose(ml(:,i)));
