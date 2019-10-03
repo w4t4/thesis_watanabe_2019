@@ -6,7 +6,7 @@ function rgb = Calxyz2rgb(xyz)
     maxp = 0;
 
     a = xyz;
-    maxLum = 400;
+    maxLum = 300;
     permuted = permute(a,[3 2 1]);
     reshaped = reshape(permuted,[iz,iy*ix]);
     b = BasicToneMapCalFormat(reshaped,maxLum);
@@ -29,7 +29,9 @@ function rgb = Calxyz2rgb(xyz)
             end
         end
     end
-    %po = po / maxp;
+    maxp
+    po = po / maxp;
     rgb = po;
+    %imshow(rgb);
 end
 
