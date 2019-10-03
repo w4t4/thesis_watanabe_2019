@@ -9,8 +9,8 @@ montage(xyz2rgb(SDdifferent)/16, 'size', [1 9]);
 
 ss = strcat('../img/mag',num2str(magnification),'_dl/SDsame',erase(blendFile,'.blend'),'.mat');
 sd = strcat('../img/mag',num2str(magnification),'_dl/SDdifferent',erase(blendFile,'.blend'),'.mat');
-%save(ss,'SDsame');
-%save(sd,'SDdifferent');
+save(ss,'SDsame');
+save(sd,'SDdifferent');
 
 function xyzData = colorize(xyzMaterial, flag)
     cx2u = makecform('xyz2upvpl');

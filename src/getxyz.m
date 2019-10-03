@@ -7,7 +7,7 @@ close all
 magnification = 1;
 % select blend file
 % 'Dragon.blend' or 'Bunny.blend' or 'Sphere.blend'
-blendFile = 'Sphere.blend';
+blendFile = 'Dragon.blend';
 
 % get mask and data
 run('../Dragon/dragonMask.m');

@@ -1,12 +1,12 @@
+function rgb = Cal
 load('ccmatrix.mat');
-load('../img/mag1_dl/SDsameSphere.mat');
-[ix,iy,iz] = size(SDsame(:,:,:,1));
+[ix,iy,iz] = size(xyz);
 po = zeros(ix,iy,iz);
 count = 0;
 maxp = 0;
 
-a = SDsame(:,:,:,1);
-maxLum = 1000;
+a = xyz;
+maxLum = 400;
 permuted = permute(a,[3 2 1]);
 reshaped = reshape(permuted,[iz,iy*ix]);
 b = BasicToneMapCalFormat(reshaped,maxLum);
