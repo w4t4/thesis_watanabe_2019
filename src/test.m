@@ -15,4 +15,6 @@
 for i = 1:9
     a = wtXYZ2rgb(wtTonemap(SDsame(:,:,:,i),80),ccmatrix);
     wtColorCheck(a);
+    figure;
+    imshow(a);
 end
