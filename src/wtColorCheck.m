@@ -14,6 +14,5 @@ function maxp = wtColorCheck(rgb)
         end
     end
     maxp
-    minp
 end
 

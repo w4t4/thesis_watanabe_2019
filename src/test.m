@@ -11,7 +11,8 @@
 % reshaped2 = reshape(reshaped,[3 4 5]);
 % permuted2 = permute(reshaped2,[3 2 1]);
 % permuted2
+
 for i = 1:9
-    a = wtXYZ2rgb(Dsame(:,:,:,i),ccmatrix);
+    a = wtXYZ2rgb(wtTonemap(SDsame(:,:,:,i),80),ccmatrix);
     wtColorCheck(a);
 end
