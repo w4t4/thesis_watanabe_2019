@@ -20,9 +20,6 @@ function rgb = Calxyz2rgb(xyz)
                 for l = 1:3
                     po(i,j,k) = po(i,j,k) + ccmatrix.xyz2rgb(k,l) * permuted2(i,j,k);
                 end
-                if po(i,j,k) > 1
-    %                po(i,j,k) = 1;
-                end
             end
             if maxp < max(po(i,j))
                 maxp = max(po(i,j));
@@ -30,7 +27,6 @@ function rgb = Calxyz2rgb(xyz)
         end
     end
     maxp
-    po = po / maxp;
     rgb = po;
     %imshow(rgb);
 end
