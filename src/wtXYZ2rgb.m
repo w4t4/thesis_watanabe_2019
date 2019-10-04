@@ -19,19 +19,25 @@
 % Created by Takehiro Nagai on 06/09/2009 (ver.1)
 % 
 
-%function rgb = XYZ2rgb(XYZ, ccmatrix)
-XYZ = Dsame(:,:,:,1);
+function rgb = wtXYZ2rgb(XYZ, ccmatrix)
 
-[iy,ix,iz]=size(XYZ);
-XYZ = wt3dto2d(XYZ);
+    [iy,ix,iz]=size(XYZ);
+    XYZ = wt3dto2d(XYZ);
 
-XYZk = repmat(ccmatrix.xyzk, 1, ix*iy);
-XYZd = XYZ-XYZk;
+    XYZk = repmat(ccmatrix.xyzk, 1, ix*iy);
+    XYZd = XYZ-XYZk;
+    
+    rgb = ccmatrix.xyz2rgb * XYZd;
+    for i = 1:iz
+        for j = 1:ix*iy
+            if rgb(i,j) < 0
+                rgb(i,j) = 0;
+            end
+        end
+    end
+    rgb = wt2dto3d(rgb,ix,iy,iz);
 
-rgb = ccmatrix.xyz2rgb * XYZd;
-rgb = wt2dto3d(rgb,ix,iy,iz);
-imshow(rgb);
-
+end
 
 
 
