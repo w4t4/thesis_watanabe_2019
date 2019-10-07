@@ -58,8 +58,8 @@ try
     
     for i = 1:3
         OneorTwo = randi([1 2]);
-        rgbLeft = Calxyz2rgb(Bdiff(:,:,:,combination(displayOrder(i),OneorTwo))) * 220;
-        rgbRight = Calxyz2rgb(Bdiff(:,:,:,combination(displayOrder(i),3-OneorTwo))) * 220;
+        rgbLeft = wtXYZ2rgb(wtTonemap(Bsame(:,:,:,combination(displayOrder(i),OneorTwo)),80),ccmatrix) * 255;
+        rgbRight = wtXYZ2rgb(wtTonemap(Bsame(:,:,:,combination(displayOrder(i),3-OneorTwo)),80),ccmatrix) * 255;
         leftStimulus = Screen('MakeTexture', windowPtr, rgbLeft); % ここはキャリブレーションを加味した色変換を行う
         rightStimulus = Screen('MakeTexture', windowPtr, rgbRight);
         for j = 1:60*displayStimuliTime
