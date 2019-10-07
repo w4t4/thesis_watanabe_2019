@@ -1,6 +1,6 @@
 
 SDsame = colorize(maskedData, 1);
-%SDdifferent = colorize(maskedDiffuse, 1) + colorize(maskedSpecular, 2);
+SDdifferent = colorize(maskedDiffuse, 1) + colorize(maskedSpecular, 2);
 aveBrightness = zeros(1,9);
 figure;
 montage(xyz2rgb(SDsame)/16, 'size', [1 9]);

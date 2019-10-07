@@ -6,7 +6,7 @@ function tonemappedXYZ = wtTonemap(xyz,thr,materialMaxlum)
 mat = zeros(iy,ix,iz);
 isMaxlumOver = xyz(:,:,1) > thr;
 maxlum = 90;
-m = 1/2.4; % y = mx (0 <= x < thr) 
+m = 1/2; % y = mx (0 <= x < thr) 
 a = maxlum/log(materialMaxlum);
 b = thr - exp(m*thr/a);
 imm = 0;
