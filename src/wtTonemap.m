@@ -1,12 +1,12 @@
-function tonemappedXYZ = wtTonemap(xyz,thr,materialMaxlum)
+function tonemappedXYZ = wtTonemap(xyz,thr,materialMaxlum,m)
 
 %thr = 80くらいが光沢感を保てるかも?
 
 [iy,ix,iz] = size(xyz);
 mat = zeros(iy,ix,iz);
 isMaxlumOver = xyz(:,:,1) > thr;
-maxlum = 90;
-m = 1/2; % y = mx (0 <= x < thr) 
+maxlum = 97;
+%m = 1/2; % y = mx (0 <= x < thr) 
 a = maxlum/log(materialMaxlum);
 b = thr - exp(m*thr/a);
 imm = 0;

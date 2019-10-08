@@ -12,13 +12,11 @@
 % permuted2 = permute(reshaped2,[3 2 1]);
 % permuted2
 
-for i = 1:9
-    a = wtXYZ2rgb(wtTonemap(SDsame(:,:,:,i),90,707),ccmatrix);
+for i = 1:1
+    a = wtXYZ2rgb(wtTonemap(SDsame(:,:,:,i),2,707/4,1/10),ccmatrix);
     wtColorCheck(a);
-    figure;
     imshow(a);
 end
-
 % Dragon: colorDistanceRate:30,thr:90,materialMaxlum:833
 % Bunny: colorDistanceRate:30,thr:90,materialMaxlum:833
 % Sphere: colorDistanceRate:,thr:,materialMaxlum:707
