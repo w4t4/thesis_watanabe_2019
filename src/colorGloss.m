@@ -2,7 +2,7 @@ AssertOpenGL;
 ListenChar(2);
 bgColor = [0 0 0];
 screenWidth = 1920;
-screenHeight = 1080;
+screenHeight = 1200;
 screenNumber=max(Screen('Screens'));
 InitializeMatlabOpenGL;
 try
@@ -34,7 +34,7 @@ try
     
     % set parameter
     [mx,my] = RectCenter(windowRect);
-    [iy,ix,iz] = size(SDsame(:,:,:,1));
+    [iy,ix,iz] = size(Dsame(:,:,:,1));
     distance = mx/2;
     scale = 2/9;
     displayStimuliTime = 1;
