@@ -1,10 +1,11 @@
-m = 0.65;
+m = 1/2;
 for i = 1:9
-    a = wtXYZ2rgb(wtTonemap(SDsame(:,:,:,i),50/m,m),ccmatrix);
+    a = wtXYZ2rgb(wtTonemap(SDsame(:,:,:,i),60/m,m),ccmatrix);
     wtColorCheck(a);
     figure;
     imshow(a);
 end
+montage(a, 'size', [3 3]);
 % Dragon: colorDistanceRate:30,thr:90,materialMaxlum:833
 % Bunny: colorDistanceRate:30,thr:90,materialMaxlum:833
 % Sphere: colorDistanceRate:,thr:,materialMaxlum:707

@@ -1,5 +1,5 @@
 
-
+[OS, Software, timestr] = FCN_ExpInitialization;
 AssertOpenGL;
 ListenChar(2);
 bgColor = [0 0 0];
@@ -7,12 +7,14 @@ screenWidth = 1920;
 screenHeight = 1080;
 screenNumber=max(Screen('Screens'));
 InitializeMatlabOpenGL;
+gamma=load('gamma.ilp');
 try
     % set window
     [windowPtr, windowRect] = Screen('OpenWindow', screenNumber, bgColor, [0 0 screenWidth screenHeight]);
 
     % Key 
     myKeyCheck;
+    KbName('UnifyKeyNames');
     escapeKey = KbName('ESCAPE');
     leftKey = KbName('LeftArrow');
     rightKey = KbName('RightArrow');
