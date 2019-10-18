@@ -11,17 +11,17 @@ maxlum = 97;
 cx2u = makecform('xyz2upvpl');
 cu2x = makecform('upvpl2xyz');
 uvl = applycform(xyz,cx2u);
-mat = uvl;
+
 for i = 1:iy
     for j = 1:ix
-        %disp(uvl(i,j,3));
-        mat(i,j,3) = (1-isMaxlumOver(i,j)) * m*uvl(i,j,3) + isMaxlumOver(i,j) * a*log(uvl(i,j,3)+b);
-        if mat(i,j,3) > maxlum
-            mat(i,j,3) = maxlum;
+        for k = 1:iz
+            mat(i,j,k) = (1-isMaxlumOver(i,j)) * m*xyz(i,j,k) + isMaxlumOver(i,j) * a*log(xyz(i,j,k)+b);
+             if mat(i,j,k) > maxlum
+                 mat(i,j,k) = maxlum;
+             end
         end
     end
 end
-
-tonemappedXYZ = applycform(mat,cu2x);
+tonemappedXYZ = mat;
 
 end

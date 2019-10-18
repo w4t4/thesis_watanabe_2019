@@ -1,5 +1,5 @@
-load('../img/mag1_dl/SDsameDragon.mat');
-load('../img/mag1_dl/SDdifferentDragon.mat');
+load('../img/mag3_dl/SDsameDragon.mat');
+load('../img/mag3_dl/SDdifferentDragon.mat');
 SDsameDragon = SDsame;
 SDdifferentDragon = SDdifferent;
 %load('../img/mag1/SDsameBunny.mat');
@@ -13,7 +13,7 @@ SDdifferentDragon = SDdifferent;
 ml = zeros(3,9);
 luminance = zeros(1,9);
 for i = 1:9
-    ml(:,i) = calcMeanLuminance(SDsameDragon(:,:,:,i));
+    ml(:,i) = calcMeanLuminance(SDdifferentDragon(:,:,:,i));
     luminance(floor((i-1)/9) + 1,mod(i,9) + 1) = getLuminance(transpose(ml(:,i)));
 end
 save('ml.mat', 'ml');
@@ -22,6 +22,9 @@ save('luminance.mat', 'luminance');
 function meanLuminance = calcMeanLuminance(xyz)
     [iy,ix,iz] = size(xyz);
     meanLuminance = zeros(1,3);
+    cx2u = makecform('xyz2upvpl');
+    cu2x = makecform('upvpl2xyz');
+    uvl = applycform(xyz,cx2u);
     for i = 1:iz
         notZeroCount = 0;
         sum = 0;
@@ -29,7 +32,7 @@ function meanLuminance = calcMeanLuminance(xyz)
             for k = 1:iy
                 if (xyz(k,j,i) ~= 0)
                     notZeroCount = notZeroCount + 1;
-                    sum = sum + xyz(k,j,i);
+                    sum = sum + uvl(k,j,i);
                 end
             end
         end
