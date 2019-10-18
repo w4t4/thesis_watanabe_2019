@@ -7,7 +7,12 @@ screenNumber=max(Screen('Screens'));
 InitializeMatlabOpenGL;
 try
     % set window
-    [windowPtr, windowRect] = Screen('OpenWindow', screenNumber, bgColor, [0 0 screenWidth screenHeight]);
+    PsychImaging('PrepareConfiguration');
+    PsychImaging('AddTask', 'General', 'FloatingPoint32BitIfPossible');
+    [windowPrr, windowRect] = PsychImaging('OpenWindow', screenNumber, 0);
+    %[windowPtr, windowRect] = Screen('OpenWindow', screenNumber, bgColor, [0 0 screenWidth screenHeight]);
+    Priority(MaxPriority(windowPtr));
+    [offwin1,offwinrect]=Screen('OpenOffscreenWindow',windowPtr, 0);
 
     % Key 
     myKeyCheck;
@@ -37,7 +42,7 @@ try
     [iy,ix,iz] = size(Dsame(:,:,:,1));
     distance = mx/2;
     scale = 2/9;
-    displayStimuliTime = 1;
+    displayStimuliTime = 5;
     intervalTime = 1;
     leftPosition = [mx-ix*scale-distance/2, my-iy*scale, mx+ix*scale-distance/2, my+iy*scale]; 
     rightPosition = [mx-ix*scale+distance/2, my-iy*scale, mx+ix*scale+distance/2, my+iy*scale];
@@ -49,10 +54,12 @@ try
     
     HideCursor(screenNumber);
     
-    for i = 1:9
+    for i = 1:1
         OneorTwo = randi([1 2]);
-        rgbLeft = Bdiff(:,:,:,combination(displayOrder(i),OneorTwo))* 255;
-        rgbRight = Bdiff(:,:,:,combination(displayOrder(i),3-OneorTwo))* 255;
+%         rgbLeft = Bdiff(:,:,:,combination(displayOrder(i),OneorTwo))* 255;
+%         rgbRight = Bdiff(:,:,:,combination(displayOrder(i),3-OneorTwo))* 255;
+        rgbLeft = wtXYZ2rgb(SDsame(:,:,:,i),ccmatrix)*255;
+        rgbRight = wtXYZ2rgb(SDsame(:,:,:,10-i),ccmatrix)*255;
         leftStimulus = Screen('MakeTexture', windowPtr, rgbLeft);
         rightStimulus = Screen('MakeTexture', windowPtr, rgbRight);
         for j = 1:60*displayStimuliTime
@@ -63,7 +70,7 @@ try
             
         Screen('Flip', windowPtr);
             
-        % wait key input  and  judge whether correct
+        % wait key input  and  judge whetzher correct
         [secs, keyCode] = KbWait([],3);
         if keyCode(leftKey)
             data(combination(displayOrder(i),1)) = combination(displayOrder(i),OneorTwo);

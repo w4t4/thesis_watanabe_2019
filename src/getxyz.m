@@ -4,10 +4,10 @@ close all
 % dragon size
 % width = 320*magnification
 % height = 240*magnification
-magnification = 1;
+magnification = 3;
 % select blend file
 % 'Dragon.blend' or 'Bunny.blend' or 'Sphere.blend'
-blendFile = 'Sphere.blend';
+blendFile = 'Bunny.blend';
 
 % get mask and data
 run('../Dragon/dragonMask.m');
@@ -31,4 +31,4 @@ else
 end
 
 run('mask.m');
-run('colorize_mat.m');
+% run('colorize_mat.m');

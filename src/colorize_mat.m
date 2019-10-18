@@ -1,4 +1,13 @@
 
+% Dragon or Bunny or Sphere
+material = 'Dragon';
+
+magnification = 3;
+
+load(strcat('../img/xyz/xyz',material,'SD.mat'));
+load(strcat('../img/xyz/xyz',material,'D.mat'));
+load(strcat('../img/xyz/xyz',material,'S.mat'));
+
 SDsame = colorize(maskedData, 1);
 SDdifferent = colorize(maskedDiffuse, 1) + colorize(maskedSpecular, 2);
 aveBrightness = zeros(1,9);
@@ -15,9 +24,7 @@ save(sd,'SDdifferent');
 function xyzData = colorize(xyzMaterial, flag)
     cx2u = makecform('xyz2upvpl');
     cu2x = makecform('upvpl2xyz');
-    %a = ones([240,320,3]).*150;
     uvlMaterial = applycform(xyzMaterial,cx2u);
-    %uvlMaterial = applycform(a,cx2u);
     r2 = sqrt(2);
     uUnitCircle = [0 1 1/r2 0 -1/r2 -1 -1/r2 0 1/r2];
     vUnitCircle = [0 0 1/r2 1 1/r2 0 -1/r2 -1 -1/r2];
