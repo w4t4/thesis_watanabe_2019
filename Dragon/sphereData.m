@@ -6,7 +6,7 @@
 
 %% Choose example files, make sure they're on the Matlab path.
 parentSceneFile = blendFile;
-mappingsFile = 'SphereDataMappings.json';
+mappingsFile = 'SphereDataMappings2.json';
 
 %% Choose batch renderer options.
 nSteps = 1;
