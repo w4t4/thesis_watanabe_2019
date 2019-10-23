@@ -2,7 +2,7 @@
 	{
 		"name": "LightX",
 		"broadType": "meshes",
-		"operation": "create",
+		"operation": "blessAsAreaLight",
 		"properties": {
 			"name": "intensity",
 			"valueType": "spectrum",
