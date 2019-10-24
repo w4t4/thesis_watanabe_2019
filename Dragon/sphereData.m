@@ -6,7 +6,7 @@
 
 %% Choose example files, make sure they're on the Matlab path.
 parentSceneFile = blendFile;
-mappingsFile = 'SphereDataMappings2.json';
+mappingsFile = 'SphereDataMappings.json';
 
 %% Choose batch renderer options.
 nSteps = 1;
@@ -21,9 +21,9 @@ isScale = true;
 renderer = 'Mitsuba';
 hints.renderer = renderer;
     
-% nativeSceneFiles = rtbMakeSceneFiles(parentSceneFile, ...
-%     'mappingsFile', mappingsFile, ...
-%     'hints', hints);
+%   nativeSceneFiles = rtbMakeSceneFiles(parentSceneFile, ...
+%       'mappingsFile', mappingsFile, ...
+%       'hints', hints);
 radianceDataFiles = rtbBatchRender(nativeSceneFiles, 'hints', hints);
     
 for ii = 1:nSteps

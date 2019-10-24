@@ -1,14 +1,12 @@
 [
 	{
 		"name": "LightX",
-		"broadType": "emitter",
-        "specificType": "point",
-        "operation": "update",
-        "destination": "Mitsuba",
+		"broadType": "meshes",
+		"operation": "blessAsAreaLight",
 		"properties": {
-            "name": "intensity",
-            "valueType": "spectrum",
-            "value": "1"
+			"name": "intensity",
+			"valueType": "spectrum",
+			"value": "D65.spd"
 		}
 	},
 	{
