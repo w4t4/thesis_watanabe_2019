@@ -1,6 +1,6 @@
 
 % Dragon or Bunny or Sphere
-material = 'Dragon';
+material = 'Sphere';
 
 magnification = 3;
 
@@ -28,7 +28,7 @@ function xyzData = colorize(xyzMaterial, isIncludeDiff)
     r2 = sqrt(2);
     uUnitCircle = [0 1 1/r2 0 -1/r2 -1 -1/r2 0 1/r2];
     vUnitCircle = [0 0 1/r2 1 1/r2 0 -1/r2 -1 -1/r2];
-    colorDistanceRate = 50;
+    colorDistanceRate = 30;
     for j = 1:9
         r = uvlMaterial;
         if isIncludeDiff == 1
