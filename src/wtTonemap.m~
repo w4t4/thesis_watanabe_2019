@@ -22,23 +22,18 @@ if mode == 1
             mat(i,j,3) = (1-isMaxlumOver(i,j)) * m*uvl(i,j,3) + isMaxlumOver(i,j) * a*log(uvl(i,j,3)+b);
             if mat(i,j,3) > maxlum
                 mat(i,j,3) = maxlum;
-            elseif mat(i,j,3) < 0
-                mat(i,j,3) = 0;
             end
         end
     end
 elseif mode == 2
     % Reinhard
-    l = 10;
+    L = 10;d
     for i = 1:iy
         for j = 1:ix
-            x = uvl(i,j,3)/100;
-            mat(i,j,3) = maxlum * x/(1+x)*(1+x/l^2);
-            if mat(i,j,3) > maxlum
-                mat(i,j,3) = maxlum;
-            elseif mat(i,j,3) < 0
-                mat(i,j,3) = 0;
-            end
+            x = uvl(i,j,3);
+            mat(i,j,3) = maxLum * x/(1+x)*(1+x/l^2);
+            if mat(i,j,3) > maxLum
+                mat(i,j,3) = maxLum;
         end
     end
 end
