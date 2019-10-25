@@ -1,0 +1,84 @@
+[
+    {
+		"name": "LightX",
+		"broadType": "meshes",
+		"operation": "blessAsAreaLight",
+		"properties": {
+			"name": "intensity",
+			"valueType": "spectrum",
+			"value": "D65.spd"
+		}
+	},
+	{
+		"name": "LightY",
+		"broadType": "meshes",
+		"operation": "blessAsAreaLight",
+		"properties": {
+			"name": "intensity",
+			"valueType": "spectrum",
+			"value": "D65.spd"
+		}
+	},
+	{
+		"name": "ReflectorMaterial",
+		"broadType": "materials",
+		"specificType": "matte",
+		"operation": "update",
+		"properties": {
+			"name": "diffuseReflectance",
+			"valueType": "spectrum",
+			"value": "300:1.0 800:1.0"
+		}
+	},
+	{
+		"name": "WallMaterial",
+		"broadType": "materials",
+		"specificType": "matte",
+		"operation": "update",
+		"properties": {
+			"name": "diffuseReflectance",
+			"valueType": "spectrum",
+			"value": "300:0.75 800:0.75"
+		}
+	},
+	{
+		"name": "FloorMaterial",
+		"broadType": "materials",
+		"specificType": "matte",
+		"operation": "update",
+		"properties": {
+			"name": "diffuseReflectance",
+			"valueType": "spectrum",
+			"value": "300:0.5 800:0.5"
+		}
+	},
+	{
+		"name": "DragonMaterial",
+		"broadType": "bsdf",
+		"specificType": "ward",
+		"operation": "update",
+		"destination": "Mitsuba",
+		"properties": [
+        {
+			"name": "alphaU",
+			"valueType": "float",
+			"value": 0.2
+		},
+        {
+			"name": "alphaV",
+			"valueType": "float",
+			"value": 0.2
+		},
+        {
+			"name": "specularReflectance",
+			"valueType": "spectrum",
+			"value": 0.7
+		},
+        {
+			"name": "diffuseReflectance",
+			"valueType": "spectrum",
+			"value": 0
+		}
+		]
+	}
+]

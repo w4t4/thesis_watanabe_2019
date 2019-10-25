@@ -1,7 +1,7 @@
 clear all
 close all
 
-% dragon size
+% render size
 % width = 320*magnification
 % height = 240*magnification
 magnification = 3;
@@ -10,22 +10,22 @@ magnification = 3;
 blendFile = 'Sphere.blend';
 
 % get mask and data
-run('../Dragon/dragonMask.m');
+run('../render/dragonMask.m');
 xyzMask = XYZMontage;
 if strcmp(blendFile,'Sphere.blend') == 1
-    run('../Dragon/sphereData.m');
+    run('../render/sphereData.m');
     xyzData = XYZMontage;
-    run('../Dragon/sphereSpecular.m');
+    run('../render/sphereSpecular.m');
     xyzSpecular = XYZMontage;
-    run('../Dragon/sphereDiffuse.m');
+    run('../render/sphereDiffuse.m');
     xyzDiffuse = XYZMontage;
 
 else
-    run('../Dragon/dragonData.m');
+    run('../render/dragonData.m');
     xyzData = XYZMontage;
-    run('../Dragon/dragonSpecular.m');
+    run('../render/dragonSpecular.m');
     xyzSpecular = XYZMontage;
-    run('../Dragon/dragonDiffuse.m');
+    run('../render/dragonDiffuse.m');
     xyzDiffuse = XYZMontage;
 
 end
