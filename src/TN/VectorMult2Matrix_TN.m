@@ -1,0 +1,1 @@
+function z=VectorMult2Matrix_TN(x,y)%VectorMult2Matrix_TN (ver1.0)%% Multiply each component of vectors x,y and% creates new matrix z.% The size of z is (length(x), length(y)).%% %% Created by Takehiro Nagai on June 12th 2007xl=length(x);xn=diag(x);yn=repmat(y, xl, 1);z=xn*yn;

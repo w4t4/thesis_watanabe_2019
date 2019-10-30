@@ -1,0 +1,215 @@
+% ------------------
+% NStairDemo_trial (ver.1)
+% ------------------
+%
+% Demonstration of the comparison of Normal Stair and Quest.
+%
+% Created by Takehiro Nagai on 12/15/2007
+%
+
+function answer = NStairDemo_trial()
+
+% ----- parameters -----
+% number
+totalrepetition = 10000;  % Important: total repetition for goodness of threshold estimation
+repetition = 4;   % important. Repetition number as a whole computation. if 1, plots graph
+eachrepetition = 20; % important. Repetition number in each session.
+
+% staircase parameter
+stilevel = 10;
+startlevel = 1;
+ndown = 2;  % important.
+
+% subject's parameter
+u = 5;
+var = 3;   % important.
+nAFC = 2;  % important.
+noise = 0;  % important (involuntary error).
+
+% Quest parameter
+tGuess = 5;
+tGuessSd = 3; 
+beta = 0.5; % important
+delta = 0;
+if nAFC==1
+    gamma = 0;
+else
+    gamma = 1./nAFC;
+end
+pThreshold = gamma + (1-gamma)./2; %0.707;
+grain = 0.01;
+range = 20;
+
+% Logit parameter
+lambda = 0;
+% --------------------
+
+rand('state',sum(100*clock));
+
+threshold_1 = [];
+threshold_2 = [];
+threshold_3 = [];
+threshold_4 = [];
+SE_1 = [];
+SE_2 = [];
+SE_3 = [];
+SE_4 = [];
+for total = 1:totalrepetition
+    %if mod(total,10)==0
+        fprintf('-%d\n',total)
+    %end
+    thn = [];
+    thq = [];
+
+    % q
+    q = cell(repetition.*2,1);
+    nq = cell(repetition.*2,1);
+
+    for a = 1:repetition
+        a1 = a.*2-1;
+        a2 = a.*2;
+        % staircase process
+        q{a1} = InitNStair(stilevel, startlevel, ndown, 't', eachrepetition);
+        flag = 1;
+            % staircase 1
+        while flag
+          intensity = CurrentNStair(q{a1});
+          response = SubjectRes(intensity,u,var,nAFC,noise);
+          q{a1} = UpdateNStair(q{a1},intensity,response);
+          if q{a1}.finishflag
+              flag = 0;
+          end
+        end
+        threshold = mean(q{a1}.returnlevel);
+        SE = std(q{a1}.returnlevel)./sqrt(length(q{a1}.returnlevel));
+        thn = [thn threshold];
+
+            % staircase 2
+        q{a2} = InitNStair(stilevel, stilevel, ndown, 't', eachrepetition);
+        flag = 1;
+        while flag
+          intensity = CurrentNStair(q{a2});
+          response = SubjectRes(intensity,u,var,nAFC,noise);
+          q{a2} = UpdateNStair(q{a2},intensity,response);
+          if q{a2}.finishflag
+              flag = 0;
+          end
+        end
+        threshold = mean(q{a2}.returnlevel);
+        SE = std(q{a2}.returnlevel)./sqrt(length(q{a2}.returnlevel));    
+        thn = [thn threshold];
+
+        % output result
+        if repetition == 1       
+            fprintf('Noral Staircase estimated threshold is %f(+-%f)\n',threshold,SE);
+
+            figure
+            plot(q{a1}.intensity)
+        end
+
+
+
+        % procedure2:Quest
+            % quest 1
+        nq{a1}=QuestCreate(tGuess,tGuessSd,pThreshold,beta,delta,gamma,grain,range);
+        for i=1:eachrepetition
+            intensity = QuestQuantile(nq{a1});
+            intensity = round(intensity);
+            response = SubjectRes(intensity,u,var,nAFC,noise);
+            nq{a1} = QuestUpdate(nq{a1},intensity,response);
+        end
+        t=QuestMean(nq{a1});
+        sd=QuestSd(nq{a1});
+        thq = [thq t];
+            % quest 2
+        nq{a2}=QuestCreate(tGuess,tGuessSd,pThreshold,beta,delta,gamma,grain,range);
+        for i=1:eachrepetition
+            intensity = QuestQuantile(nq{a2});
+            intensity = round(intensity);
+            response = SubjectRes(intensity,u,var,nAFC,noise);
+            nq{a2} = QuestUpdate(nq{a1},intensity,response);
+        end
+        t=QuestMean(nq{a1});
+        sd=QuestSd(nq{a1});
+        thq = [thq t];    
+
+        if repetition == 1
+            fprintf('Quest estimated threshold is %f(+-%f)\n',t,sd);
+            figure
+            plot(nq.intensity)
+        end
+    end
+
+    % threshold estimation using pfit
+    if repetition~=1
+        % use only normal stair data
+        qall = q{1};
+        for a=2:repetition.*2
+            qall.intensity = [qall.intensity q{a}.intensity];
+            qall.response = [qall.response q{a}.response];
+        end
+        [threshold,SE,forlog]=LogitNStair(qall,1,10,nAFC,lambda,0);
+
+        % use up stair data and Questdata
+        qall = q{1};
+        qall.intensity = [];
+        qall.response = [];
+        for a=1:repetition
+            qall.intensity = [qall.intensity q{a.*2-1}.intensity];
+            qall.intensity = [qall.intensity nq{a.*2-1}.intensity];
+            qall.response = [qall.response q{a.*2-1}.response];
+            qall.response = [qall.response nq{a.*2-1}.response];
+        end
+        [threshold2,SE2,forlog]=LogitNStair(qall,1,10,nAFC,lambda,0);
+
+        % use only Questdata
+        qall = q{1};
+        qall.intensity = [];
+        qall.response = [];
+        for a=1:repetition.*2
+            qall.intensity = [qall.intensity nq{a}.intensity];
+            qall.response = [qall.response nq{a}.response];
+        end
+        [threshold3,SE3,forlog]=LogitNStair(qall,1,10,nAFC,lambda,0);
+
+    %     fprintf('Normal:%f(+-)%f\n',mean(thn),std(thn));
+    %     fprintf('Quest:%f(+-)%f\n',mean(thq),std(thq));
+        if totalrepetition == 1
+            fprintf('Normal:%f(+-)%f\n',mean(thn),std(thn)./sqrt(length(thn)));
+            fprintf('Quest:%f(+-)%f\n',mean(thq),std(thq)./sqrt(length(thq)));
+            fprintf('Normal Logit:%f(+-)%f\n',threshold,SE);
+            fprintf('Normal + Quest Logit:%f(+-)%f\n',threshold2,SE2);
+            fprintf('Quest Logit:%f(+-)%f\n',threshold3,SE3);
+        end
+        
+        threshold_1 = [threshold_1 mean(thq)];
+        threshold_2 = [threshold_2 threshold];
+        threshold_3 = [threshold_3 threshold2];
+        threshold_4 = [threshold_4 threshold3];
+        SE_1 = [SE_1 std(thq)./sqrt(length(thq))];
+        SE_2 = [SE_2 SE];
+        SE_3 = [SE_3 SE2];
+        SE_4 = [SE_4 SE3];
+    end        
+end
+
+if totalrepetition > 1
+    fprintf('Threshold results----\n')
+    fprintf('Quest:%f(+-)%f\n',mean(threshold_1),std(threshold_1));
+    fprintf('Normal Logit:%f(+-)%f\n',mean(threshold_2),std(threshold_2));
+    fprintf('Normal + Quest Logit:%f(+-)%f\n',mean(threshold_3),std(threshold_3));
+    fprintf('Quest Logit:%f(+-)%f\n',mean(threshold_4),std(threshold_4));
+    
+    fprintf('SE results----\n')
+    fprintf('Quest:%f(+-)%f\n',mean(SE_1(find(~isnan(SE_1).*isreal(SE_1)))),std(SE_1(find(~isnan(SE_1).*isreal(SE_1)))));
+    fprintf('Normal Logit:%f(+-)%f\n',mean(SE_2(find(~isnan(SE_2).*isreal(SE_2)))),std(SE_2(find(~isnan(SE_2).*isreal(SE_2)))));
+    fprintf('Normal + Quest Logit:%f(+-)%f\n',mean(SE_3(find(~isnan(SE_3).*isreal(SE_3)))),std(SE_3(find(~isnan(SE_3).*isreal(SE_3)))));
+    fprintf('Quest Logit:%f(+-)%f\n',mean(SE_4(find(~isnan(SE_4).*isreal(SE_4)))),std(SE_4(find(~isnan(SE_4).*isreal(SE_4)))));
+end
+
+answer = [mean(threshold_1),std(threshold_1);mean(threshold_2),std(threshold_2);mean(threshold_3),std(threshold_3);mean(threshold_4),std(threshold_4)];
+answer = [answer; mean(SE_1(find(~isnan(SE_1).*isreal(SE_1)))),std(SE_1(find(~isnan(SE_1).*isreal(SE_1))))];
+answer = [answer; mean(SE_2(find(~isnan(SE_2).*isreal(SE_2)))),std(SE_2(find(~isnan(SE_2).*isreal(SE_2))))];
+answer = [answer; mean(SE_3(find(~isnan(SE_3).*isreal(SE_3)))),std(SE_3(find(~isnan(SE_3).*isreal(SE_3))))];
+answer = [answer; mean(SE_4(find(~isnan(SE_4).*isreal(SE_4)))),std(SE_4(find(~isnan(SE_4).*isreal(SE_4))))];
+
