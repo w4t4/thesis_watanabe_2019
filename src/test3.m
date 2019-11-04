@@ -1,5 +1,5 @@
-inrgb = [0.001;0.001;0.001];
-xyz1 = rgb2XYZ(inrgb,ccmatrix);
+inRgb = [0.01;0.01;0.01];
+xyz1 = rgb2XYZ(inRgb,ccmatrix);
 cx2u = makecform('xyz2upvpl');
 cu2x = makecform('upvpl2xyz');
 upvpl = applycform(xyz1',cx2u);
@@ -14,7 +14,23 @@ whiteUpvpl = applycform(rgb2XYZ(whiteRGB,ccmatrix)',cx2u);
 maxLuminance = whiteUpvpl(3);
 
 monitorColorMax = zeros(8,lumDivNumber);
-diviedScale = 
+logScale = logspace(0, log10(2), lumDivNumber) - 1;
+for i = 1:lumDivNumber
+    xyzLogScale = rgb2XYZ([logScale(i);logScale(i);logScale(i)],ccmatrix);
+    upvplLogScaledWhitePoint = applycform(xyzLogScale',cx2u)
+end
+colorDistanceDiff = 0.005;
+
+for i = 1:lumDivNumber
+    for j = 1:8
+        while 1
+            upvpl(1) = upvpl(1) + uUnitCircle(j)*colorDistanceDiff;
+            upvpl(2) = upvpl(2) + vUnitCircle(j)*colorDistanceDiff;
+            break;
+        end
+    end
+end
+            
 
 % 
 % for i = 1:8

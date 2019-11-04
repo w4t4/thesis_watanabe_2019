@@ -4,7 +4,7 @@ function tonemappedXYZ = wtTonemap(xyz,mode)
 
 [iy,ix,iz] = size(xyz);
 mat = zeros(iy,ix,iz);
-maxlum = 97; 
+maxlum = 110; 
 cx2u = makecform('xyz2upvpl');
 cu2x = makecform('upvpl2xyz');
 uvl = applycform(xyz,cx2u);
@@ -32,7 +32,7 @@ elseif mode == 2
     l = 10;
     for i = 1:iy
         for j = 1:ix
-            x = uvl(i,j,3)/100;
+            x = uvl(i,j,3)/maxlum;
             mat(i,j,3) = maxlum * x/(1+x)*(1+x/l^2);
             if mat(i,j,3) > maxlum
                 mat(i,j,3) = maxlum;
