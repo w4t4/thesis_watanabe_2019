@@ -1,7 +1,7 @@
 m = 1/1.7;
 b = zeros(720,960,3,9);
-for i = 1:9
-    a = wtXYZ2rgb(wtTonemap(SDdifferent(:,:,:,i),2),ccmatrix);
+for i = 1:1
+    a = wtXYZ2rgb(wtTonemap(xyzSD(:,:,:)),ccmatrix);
     wtColorCheck(a);
     b(:,:,:,i) = a;
     %figure;

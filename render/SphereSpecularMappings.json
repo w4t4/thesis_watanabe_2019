@@ -1,14 +1,4 @@
 [
-    {
-		"name": "LightX",
-		"broadType": "meshes",
-		"operation": "blessAsAreaLight",
-		"properties": {
-			"name": "intensity",
-			"valueType": "spectrum",
-			"value": "D65.spd"
-		}
-	},
 	{
 		"name": "LightY",
 		"broadType": "meshes",

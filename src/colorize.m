@@ -16,8 +16,8 @@ montage(xyz2rgb(SDsame)/16, 'size', [3 3]);
 figure;
 montage(xyz2rgb(SDdifferent)/16, 'size', [3 3]);
 
-ss = strcat('../img/mag',num2str(magnification),'_dl/SDsame',material,'.mat');
-sd = strcat('../img/mag',num2str(magnification),'_dl/SDdifferent',material,'.mat');
+ss = strcat('../img/mag',num2str(magnification),'/SDsame',material,'.mat');
+sd = strcat('../img/mag',num2str(magnification),'/SDdifferent',material,'.mat');
 save(ss,'SDsame');
 save(sd,'SDdifferent');
 

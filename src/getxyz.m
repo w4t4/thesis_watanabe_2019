@@ -31,4 +31,4 @@ else
 end
 
 run('mask.m');
-% run('colorize_mat.m');
+% run('colorize.m');
