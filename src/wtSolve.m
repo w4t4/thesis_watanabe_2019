@@ -1,4 +1,4 @@
-function [a,b] = wtSolve(m,t)
+function [a,b] = wSolve(m,t)
 
 syms a;
 eqn = exp(m*t/a) - a/m == 0;

@@ -7,6 +7,7 @@ magnification = 3;
 load(strcat('../img/xyz/xyz',material,'SD.mat'));
 load(strcat('../img/xyz/xyz',material,'D.mat'));
 load(strcat('../img/xyz/xyz',material,'S.mat'));
+load('monitorColorMax.mat');
 
 SDsame = colorize(xyzSD, 1);
 SDdifferent = colorize(xyzD, 1) + colorize(xyzS, 0);
@@ -25,10 +26,6 @@ function xyzData = colorize(xyzMaterial, isIncludeDiff)
     cx2u = makecform('xyz2upvpl');
     cu2x = makecform('upvpl2xyz');
     uvlMaterial = applycform(xyzMaterial,cx2u);
-    r2 = sqrt(2);
-    uUnitCircle = [0 1 1/r2 0 -1/r2 -1 -1/r2 0 1/r2];
-    vUnitCircle = [0 0 1/r2 1 1/r2 0 -1/r2 -1 -1/r2];
-    colorDistanceRate = 30;
     for j = 1:9
         r = uvlMaterial;
         if isIncludeDiff == 1
@@ -37,15 +34,6 @@ function xyzData = colorize(xyzMaterial, isIncludeDiff)
         end
         xyz = applycform(r,cu2x);
         
-        % check color easily
-        for k = 1:3
-            if xyz(:,:,k) < 0 | xyz(:,:,k) > 1 | ~isreal(xyz(:,:,k))
-                disp("oh....");
-                break;
-            end
-        end
-        
-        %meanLuminance(:,:,9*(i-1)+j) = calcMeanLuminance(xyz);
         xyzData(:,:,:,j) = xyz;
     end
 end

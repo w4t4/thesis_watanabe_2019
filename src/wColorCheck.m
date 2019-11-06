@@ -1,4 +1,4 @@
-function maxp = wtColorCheck(rgb)
+function maxp = wColorCheck(rgb)
     [iy,ix,iz] = size(rgb);
     maxp = 0;
     minp = 1000;

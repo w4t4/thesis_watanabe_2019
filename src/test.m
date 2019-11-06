@@ -8,7 +8,7 @@ for i = 1:1
     %imshow(a);
 end
 figure;
-montage(b, 'size', [3 3]);
+montage(b, 'size', [1 1]);
 % Dragon: colorDistanceRate:30,thr:90,materialMaxlum:833
 % Bunny: colorDistanceRate:30,thr:90,materialMaxlum:833
 % Sphere: colorDistanceRate:,thr:,materialMaxlum:707

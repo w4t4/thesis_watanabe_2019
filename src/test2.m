@@ -1,4 +1,9 @@
-y = logspace(0, log10(maxLuminance+1), 200) - 1;
+cx2u = makecform('xyz2xyl');
+cu2x = makecform('xyl2xyz');
+
+c = applycform([40 80 40],cx2u);
+b = applycform(c,cu2x);
+
 
 % white point 
 % 1.0: [0.198177220500708,0.471516586788029,1.090258434269667e+02]
