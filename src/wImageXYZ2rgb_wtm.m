@@ -1,7 +1,7 @@
-% wImageXYZ2rgb
+% wImageXYZ2rgb_wtm
 % 
 % Calculate XYZ values (0-1) from rgb values (CIE1931 coordinates) 
-% with tonemap procedure.
+% without tonemap procedure.
 %
 %
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -18,9 +18,7 @@
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 
 
-function rgb = wImageXYZ2rgb(XYZ, lw, ccmatrix)
-
-    XYZ = wTonemap(XYZ,lw,ccmatrix);
+function rgb = wImageXYZ2rgb_wtm(XYZ, ccmatrix)
 
     [iy,ix,iz]=size(XYZ);
     XYZ = w3dto2d(XYZ);

@@ -11,13 +11,13 @@ load('mat/monitorColorMax.mat');
 load('mat/logScale.mat');
 
 
-SDsame = colorizeXYZ(wTonemap(xyzSD,10,ccmatrix));
-SDdifferent = colorizeXYZ(wTonemap(xyzD,10,ccmatrix)) + wTonemap(xyzS,10,ccmatrix);
+SDsame = colorizeXYZ(xyzSD);
+SDdifferent = colorizeXYZ(xyzD) + wTxyzS;
 aveBrightness = zeros(1,9);
-for i = 1:9
-    figure;
-    wImageXYZ2rgb_wtm(SDsame(:,:,:,i),ccmatrix);
-end
+figure;
+montage(xyz2rgb(SDsame)/16, 'size', [3 3]);
+figure;
+montage(xyz2rgb(SDdifferent)/16, 'size', [3 3]);
 
 ss = strcat('../img/mag',num2str(magnification),'/SDsame',material,'.mat');
 sd = strcat('../img/mag',num2str(magnification),'/SDdifferent',material,'.mat');

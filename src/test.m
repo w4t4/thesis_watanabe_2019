@@ -1,4 +1,3 @@
-m = 1/1.7;
 b = zeros(720,960,3,9);
 for i = 1:1
     a = wtXYZ2rgb(wtTonemap(xyzSD(:,:,:)),ccmatrix);
