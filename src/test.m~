@@ -10,7 +10,7 @@
 % montage(b, 'size', [1 1]);
 
 load('mat/monitorColorMax.mat');
-plot(monitorColorMax(:,2,7));
+plot(monitorColorMax(:,1,7));
 
 
 
