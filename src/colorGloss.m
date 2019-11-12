@@ -54,12 +54,12 @@ try
     
     HideCursor(screenNumber);
     
-    for i = 1:4
+    for i = 1:1
         OneorTwo = randi([1 2]);
 %         rgbLeft = Bdiff(:,:,:,combination(displayOrder(i),OneorTwo))* 255;
 %         rgbRight = Bdiff(:,:,:,combination(displayOrder(i),3-OneorTwo))* 255;
-        rgbLeft = Dsame(:,:,:,i)*255+5;
-        rgbRight = Dsame(:,:,:,10-i)*255+5;
+        rgbLeft = Bsame(:,:,:,i);
+        rgbRight = Bsame(:,:,:,10-i);
         leftStimulus = Screen('MakeTexture', windowPtr, rgbLeft);
         rightStimulus = Screen('MakeTexture', windowPtr, rgbRight);
         for j = 1:60*displayStimuliTime

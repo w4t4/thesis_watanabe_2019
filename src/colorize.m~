@@ -1,6 +1,6 @@
 
 % Dragon or Bunny or Sphere
-material = 'Dragon';
+material = '';
 
 magnification = 3;
 
@@ -11,14 +11,14 @@ load('mat/monitorColorMax.mat');
 load('mat/logScale.mat');
 
 
-SDsame = colorizeXYZ(wRemapSame(wTonemap(xyzSD,10,ccmat),ccmat));
-SDdifferent = colorizeXYZ(wRemapDiff(wTonemap(xyzSD,10,ccmat),wTonemap(xyzD,10,ccmat),ccmat)) + wRemapDiff(wTonemap(xyzSD,10,ccmat),wTonemap(xyzS,10,ccmat),ccmat);
+SDsame = colorizeXYZ(wTonemap(xyzSD,10,0.3,ccmat));
+SDdifferent = colorizeXYZ(wTonemapDiff(xyzSD,xyzD,10,0.2,ccmat)) + wTonemapDiff(xyzSD,xyzS,10,0.1,ccmat);
 aveBrightness = zeros(1,9);
-for i = 1:9
-    figure;
-    disp(max(max(wImageXYZ2rgb_wtm(SDdifferent(:,:,:,i),ccmat))));
-    %imshow(SDsame(:,:,2,i)/100);
-end
+% for i = 1:9
+%     figure;
+%     wImageXYZ2rgb_wtm(SDsame(:,:,:,i),ccmat);
+%     imshow(SDsame(:,:,2,i)/100);
+% end
 
 ss = strcat('../img/mag',num2str(magnification),'/SDsame',material,'.mat');
 sd = strcat('../img/mag',num2str(magnification),'/SDdifferent',material,'.mat');
@@ -34,7 +34,7 @@ function coloredXyzData = colorizeXYZ(xyzMaterial)
     coloredXyzData(:,:,:,1) = xyzMaterial;
     load('mat/monitorColorMax.mat');
     load('mat/upvplWhitePoints.mat');
-    weight = 0.4;
+    weight = 0.5;
  
    
     for i = 1:9

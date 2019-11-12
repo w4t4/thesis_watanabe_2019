@@ -1,6 +1,6 @@
 
 % Dragon or Bunny or Sphere
-material = 'Sphere';
+material = '';
 
 magnification = 3;
 
@@ -11,14 +11,14 @@ load('mat/monitorColorMax.mat');
 load('mat/logScale.mat');
 
 
-SDsame = colorizeXYZ(wTonemap(xyzSD,1000,0.3,ccmat));
-%SDdifferent = colorizeXYZ(wTonemapDiff(xyzSD,xyzD,10,0.2,ccmat)) + wTonemapDiff(xyzSD,xyzS,10,0.1,ccmat);
+SDsame = colorizeXYZ(wTonemap(xyzSD,10,0.3,ccmat));
+SDdifferent = colorizeXYZ(wTonemapDiff(xyzSD,xyzD,10,0.2,ccmat)) + wTonemapDiff(xyzSD,xyzS,10,0.1,ccmat);
 aveBrightness = zeros(1,9);
-for i = 1:9
-    figure;
-    wImageXYZ2rgb_wtm(SDsame(:,:,:,i),ccmat);
-    imshow(SDsame(:,:,2,i)/100);
-end
+% for i = 1:9
+%     figure;
+%     wImageXYZ2rgb_wtm(SDsame(:,:,:,i),ccmat);
+%     imshow(SDsame(:,:,2,i)/100);
+% end
 
 ss = strcat('../img/mag',num2str(magnification),'/SDsame',material,'.mat');
 sd = strcat('../img/mag',num2str(magnification),'/SDdifferent',material,'.mat');

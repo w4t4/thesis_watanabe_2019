@@ -14,47 +14,46 @@ for i = 1:9
     %wtColorCheck(Dsame);
 end
 save('../img/dragon/Dsame.mat','Dsame');
-T
 figure;
 montage(Dsame,'size',[3 3]);
-%figure;
-%montage(Ddiff,'size',[3 3]);
+figure;
+montage(Ddiff,'size',[3 3]);
 
-% load('../img/mag3/SDsameBunny.mat');
-% load('../img/mag3/SDdifferentBunny.mat');
-% Bsame = SDsame;
-% Bdiff = SDdifferent;
-% 
-% for i = 1:9
-%     Bsame(:,:,:,i) = wImageXYZ2rgb_wtm(SDsame(:,:,:,i),ccmat);
-%     %wtColorCheck(Dsame);
-%     save('../img/bunny/Bsame.mat','Bsame');
-% end
-% for i = 1:9
-%     Bdiff(:,:,:,i) = wImageXYZ2rgb_wtm(SDdifferent(:,:,:,i),ccmat);
-%     %wtColorCheck(Dsame);
-%     save('../img/bunny/Bdiff.mat','Bdiff');
-% end
-% figure;
-% montage(Bsame,'size',[3 3]);
-% figure;
-% montage(Bdiff,'size',[3 3]);
-% 
-% load('../img/mag3/SDsameSphere.mat');
-% load('../img/mag3/SDdifferentSphere.mat');
-% Ssame = SDsame;
-% Sdiff = SDdifferent;
-% for i = 1:9
-%     Ssame(:,:,:,i) = wImageXYZ2rgb_wtm(SDsame(:,:,:,i),ccmat);
-%     %wtColorCheck(Dsame);
-%     save('../img/sphere/Ssame.mat','Ssame');
-% end
-% for i = 1:9
-%     Sdiff(:,:,:,i) = wImageXYZ2rgb_wtm(SDdifferent(:,:,:,i),ccmat);
-%     %wtColorCheck(Dsame);
-%     save('../img/sphere/Sdiff.mat','Sdiff');
-% end
-% figure;
-% montage(Ssame,'size',[3 3]);
-% figure;
-% montage(Sdiff,'size',[3 3]);
+load('../img/mag3/SDsameBunny.mat');
+load('../img/mag3/SDdifferentBunny.mat');
+Bsame = SDsame;
+Bdiff = SDdifferent;
+
+for i = 1:9
+    Bsame(:,:,:,i) = wImageXYZ2rgb_wtm(SDsame(:,:,:,i),ccmat);
+    %wtColorCheck(Dsame);
+    save('../img/bunny/Bsame.mat','Bsame');
+end
+for i = 1:9
+    Bdiff(:,:,:,i) = wImageXYZ2rgb_wtm(SDdifferent(:,:,:,i),ccmat);
+    %wtColorCheck(Dsame);
+    save('../img/bunny/Bdiff.mat','Bdiff');
+end
+figure;
+montage(Bsame,'size',[3 3]);
+figure;
+montage(Bdiff,'size',[3 3]);
+
+load('../img/mag3/SDsameSphere.mat');
+load('../img/mag3/SDdifferentSphere.mat');
+Ssame = SDsame;
+Sdiff = SDdifferent;
+for i = 1:9
+    Ssame(:,:,:,i) = wImageXYZ2rgb_wtm(SDsame(:,:,:,i),ccmat);
+    %wtColorCheck(Dsame);
+    save('../img/sphere/Ssame.mat','Ssame');
+end
+for i = 1:9
+    Sdiff(:,:,:,i) = wImageXYZ2rgb_wtm(SDdifferent(:,:,:,i),ccmat);
+    %wtColorCheck(Dsame);
+    save('../img/sphere/Sdiff.mat','Sdiff');
+end
+figure;
+montage(Ssame,'size',[3 3]);
+figure;
+montage(Sdiff,'size',[3 3]);
