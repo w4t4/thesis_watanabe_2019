@@ -11,19 +11,19 @@ load('mat/monitorColorMax.mat');
 load('mat/logScale.mat');
 
 
-SDsame = colorizeXYZ(wTonemap(xyzSD,10,ccmatrix));
-% SDdifferent = colorizeXYZ(wTonemap(xyzD,10,ccmatrix)) + wTonemap(xyzS,10,ccmatrix);
+SDsame = colorizeXYZ(wTonemap(xyzSD,1000,0.3,ccmat));
+%SDdifferent = colorizeXYZ(wTonemapDiff(xyzSD,xyzD,10,0.2,ccmat)) + wTonemapDiff(xyzSD,xyzS,10,0.1,ccmat);
 aveBrightness = zeros(1,9);
 for i = 1:9
     figure;
-    wImageXYZ2rgb_wtm(SDsame(:,:,:,i),ccmatrix);
-    %imshow(SDsame(:,:,2,i)/100);
+    wImageXYZ2rgb_wtm(SDsame(:,:,:,i),ccmat);
+    imshow(SDsame(:,:,2,i)/100);
 end
 
 ss = strcat('../img/mag',num2str(magnification),'/SDsame',material,'.mat');
 sd = strcat('../img/mag',num2str(magnification),'/SDdifferent',material,'.mat');
 save(ss,'SDsame');
-% save(sd,'SDdifferent');
+save(sd,'SDdifferent');
 
 function coloredXyzData = colorizeXYZ(xyzMaterial)
     cx2u = makecform('xyz2upvpl');
@@ -34,6 +34,7 @@ function coloredXyzData = colorizeXYZ(xyzMaterial)
     coloredXyzData(:,:,:,1) = xyzMaterial;
     load('mat/monitorColorMax.mat');
     load('mat/upvplWhitePoints.mat');
+    weight = 0.5;
  
    
     for i = 1:9
@@ -46,8 +47,8 @@ function coloredXyzData = colorizeXYZ(xyzMaterial)
                             upvpl(j,k,1) = upvplWhitePoints(l,1);
                             upvpl(j,k,2) = upvplWhitePoints(l,2);
                         else
-                            upvpl(j,k,1) = (monitorColorMax(l,1,i-1)+upvplWhitePoints(l,1))/2;
-                            upvpl(j,k,2) = (monitorColorMax(l,2,i-1)+upvplWhitePoints(l,2))/2;
+                            upvpl(j,k,1) = monitorColorMax(l,1,i-1)*weight+upvplWhitePoints(l,1)*(1-weight);
+                            upvpl(j,k,2) = monitorColorMax(l,2,i-1)*weight+upvplWhitePoints(l,2)*(1-weight);
                         end
                     end
                 end

@@ -18,20 +18,22 @@
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 
 
-function rgb = wImageXYZ2rgb_wtm(XYZ, ccmatrix)
+function rgb = wImageXYZ2rgb_wtm(XYZ, ccmat)
 
-    [iy,ix,iz]=size(XYZ);
-    XYZ = w3dto2d(XYZ);
+    [iy,ix,iz] = size(XYZ);
 
-    XYZk = repmat(ccmatrix.xyzk, 1, ix*iy);
-    XYZd = XYZ-XYZk;
+    XYZ = reshape(XYZ,[],3)';
     
-    rgb = ccmatrix.xyz2rgb * XYZd;
-    rgb = w2dto3d(rgb,ix,iy,iz);
+    rgb = XYZ2rgb(XYZ,ccmat);
+    size(rgb);
+    
+    LUT = load('mat/20191108_w.lut');
+    rgb = uint8(rgb2RGB_LUT(rgb',LUT)/257);
+    
+    rgb = reshape(rgb,iy,ix,iz);
     
     imshow(rgb);
 
 end
-
 
 

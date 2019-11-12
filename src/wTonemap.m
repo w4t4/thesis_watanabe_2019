@@ -1,4 +1,4 @@
-function tonemappedXYZ = wTonemap(xyz,lw,ccmatrix)
+function tonemappedXYZ = wTonemap(xyz,lw,scale,ccmatrix)
 
 [iy,ix,iz] = size(xyz);
 
@@ -9,7 +9,7 @@ monitorMaxLum = monitorMaxUpvpl(3);
 monitorMinUpvpl = applycform(transpose(rgb2XYZ([0 0 0]',ccmatrix)),cx2u);
 monitorMinLum = monitorMinUpvpl(3);
 upvpl = applycform(xyz,cx2u);
-disp(strcat('max luminance: ',num2str(monitorMaxLum)));
+%disp(strcat('max luminance: ',num2str(monitorMaxLum)));
 a = max(max(upvpl));
 sh = 8;
 
@@ -18,8 +18,8 @@ for i = 1:iy
     for j = 1:ix
         x = upvpl(i,j,3)/a(3);
         upvpl(i,j,3) = monitorMaxLum * x*sh/(1+x*sh)*(1+x*sh/lw^2);
-        %upvpl(i,j,3) = maxLum * x.^(1/lw);
-        %upvpl(i,j,3) = maxLum * log(1+lw*x);
+        %upvpl(i,j,3) = monitorMaxLum * x.^(1/lw);
+        %upvpl(i,j,3) = monitorMaxLum * log(1+lw*x);
         if upvpl(i,j,3) > monitorMaxLum
             upvpl(i,j,3) = monitorMaxLum;
         elseif upvpl(i,j,3) < 0
@@ -28,13 +28,12 @@ for i = 1:iy
     end
 end
 
+upvpl = applycform(xyz,cx2u);
 minUpvpl = min(min(upvpl));
-%maxUpvpl = max(max(upvpl))
-upvpl = upvpl - minUpvpl(3);
-upvpl = upvpl*(monitorMaxLum-monitorMinLum)/(monitorMaxLum-minUpvpl(3));
-upvpl = upvpl + monitorMinLum;
-%minafter = min(min(upvpl))
-%maxafter = max(max(upvpl))
+upvpl(:,:,3) = upvpl(:,:,3) - minUpvpl(3);
+upvpl(:,:,3) = upvpl(:,:,3) * scale;
+upvpl(:,:,3) = upvpl(:,:,3)*(monitorMaxLum-monitorMinLum)/(monitorMaxLum-minUpvpl(3));
+upvpl(:,:,3) = upvpl(:,:,3) + monitorMinLum;
 
 tonemappedXYZ = applycform(upvpl,cu2x);
 

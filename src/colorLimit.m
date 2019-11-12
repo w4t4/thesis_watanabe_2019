@@ -22,7 +22,7 @@ for i = 1:lumDivNumber
             % disp(monitorColorMax(i,:,j));
             if (max(XYZ2rgb(applycform(monitorColorMax(i,:,j),cu2x)',ccmatrix)) > 1) || (min(XYZ2rgb(applycform(monitorColorMax(i,:,j),cu2x)',ccmatrix)) < 0)
                 monitorColorMax(i,1,j) = monitorColorMax(i,1,j) - uUnitCircle(j)*colorDistanceDiff;
-                monitorColorMax(i,2,j) = monitorColorMax(i,2,j) - vUnitCircle(j)*colorDistanceDiff;
+                monitorColorMax(i,2,j) = monitorColorax(i,2,j) - vUnitCircle(j)*colorDistanceDiff;
                 break;
             end
         end

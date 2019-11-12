@@ -9,7 +9,7 @@ try
     % set window
     PsychImaging('PrepareConfiguration');
     PsychImaging('AddTask', 'General', 'FloatingPoint32BitIfPossible');
-    [windowPrr, windowRect] = PsychImaging('OpenWindow', screenNumber, 0);
+    [windowPtr, windowRect] = PsychImaging('OpenWindow', screenNumber, 0);
     %[windowPtr, windowRect] = Screen('OpenWindow', screenNumber, bgColor, [0 0 screenWidth screenHeight]);
     Priority(MaxPriority(windowPtr));
     [offwin1,offwinrect]=Screen('OpenOffscreenWindow',windowPtr, 0);
@@ -25,9 +25,9 @@ try
     load('../img/dragon/Ddiff.mat');
     load('../img/bunny/Bsame.mat');
     load('../img/bunny/Bdiff.mat');
-%     load('../img/sphere/Ssame.mat');
-%     load('../img/sphere/Sdiff.mat');
-    load('ccmatrix.mat');
+    load('../img/sphere/Ssame.mat');
+    load('../img/sphere/Sdiff.mat');
+    load('mat/ccmat.mat');
     
     % display initial text
     for i = 1:60*2
@@ -42,7 +42,7 @@ try
     [iy,ix,iz] = size(Dsame(:,:,:,1));
     distance = mx/2;
     scale = 2/9;
-    displayStimuliTime = 5;
+    displayStimuliTime = 3;
     intervalTime = 1;
     leftPosition = [mx-ix*scale-distance/2, my-iy*scale, mx+ix*scale-distance/2, my+iy*scale]; 
     rightPosition = [mx-ix*scale+distance/2, my-iy*scale, mx+ix*scale+distance/2, my+iy*scale];
@@ -54,12 +54,12 @@ try
     
     HideCursor(screenNumber);
     
-    for i = 1:1
+    for i = 1:4
         OneorTwo = randi([1 2]);
 %         rgbLeft = Bdiff(:,:,:,combination(displayOrder(i),OneorTwo))* 255;
 %         rgbRight = Bdiff(:,:,:,combination(displayOrder(i),3-OneorTwo))* 255;
-        rgbLeft = wtXYZ2rgb(SDsame(:,:,:,i),ccmatrix)*255;
-        rgbRight = wtXYZ2rgb(SDsame(:,:,:,10-i),ccmatrix)*255;
+        rgbLeft = Dsame(:,:,:,i)*255+5;
+        rgbRight = Dsame(:,:,:,10-i)*255+5;
         leftStimulus = Screen('MakeTexture', windowPtr, rgbLeft);
         rightStimulus = Screen('MakeTexture', windowPtr, rgbRight);
         for j = 1:60*displayStimuliTime
