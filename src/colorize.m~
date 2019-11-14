@@ -1,6 +1,6 @@
 
 % Dragon or Bunny or Sphere
-material = '';
+material = 'Dragon';
 
 magnification = 3;
 
@@ -11,14 +11,25 @@ load('mat/monitorColorMax.mat');
 load('mat/logScale.mat');
 
 
-SDsame = colorizeXYZ(wTonemap(xyzSD,10,0.3,ccmat));
-SDdifferent = colorizeXYZ(wTonemapDiff(xyzSD,xyzD,10,0.2,ccmat)) + wTonemapDiff(xyzSD,xyzS,10,0.1,ccmat);
+%SDsame = colorizeXYZ(wTonemap(xyzSD,4,0.8,ccmat));
+SDdifferent = colorizeXYZ(wTonemapDiff(xyzSD,xyzD,4,0.1,ccmat)) + wTonemapDiff(xyzSD,xyzS,4,0.8,ccmat);
 aveBrightness = zeros(1,9);
-for i = 1:9
-    figure;
-    wImageXYZ2rgb_wtm(SDdiff(:,:,:,i),ccmat);
-%    imshow(SDsame(:,:,2,i)/100);
-end
+% for i = 1:9
+%     figure;
+%     wImageXYZ2rgb_wtm(SDdifferent(:,:,:,i),ccmat);
+%     %figure;
+%     %wImageXYZ2rgb_wtm(SDdifferent(:,:,:,i),ccmat);
+% %    imshow(SDsame(:,:,2,i)/100);
+% end
+figure;
+imshow(wImageXYZ2rgb_wtm(SDsame(:,:,:,1),ccmat));
+figure;
+imshow(wImageXYZ2rgb_wtm(SDdifferent(:,:,:,1),ccmat));
+cx2u = makecform('xyz2upvpl');
+po = applycform(SDsame(:,:,:,1),cx2u);
+same = max(max(po))
+pyon = applycform(SDdifferent(:,:,:,1),cx2u);
+diff = max(max(pyon))
 
 ss = strcat('../img/mag',num2str(magnification),'/SDsame',material,'.mat');
 sd = strcat('../img/mag',num2str(magnification),'/SDdifferent',material,'.mat');

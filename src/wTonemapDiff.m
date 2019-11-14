@@ -28,13 +28,12 @@ for i = 1:iy
     end
 end
 
-upvpl = applycform(xyz,cx2u);
 minUpvpl = min(min(applycform(sameXyz,cx2u)));
-upvpl(:,:,3) = upvpl(:,:,3) - minUpvpl(3);
 upvpl(:,:,3) = upvpl(:,:,3) * scale;
-upvpl(:,:,3) = upvpl(:,:,3)*(monitorMaxLum-monitorMinLum)/(monitorMaxLum-minUpvpl(3));
+upvpl(:,:,3) = upvpl(:,:,3)*(monitorMaxLum-monitorMinLum)/monitorMaxLum;
 upvpl(:,:,3) = upvpl(:,:,3) + monitorMinLum/2;
 
 tonemappedXYZ = applycform(upvpl,cu2x);
+max(max(upvpl))
 
 end
