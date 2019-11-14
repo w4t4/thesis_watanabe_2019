@@ -33,7 +33,7 @@ minUpvpl = min(min(applycform(sameXyz,cx2u)));
 upvpl(:,:,3) = upvpl(:,:,3) - minUpvpl(3);
 upvpl(:,:,3) = upvpl(:,:,3) * scale;
 upvpl(:,:,3) = upvpl(:,:,3)*(monitorMaxLum-monitorMinLum)/(monitorMaxLum-minUpvpl(3));
-upvpl(:,:,3) = upvpl(:,:,3) + monitorMinLum;
+upvpl(:,:,3) = upvpl(:,:,3) + monitorMinLum/2;
 
 tonemappedXYZ = applycform(upvpl,cu2x);
 

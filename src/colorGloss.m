@@ -42,7 +42,7 @@ try
     [iy,ix,iz] = size(Dsame(:,:,:,1));
     distance = mx/2;
     scale = 2/9;
-    displayStimuliTime = 3;
+    displayStimuliTime = 2;
     intervalTime = 1;
     leftPosition = [mx-ix*scale-distance/2, my-iy*scale, mx+ix*scale-distance/2, my+iy*scale]; 
     rightPosition = [mx-ix*scale+distance/2, my-iy*scale, mx+ix*scale+distance/2, my+iy*scale];
@@ -54,12 +54,12 @@ try
     
     HideCursor(screenNumber);
     
-    for i = 1:1
+    for i = 1:9
         OneorTwo = randi([1 2]);
 %         rgbLeft = Bdiff(:,:,:,combination(displayOrder(i),OneorTwo))* 255;
 %         rgbRight = Bdiff(:,:,:,combination(displayOrder(i),3-OneorTwo))* 255;
-        rgbLeft = Bsame(:,:,:,i);
-        rgbRight = Bsame(:,:,:,10-i);
+        rgbLeft = Dsame(:,:,:,i);
+        rgbRight = Ddiff(:,:,:,i);
         leftStimulus = Screen('MakeTexture', windowPtr, rgbLeft);
         rightStimulus = Screen('MakeTexture', windowPtr, rgbRight);
         for j = 1:60*displayStimuliTime
