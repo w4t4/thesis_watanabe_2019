@@ -39,10 +39,10 @@ for i = 1:9
     %wtColorCheck(Dsame);
     save('../img/bunny/Bdiff.mat','Bdiff');
 end
-%figure;
-%montage(Bsame,'size',[3 3]);
-%figure;
-%montage(Bdiff,'size',[3 3]);
+figure;
+montage(Bsame,'size',[3 3]);
+figure;
+montage(Bdiff,'size',[3 3]);
 
 load('../img/mag3/SDsameSphere.mat');
 load('../img/mag3/SDdifferentSphere.mat');
@@ -58,7 +58,7 @@ for i = 1:9
     %wtColorCheck(Dsame);
     save('../img/sphere/Sdiff.mat','Sdiff');
 end
-%figure;
-%montage(Ssame,'size',[3 3]);
-%figure;
-%montage(Sdiff,'size',[3 3]);
+figure;
+montage(Ssame,'size',[3 3]);
+figure;
+montage(Sdiff,'size',[3 3]);
