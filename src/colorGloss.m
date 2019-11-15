@@ -56,10 +56,10 @@ try
     
     for i = 1:9
         OneorTwo = randi([1 2]);
-%         rgbLeft = Bdiff(:,:,:,combination(displayOrder(i),OneorTwo))* 255;
-%         rgbRight = Bdiff(:,:,:,combination(displayOrder(i),3-OneorTwo))* 255;
-        rgbLeft = Dsame(:,:,:,i);
-        rgbRight = Ddiff(:,:,:,i);
+        rgbLeft = Bdiff(:,:,:,combination(displayOrder(i),OneorTwo));
+        rgbRight = Bdiff(:,:,:,combination(displayOrder(i),3-OneorTwo));
+        %rgbLeft = Dsame(:,:,:,i);
+        %rgbRight = Ddiff(:,:,:,i);
         leftStimulus = Screen('MakeTexture', windowPtr, rgbLeft);
         rightStimulus = Screen('MakeTexture', windowPtr, rgbRight);
         for j = 1:60*displayStimuliTime

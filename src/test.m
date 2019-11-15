@@ -9,9 +9,11 @@
 % figure;
 % montage(b, 'size', [1 1]);
 
-load('mat/monitorColorMax.mat');
-plot(monitorColorMax(:,2,7));
+%load('mat/monitorColorMax.mat');
+%plot(monitorColorMax(:,2,7));
 
+randperm(nchoosek(4,2))
+randperm(nchoosek(4,2))
 
 
 % Dragon: colorDistanceRate:30,thr:90,materialMaxlum:833
