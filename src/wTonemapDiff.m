@@ -17,9 +17,9 @@ sh = 8;
 for i = 1:iy
     for j = 1:ix
         x = upvpl(i,j,3)/a(3);
-        upvpl(i,j,3) = monitorMaxLum * x*sh/(1+x*sh)*(1+x*sh/lw^2);
-        %upvpl(i,j,3) = maxLum * x.^(1/lw);
-        %upvpl(i,j,3) = maxLum * log(1+lw*x);
+        %upvpl(i,j,3) = monitorMaxLum * x*sh/(1+x*sh)*(1+x*sh/lw^2);
+        upvpl(i,j,3) = monitorMaxLum * x.^(1/lw);
+        %upvpl(i,j,3) = monitorMmaxLum * log(1+lw*x);
         if upvpl(i,j,3) > monitorMaxLum
             upvpl(i,j,3) = monitorMaxLum;
         elseif upvpl(i,j,3) < 0
