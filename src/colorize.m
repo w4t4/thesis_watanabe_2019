@@ -19,7 +19,6 @@ for i = 1:9
     wImageXYZ2rgb_wtm(SDsame(:,:,:,i),ccmat);
     figure;
     wImageXYZ2rgb_wtm(SDdifferent(:,:,:,i),ccmat);
-%    imshow(SDsame(:,:,2,i)/100);
 end
 cx2u = makecform('xyz2upvpl');
 po = applycform(SDsame(:,:,:,1),cx2u);
