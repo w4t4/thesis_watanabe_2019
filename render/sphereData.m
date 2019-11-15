@@ -22,8 +22,8 @@ renderer = 'Mitsuba';
 hints.renderer = renderer;
     
 nativeSceneFiles = rtbMakeSceneFiles(parentSceneFile, ...
-      'mappingsFile', mappingsFile, ...
-      'hints', hints);
+    'mappingsFile', mappingsFile, ...
+    'hints', hints);
 radianceDataFiles = rtbBatchRender(nativeSceneFiles, 'hints', hints);
     
 for ii = 1:nSteps
