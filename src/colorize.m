@@ -11,7 +11,7 @@ load('mat/monitorColorMax.mat');
 load('mat/logScale.mat');
 
 
-%SDsame = colorizeXYZ(wTonemap(xyzSD,4,0.8,ccmat));
+SDsame = colorizeXYZ(wTonemap(xyzSD,4,0.8,ccmat));
 SDdifferent = colorizeXYZ(wTonemapDiff(xyzD,xyzSD,4,0.5,ccmat)) + wTonemapDiff(xyzS,xyzSD,4,0.45,ccmat);
 aveBrightness = zeros(1,9);
 for i = 1:9

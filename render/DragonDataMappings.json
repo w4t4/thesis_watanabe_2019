@@ -72,12 +72,12 @@
         {
 			"name": "specularReflectance",
 			"valueType": "spectrum",
-			"value": 0.7
+			"value": 0.9
 		},
         {
 			"name": "diffuseReflectance",
 			"valueType": "spectrum",
-			"value": 0.3
+			"value": 0.1
 		}
 		]
 	}

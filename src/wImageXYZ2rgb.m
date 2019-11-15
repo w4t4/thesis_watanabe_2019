@@ -18,11 +18,11 @@
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 
 
-function rgb = wImageXYZ2rgb(XYZ, lw, ccmat)
+function rgb = wImageXYZ2rgb(XYZ, lw, scale, ccmat)
 
     [iy,ix,iz] = size(XYZ);
 
-    XYZ = wTonemap(XYZ,lw,ccmat);
+    XYZ = wTonemap(XYZ,lw,scale,ccmat);
     XYZ = reshape(XYZ,[],3)';
     
     rgb = XYZ2rgb(XYZ,ccmat);
