@@ -30,7 +30,7 @@ try
     load('mat/ccmat.mat');
     
     imSize = size(Dsame);
-    stimuli = zeros(imSize(1),imSize(2),imSize(3),imSize(4),6);
+    stimuli = (imSize(1),imSize(2),imSize(3),imSize(4),6);
     stimuli(:,:,:,:,1) = Dsame;
     stimuli(:,:,:,:,2) = Ddiff;
     stimuli(:,:,:,:,3) = Bsame;
@@ -59,7 +59,6 @@ try
     combination = combnk(1:9,2);
     victoryTable = zeros(9,9,6);
     nckOrder = zeros(1,nchoosek(9,2),6);
-    
     % generate random order
     for i = 1:6
         nckOrder(:,:,i) = randperm(nchoosek(9,2));
@@ -67,43 +66,40 @@ try
     HideCursor(screenNumber);
     
     for i = 1:1
+        for j = 1:1
+        OneorTwo = randi([1 2]);
+        rgbLeft = stimuli(:,:,:,combination(nckOrder(i,j),OneorTwo),materialOrder(j));
+        rgbRight = stimuli(:,:,:,combination(nckOrder(i,j),3-OneorTwo),materialOrder(j));
+        %rgbLeft = Dsame(:,:,:,i);
+        %rgbRight = Ddiff(:,:,:,i);
+        leftStimulus = Screen('MakeTexture', windowPtr, rgbLeft);
+        rightStimulus = Screen('MakeTexture', windowPtr, rgbRight);
         
-        materialOrder = randperm(6);
-        for j = 1:6
-            OneorTwo = randi([1 2]);
-            rgbLeft = stimuli(:,:,:,combination(nckOrder(i,j),OneorTwo),materialOrder(j));
-            rgbRight = stimuli(:,:,:,combination(nckOrder(i,j),3-OneorTwo),materialOrder(j));
-            %rgbLeft = Dsame(:,:,:,i);
-            %rgbRight = Ddiff(:,:,:,i);
-            leftStimulus = Screen('MakeTexture', windowPtr, rgbLeft);
-            rightStimulus = Screen('MakeTexture', windowPtr, rgbRight);
-
-            for k = 1:60*displayStimuliTime
-
-                Screen('DrawTexture', windowPtr, leftStimulus, [], leftPosition);
-                Screen('DrawTexture', windowPtr, rightStimulus, [], rightPosition);
-                Screen('Flip', windowPtr);
-
-            end
-
+        for j = 1:60*displayStimuliTime
+            
+            Screen('DrawTexture', windowPtr, leftStimulus, [], leftPosition);
+            Screen('DrawTexture', windowPtr, rightStimulus, [], rightPosition);
             Screen('Flip', windowPtr);
 
-            % wait key input
-            [secs, keyCode] = KbWait([],3);
-            if keyCode(leftKey)
-                %data(combination(displayOrder(i),1)) = combination(displayOrder(i),OneorTwo);
-                a = "hidari";
-            elseif keyCode(rightKey)
-                %data(combination(displayOrder(i),1)) = combination(displayOrder(i),3-OneorTwo);
-                a = "migi";
-            elseif keyCode(escapeKey)
-                break;
-            end        
-
-            for k = 1:60*intervalTime
-                Screen('Flip', windowPtr);
-            end     
         end
+            
+        Screen('Flip', windowPtr);
+            
+        % wait key input
+        [secs, keyCode] = KbWait([],3);
+        if keyCode(leftKey)
+            %data(combination(displayOrder(i),1)) = combination(displayOrder(i),OneorTwo);
+            a = "hidari";
+        elseif keyCode(rightKey)
+            %data(combination(displayOrder(i),1)) = combination(displayOrder(i),3-OneorTwo);
+            a = "migi";
+        elseif keyCode(escapeKey)
+            break;
+        end        
+        
+        for j = 1:60*intervalTime
+            Screen('Flip', windowPtr);
+        end     
     end
     
     Screen('CloseAll');

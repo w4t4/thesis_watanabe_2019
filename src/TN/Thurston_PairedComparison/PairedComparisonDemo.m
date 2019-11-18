@@ -45,14 +45,14 @@ if IsOctave, fflush(1); end
 
 %% Simulation of a psychophysical paired comparison experiment
 fprintf('Simulation of psychophysical experiment\n'); if IsOctave, fflush(1); end
-[mtx, OutOfNum, NumGreater] = FCN_ObsResSimulation(GroundTruth, cmbs, tnum, 1); % ÅŒã‚Ì1‚ÍAŠ´Šo‚Ì•W€•Î·iƒP[ƒXV‚É‡‚í‚¹‚Ä1j
+[mtx, OutOfNum, NumGreater] = FCN_ObsResSimulation(GroundTruth, cmbs, tnum, 1); % ï¿½ÅŒï¿½ï¿½1ï¿½ÍAï¿½ï¿½ï¿½oï¿½Ì•Wï¿½ï¿½ï¿½Îï¿½ï¿½iï¿½Pï¿½[ï¿½XVï¿½Éï¿½ï¿½í‚¹ï¿½ï¿½1ï¿½j
 
-% Analysis 1: Thurstaon's case V model based on z-scoreiƒT[ƒXƒgƒ“‚Ìˆê‘Î”äŠr–@ƒP[ƒXVƒ‚ƒfƒ‹Bè–@‚ªƒVƒ“ƒvƒ‹‚È•ªA‰ğÍŒ‹‰Ê‚ª­‚µ˜c‚Şj
+% Analysis 1: Thurstaon's case V model based on z-scoreï¿½iï¿½Tï¿½[ï¿½Xï¿½gï¿½ï¿½ï¿½Ìˆï¿½Î”ï¿½rï¿½@ï¿½Pï¿½[ï¿½XVï¿½ï¿½ï¿½fï¿½ï¿½ï¿½Bï¿½ï¿½@ï¿½ï¿½ï¿½Vï¿½ï¿½ï¿½vï¿½ï¿½ï¿½È•ï¿½ï¿½Aï¿½ï¿½ÍŒï¿½ï¿½Ê‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½cï¿½Şj
 estimated_sv = FCN_PCanalysis_Thurston(mtx, 0.005);
 estimated_sv = estimated_sv - mean(estimated_sv);
 
-% Analysis 2: Maximum likelihood methodiÅ–Ş–@Bƒf[ƒ^‚Ì“Á’¥‚É‘Î‚µƒf[ƒ^”‚ª\•ª‚È‚çi‚±‚ê‚ğ–‚½‚µ‚Ä‚¢‚é‚©”÷–­‚È‚Ì‚¾‚ªjAƒT[ƒXƒgƒ“ƒ‚ƒfƒ‹‚æ‚è¸“x‚ª‚‚¢j
-InitValues = estimated_sv - estimated_sv(1); % ƒT[ƒXƒgƒ“‚ÌŒ‹‰Ê‚ğ‰Šú’l‚Éİ’èB‚½‚¾‚µAÅ¶’l‚ª0‚É‚È‚é‚æ‚¤³‹K‰»i©—R“x‚ğ‰º‚°‚éj
+% Analysis 2: Maximum likelihood methodï¿½iï¿½Å–Ş–@ï¿½Bï¿½fï¿½[ï¿½^ï¿½Ì“ï¿½ï¿½ï¿½ï¿½É‘Î‚ï¿½ï¿½fï¿½[ï¿½^ï¿½ï¿½ï¿½ï¿½ï¿½\ï¿½ï¿½ï¿½È‚ï¿½iï¿½ï¿½ï¿½ï¿½ğ–‚ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½é‚©ï¿½ï¿½ï¿½ï¿½ï¿½È‚Ì‚ï¿½ï¿½ï¿½ï¿½jï¿½Aï¿½Tï¿½[ï¿½Xï¿½gï¿½ï¿½ï¿½ï¿½ï¿½fï¿½ï¿½ï¿½ï¿½è¸ï¿½xï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½j
+InitValues = estimated_sv - estimated_sv(1); % ï¿½Tï¿½[ï¿½Xï¿½gï¿½ï¿½ï¿½ÌŒï¿½ï¿½Ê‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½lï¿½Éİ’ï¿½Bï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Aï¿½Åï¿½ï¿½lï¿½ï¿½0ï¿½É‚È‚ï¿½æ‚¤ï¿½ï¿½ï¿½Kï¿½ï¿½ï¿½iï¿½ï¿½ï¿½Rï¿½xï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½j
 [estimated_sv2,NumGreater_v,OutOfNum_v] = FCN_PCanalysis_ML(OutOfNum, NumGreater, cmbs, InitValues, method);
 estimated_sv2 = estimated_sv2 - mean(estimated_sv2);
 
@@ -65,51 +65,51 @@ fprintf('Bootstrap analysis:\n');
 fprintf('  Bootstrap repetition number: %d\n\n\n', B);
 if IsOctave, fflush(1); end
 
-% ƒu[ƒgƒXƒgƒ‰ƒbƒvƒTƒ“ƒvƒ‹•Û‘¶•Ï”
-sv_th = zeros(B, stimnum); % d—vFƒT[ƒXƒgƒ“‚Ìˆê‘Î”äŠr–@‚É‚æ‚éƒu[ƒgƒXƒgƒ‰ƒbƒvƒTƒ“ƒvƒ‹BŒX‚«‚ÌŒŸ’è‚È‚Ç‚Ég‚¤ƒf[ƒ^‚È‚Ì‚Å•Û‘¶•K{B¨ ƒT[ƒXƒgƒ“‚Å‚ÍŒ‹‰Ê‚ª˜c‚ŞiƒoƒCƒAƒX‚ª‚©‚©‚éj‚Ì‚Åƒu[ƒgƒXƒgƒ‰ƒbƒv‚à‚¤‚Ü‚­‚¢‚©‚È‚¢
-sv_ml = zeros(B, stimnum); % d—vFÅ–Ş–@‚É‚æ‚éƒu[ƒgƒXƒgƒ‰ƒbƒvƒTƒ“ƒvƒ‹BŒX‚«‚ÌŒŸ’è‚È‚Ç‚Ég‚¤ƒf[ƒ^‚È‚Ì‚Å•Û‘¶•K{B¨ ‚±‚¿‚ç‚ªƒxƒ^[‚©B
+% ï¿½uï¿½[ï¿½gï¿½Xï¿½gï¿½ï¿½ï¿½bï¿½vï¿½Tï¿½ï¿½ï¿½vï¿½ï¿½ï¿½Û‘ï¿½ï¿½Ïï¿½
+sv_th = zeros(B, stimnum); % ï¿½dï¿½vï¿½Fï¿½Tï¿½[ï¿½Xï¿½gï¿½ï¿½ï¿½Ìˆï¿½Î”ï¿½rï¿½@ï¿½É‚ï¿½ï¿½uï¿½[ï¿½gï¿½Xï¿½gï¿½ï¿½ï¿½bï¿½vï¿½Tï¿½ï¿½ï¿½vï¿½ï¿½ï¿½Bï¿½Xï¿½ï¿½ï¿½ÌŒï¿½ï¿½ï¿½È‚Ç‚Égï¿½ï¿½ï¿½fï¿½[ï¿½^ï¿½È‚Ì‚Å•Û‘ï¿½ï¿½Kï¿½{ï¿½Bï¿½ï¿½ ï¿½Tï¿½[ï¿½Xï¿½gï¿½ï¿½ï¿½Å‚ÍŒï¿½ï¿½Ê‚ï¿½ï¿½cï¿½Şiï¿½oï¿½Cï¿½Aï¿½Xï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½jï¿½Ì‚Åƒuï¿½[ï¿½gï¿½Xï¿½gï¿½ï¿½ï¿½bï¿½vï¿½ï¿½ï¿½ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È‚ï¿½
+sv_ml = zeros(B, stimnum); % ï¿½dï¿½vï¿½Fï¿½Å–Ş–@ï¿½É‚ï¿½ï¿½uï¿½[ï¿½gï¿½Xï¿½gï¿½ï¿½ï¿½bï¿½vï¿½Tï¿½ï¿½ï¿½vï¿½ï¿½ï¿½Bï¿½Xï¿½ï¿½ï¿½ÌŒï¿½ï¿½ï¿½È‚Ç‚Égï¿½ï¿½ï¿½fï¿½[ï¿½^ï¿½È‚Ì‚Å•Û‘ï¿½ï¿½Kï¿½{ï¿½Bï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ç‚ªï¿½xï¿½^ï¿½[ï¿½ï¿½ï¿½B
 
 pg = 1;
-for b=1:B % ƒu[ƒgƒXƒgƒ‰ƒbƒvƒTƒ“ƒvƒ‹‚Ìì¬F—v–c‘å‚Èˆ—ŠÔ
+for b=1:B % ï¿½uï¿½[ï¿½gï¿½Xï¿½gï¿½ï¿½ï¿½bï¿½vï¿½Tï¿½ï¿½ï¿½vï¿½ï¿½ï¿½Ìì¬ï¿½Fï¿½vï¿½cï¿½ï¿½Èï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     % show progress
     if b/B>pg*0.05
         fprintf('   progress...%2.0f%%\n', pg*0.05*100);if IsOctave, fflush(1); end
         pg = pg+1;
     end
 
-    % ”íŒ±Ò‰“šƒVƒ~ƒ…ƒŒ[ƒVƒ‡ƒ“‚P: ƒT[ƒXƒgƒ“‚Ìˆê‘Î”äŠr‚ÌŒ‹‰Ê‚ğƒu[ƒgƒXƒgƒ‰ƒbƒvI
-    [mtx_s, OutOfNum_s, NumGreater_s] = FCN_ObsResSimulation(estimated_sv, cmbs, tnum, 1); % ÅŒã‚Ì1‚ÍAŠ´Šo‚Ì•W€•Î·iƒP[ƒXV‚É‡‚í‚¹‚Ä1j
+    % ï¿½íŒ±ï¿½Ò‰ï¿½ï¿½ï¿½ï¿½Vï¿½~ï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½P: ï¿½Tï¿½[ï¿½Xï¿½gï¿½ï¿½ï¿½Ìˆï¿½Î”ï¿½rï¿½ÌŒï¿½ï¿½Ê‚ï¿½ï¿½uï¿½[ï¿½gï¿½Xï¿½gï¿½ï¿½ï¿½bï¿½vï¿½I
+    [mtx_s, OutOfNum_s, NumGreater_s] = FCN_ObsResSimulation(estimated_sv, cmbs, tnum, 1); % ï¿½ÅŒï¿½ï¿½1ï¿½ÍAï¿½ï¿½ï¿½oï¿½Ì•Wï¿½ï¿½ï¿½Îï¿½ï¿½iï¿½Pï¿½[ï¿½XVï¿½Éï¿½ï¿½í‚¹ï¿½ï¿½1ï¿½j
 
-    % ÀŒ±Œ‹‰Ê‚Ì‰ğÍFè–@‚PiƒT[ƒXƒgƒ“‚Ìˆê‘Î”äŠr–@ƒP[ƒXVƒ‚ƒfƒ‹j
+    % ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê‚Ì‰ï¿½ÍFï¿½ï¿½@ï¿½Pï¿½iï¿½Tï¿½[ï¿½Xï¿½gï¿½ï¿½ï¿½Ìˆï¿½Î”ï¿½rï¿½@ï¿½Pï¿½[ï¿½XVï¿½ï¿½ï¿½fï¿½ï¿½ï¿½j
     sv_th(b,:) = FCN_PCanalysis_Thurston(mtx_s, 0.005);
     sv_th(b,:) = sv_th(b,:) - mean(sv_th(b,:));
     
     
-    % ”íŒ±Ò‰“šƒVƒ~ƒ…ƒŒ[ƒVƒ‡ƒ“‚QFÅ–Ş–@‚ÌŒ‹‰Ê‚ğƒu[ƒgƒXƒgƒ‰ƒbƒvI
-    [mtx_s, OutOfNum_s, NumGreater_s] = FCN_ObsResSimulation(estimated_sv2, cmbs, tnum, 1); % ÅŒã‚Ì1‚ÍAŠ´Šo‚Ì•W€•Î·iƒP[ƒXV‚É‡‚í‚¹‚Ä1j
+    % ï¿½íŒ±ï¿½Ò‰ï¿½ï¿½ï¿½ï¿½Vï¿½~ï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½Qï¿½Fï¿½Å–Ş–@ï¿½ÌŒï¿½ï¿½Ê‚ï¿½ï¿½uï¿½[ï¿½gï¿½Xï¿½gï¿½ï¿½ï¿½bï¿½vï¿½I
+    [mtx_s, OutOfNum_s, NumGreater_s] = FCN_ObsResSimulation(estimated_sv2, cmbs, tnum, 1); % ï¿½ÅŒï¿½ï¿½1ï¿½ÍAï¿½ï¿½ï¿½oï¿½Ì•Wï¿½ï¿½ï¿½Îï¿½ï¿½iï¿½Pï¿½[ï¿½XVï¿½Éï¿½ï¿½í‚¹ï¿½ï¿½1ï¿½j
 
-    % —\”õ‰ğÍiƒT[ƒXƒgƒ“‚Ìˆê‘Î”äŠr–@ƒP[ƒXVƒ‚ƒfƒ‹j
+    % ï¿½\ï¿½ï¿½ï¿½ï¿½Íiï¿½Tï¿½[ï¿½Xï¿½gï¿½ï¿½ï¿½Ìˆï¿½Î”ï¿½rï¿½@ï¿½Pï¿½[ï¿½XVï¿½ï¿½ï¿½fï¿½ï¿½ï¿½j
     prediction = FCN_PCanalysis_Thurston(mtx_s, 0.005);
     
-    % ÀŒ±Œ‹‰Ê‚Ì‰ğÍFè–@‚QiÅ–Ş–@j
-    InitValues = prediction - prediction(1); % ƒT[ƒXƒgƒ“‚ÌŒ‹‰Ê‚ğ‰Šú’l‚Éİ’èB‚½‚¾‚µAÅ¶’l‚ª0‚É‚È‚é‚æ‚¤³‹K‰»i©—R“x‚ğ‰º‚°‚éj
+    % ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê‚Ì‰ï¿½ÍFï¿½ï¿½@ï¿½Qï¿½iï¿½Å–Ş–@ï¿½j
+    InitValues = prediction - prediction(1); % ï¿½Tï¿½[ï¿½Xï¿½gï¿½ï¿½ï¿½ÌŒï¿½ï¿½Ê‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½lï¿½Éİ’ï¿½Bï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Aï¿½Åï¿½ï¿½lï¿½ï¿½0ï¿½É‚È‚ï¿½æ‚¤ï¿½ï¿½ï¿½Kï¿½ï¿½ï¿½iï¿½ï¿½ï¿½Rï¿½xï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½j
     [sv_ml(b,:), dummy1, dummy2] = FCN_PCanalysis_ML(OutOfNum_s, NumGreater_s, cmbs, InitValues, method);
     sv_ml(b,:) = sv_ml(b,:) - mean(sv_ml(b,:));    
 end
 
-% ’Pƒ‚È•W€Œë·F„’èƒoƒCƒAƒX‚ğl‚¦‚é‚Æ•s“KØ
-ses_th = std(sv_th); % •W€Œë· by ƒT[ƒXƒgƒ“ˆê‘Î”äŠr–@
-ses_ml = std(sv_ml); % •W€Œë· by Å–Ş–@
+% ï¿½Pï¿½ï¿½ï¿½È•Wï¿½ï¿½ï¿½ë·ï¿½Fï¿½ï¿½ï¿½ï¿½oï¿½Cï¿½Aï¿½Xï¿½ï¿½ï¿½lï¿½ï¿½ï¿½ï¿½Æ•sï¿½Kï¿½ï¿½
+ses_th = std(sv_th); % ï¿½Wï¿½ï¿½ï¿½ë· by ï¿½Tï¿½[ï¿½Xï¿½gï¿½ï¿½ï¿½ï¿½Î”ï¿½rï¿½@
+ses_ml = std(sv_ml); % ï¿½Wï¿½ï¿½ï¿½ë· by ï¿½Å–Ş–@
 fprintf('....Done!!\n\n\n');   if IsOctave, fflush(1); end
 
-% ƒu[ƒgƒXƒgƒ‰ƒbƒvƒTƒ“ƒvƒ‹‚ÉŠî‚Ã‚­68%M—Š‹æŠÔ
-ranges68_th = zeros(stimnum, 3); % 68M—Š‹æŠÔ@by ƒT[ƒXƒgƒ“ˆê‘Î”äŠr–@
-ranges68_ml = zeros(stimnum, 3); % 68M—Š‹æŠÔ@by Å–Ş–@
+% ï¿½uï¿½[ï¿½gï¿½Xï¿½gï¿½ï¿½ï¿½bï¿½vï¿½Tï¿½ï¿½ï¿½vï¿½ï¿½ï¿½ÉŠï¿½Ã‚ï¿½68%ï¿½Mï¿½ï¿½ï¿½ï¿½ï¿½
+ranges68_th = zeros(stimnum, 3); % 68ï¿½Mï¿½ï¿½ï¿½ï¿½Ô@by ï¿½Tï¿½[ï¿½Xï¿½gï¿½ï¿½ï¿½ï¿½Î”ï¿½rï¿½@
+ranges68_ml = zeros(stimnum, 3); % 68ï¿½Mï¿½ï¿½ï¿½ï¿½Ô@by ï¿½Å–Ş–@
 ubi = round(B*84/100);
 lbi = round(B*16/100);
 mi = round(B./2);
 for s=1:stimnum
-    % ƒT[ƒXƒgƒ“ƒf[ƒ^
+    % ï¿½Tï¿½[ï¿½Xï¿½gï¿½ï¿½ï¿½fï¿½[ï¿½^
     sdata = sort(sv_th(:,s));
     ranges68_th(s,1) = sdata(lbi)-sdata(mi); % lower bound
     ranges68_th(s,2) = sdata(ubi)-sdata(mi); % upper bound
@@ -122,28 +122,28 @@ for s=1:stimnum
     ranges68_ml(s,3) = sdata(mi);
 end
 
-%% Œ‹‰Ê‚Ìƒvƒƒbƒg
-% ƒT[ƒXƒgƒ“‚ÆÅ–Ş–@‚ÌŒ‹‰Ê‚Ì”äŠr: ƒGƒ‰[ƒo[‚Â‚«„’è’l
+%% ï¿½ï¿½ï¿½Ê‚Ìƒvï¿½ï¿½ï¿½bï¿½g
+% ï¿½Tï¿½[ï¿½Xï¿½gï¿½ï¿½ï¿½ÆÅ–Ş–@ï¿½ÌŒï¿½ï¿½Ê‚Ì”ï¿½r: ï¿½Gï¿½ï¿½ï¿½[ï¿½oï¿½[ï¿½Â‚ï¿½ï¿½ï¿½ï¿½ï¿½l
 figure('Position',[1 1 800 300], 'Name', 'Ground truth vs Estimated')
 subplot(1,2,1); hold on;
 plot(GroundTruth, estimated_sv, 'ok');
-% errorbar(GroundTruth, estimated_sv, ses_th, '.k'); % ‚±‚±‚Å‚Í•W€Œë·‚ğg‚Á‚Ä‚¢‚é‚ªA68 or 95%M—Š‹æŠÔ‚Ì•û‚ª‘½•ª—Ç‚¢
-errorbar(GroundTruth, ranges68_th(:,3), -ranges68_th(:,1), ranges68_th(:,2), '.k'); % 68%M—Š‹æŠÔ
+% errorbar(GroundTruth, estimated_sv, ses_th, '.k'); % ï¿½ï¿½ï¿½ï¿½ï¿½Å‚Í•Wï¿½ï¿½ï¿½ë·ï¿½ï¿½ï¿½gï¿½ï¿½ï¿½Ä‚ï¿½ï¿½é‚ªï¿½A68 or 95%ï¿½Mï¿½ï¿½ï¿½ï¿½Ô‚Ì•ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç‚ï¿½
+errorbar(GroundTruth, ranges68_th(:,3), -ranges68_th(:,1), ranges68_th(:,2), '.k'); % 68%ï¿½Mï¿½ï¿½ï¿½ï¿½ï¿½
 plot([-4 4], [-4 4],'--k')
     title('Estimated by Thurston method')
     xlabel('Ground truth');
     ylabel('Estimated sensation value');
 subplot(1,2,2); hold on;
 plot(GroundTruth, estimated_sv2, 'ok');
-% errorbar(GroundTruth, estimated_sv2, ses_ml, '.k'); % ‚±‚±‚Å‚Í•W€Œë·‚ğg‚Á‚Ä‚¢‚é‚ªA68 or 95%M—Š‹æŠÔ‚Ì•û‚ª‘½•ª—Ç‚¢
-errorbar(GroundTruth, ranges68_ml(:,3), -ranges68_ml(:,1), ranges68_ml(:,2), '.k'); % 68%M—Š‹æŠÔ
+% errorbar(GroundTruth, estimated_sv2, ses_ml, '.k'); % ï¿½ï¿½ï¿½ï¿½ï¿½Å‚Í•Wï¿½ï¿½ï¿½ë·ï¿½ï¿½ï¿½gï¿½ï¿½ï¿½Ä‚ï¿½ï¿½é‚ªï¿½A68 or 95%ï¿½Mï¿½ï¿½ï¿½ï¿½Ô‚Ì•ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç‚ï¿½
+errorbar(GroundTruth, ranges68_ml(:,3), -ranges68_ml(:,1), ranges68_ml(:,2), '.k'); % 68%ï¿½Mï¿½ï¿½ï¿½ï¿½ï¿½
 plot([-4 4], [-4 4],'--k')
     title('Estimated by maximum likelihood method')
     xlabel('Ground truth');
     ylabel('Estimated sensation value');
 
     
-% Å¬Š´Šo“_‚Ì„’è’l‚ÌƒqƒXƒgƒOƒ‰ƒ€    
+% ï¿½Åï¿½ï¿½ï¿½ï¿½oï¿½_ï¿½Ìï¿½ï¿½ï¿½lï¿½Ìƒqï¿½Xï¿½gï¿½Oï¿½ï¿½ï¿½ï¿½    
 [dummy, index] = min(GroundTruth);
 figure('Position',[1 1 800 300], 'Name', 'Histogram of estimated values')
 subplot(1,2,1); hold on;
@@ -155,7 +155,7 @@ subplot(1,2,2); hold on;
     title('Maximum likelihood');
 
 
-% ”íŒ±Ò‚Ì‰“šŠm—¦‚ÆÅ–Ş„’èƒ‚ƒfƒ‹‚Ì‰“šŠm—¦‚Ì”äŠr
+% ï¿½íŒ±ï¿½Ò‚Ì‰ï¿½ï¿½ï¿½ï¿½mï¿½ï¿½ï¿½ÆÅ–Şï¿½ï¿½èƒ‚ï¿½fï¿½ï¿½ï¿½Ì‰ï¿½ï¿½ï¿½ï¿½mï¿½ï¿½ï¿½Ì”ï¿½r
 params = estimated_sv2 - estimated_sv2(1);
 dummy = FCN_MLDS_negLL(params(2:end), cmbs, NumGreater_v, OutOfNum_v, 1);
     
