@@ -25,8 +25,6 @@ try
     load('../img/dragon/Ddiff.mat');
     load('../img/bunny/Bsame.mat');
     load('../img/bunny/Bdiff.mat');
-    load('../img/sphere/Ssame.mat');
-    load('../img/sphere/Sdiff.mat');
     load('mat/ccmat.mat');
     
     imSize = size(Dsame);
@@ -35,9 +33,6 @@ try
     stimuli(:,:,:,:,2) = Ddiff;
     stimuli(:,:,:,:,3) = Bsame;
     stimuli(:,:,:,:,4) = Bdiff;
-    stimuli(:,:,:,:,5) = Ssame;
-    stimuli(:,:,:,:,6) = Sdiff;
-    
     
     % display initial text
     for i = 1:60*2
@@ -57,19 +52,19 @@ try
     leftPosition = [mx-ix*scale-distance/2, my-iy*scale, mx+ix*scale-distance/2, my+iy*scale]; 
     rightPosition = [mx-ix*scale+distance/2, my-iy*scale, mx+ix*scale+distance/2, my+iy*scale];
     combination = combnk(1:9,2);
-    victoryTable = zeros(9,9,6);
-    nckOrder = zeros(1,nchoosek(9,2),6);
+    victoryTable = zeros(nchoosek(9,2),4);
+    nckOrder = zeros(1,nchoosek(9,2),4);
     
     % generate random order
-    for i = 1:6
+    for i = 1:4
         nckOrder(:,:,i) = randperm(nchoosek(9,2));
     end
     HideCursor(screenNumber);
     
     for i = 1:1
         
-        materialOrder = randperm(6);
-        for j = 1:6
+        materialOrder = randperm(4);
+        for j = 1:1
             OneorTwo = randi([1 2]);
             rgbLeft = stimuli(:,:,:,combination(nckOrder(i,j),OneorTwo),materialOrder(j));
             rgbRight = stimuli(:,:,:,combination(nckOrder(i,j),3-OneorTwo),materialOrder(j));
@@ -91,7 +86,7 @@ try
             % wait key input
             [secs, keyCode] = KbWait([],3);
             if keyCode(leftKey)
-                %data(combination(displayOrder(i),1)) = combination(displayOrder(i),OneorTwo);
+                victoryTable(n,materialOrder) = victoryTable(po,materialOrder) + 1;
                 a = "hidari";
             elseif keyCode(rightKey)
                 %data(combination(displayOrder(i),1)) = combination(displayOrder(i),3-OneorTwo);

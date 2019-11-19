@@ -11,7 +11,7 @@ monitorColorMax = zeros(lumDivNumber,3,8);
 logScale = logspace(-3, 0, lumDivNumber);
 
 for i = 1:lumDivNumber
-    xyzLogScale = rgb2XYZ([logScale(i);logScale(i);logScale(i)],ccmatrix);
+    xyzLogScale = rgb2XYZ([logScale(i);logScale(i);logScale(i)],ccmat);
     upvplLogScaledWhitePoint = applycform(xyzLogScale',cx2u);
     upvplWhitePoints(i,:) = upvplLogScaledWhitePoint;
     for j = 1:8
@@ -20,9 +20,9 @@ for i = 1:lumDivNumber
             monitorColorMax(i,1,j) = monitorColorMax(i,1,j) + uUnitCircle(j)*colorDistanceDiff;
             monitorColorMax(i,2,j) = monitorColorMax(i,2,j) + vUnitCircle(j)*colorDistanceDiff;
             % disp(monitorColorMax(i,:,j));
-            if (max(XYZ2rgb(applycform(monitorColorMax(i,:,j),cu2x)',ccmatrix)) > 1) || (min(XYZ2rgb(applycform(monitorColorMax(i,:,j),cu2x)',ccmatrix)) < 0)
+            if (max(XYZ2rgb(applycform(monitorColorMax(i,:,j),cu2x)',ccmat)) > 1) || (min(XYZ2rgb(applycform(monitorColorMax(i,:,j),cu2x)',ccmat)) < 0)
                 monitorColorMax(i,1,j) = monitorColorMax(i,1,j) - uUnitCircle(j)*colorDistanceDiff;
-                monitorColorMax(i,2,j) = monitorColorax(i,2,j) - vUnitCircle(j)*colorDistanceDiff;
+                monitorColorMax(i,2,j) = monitorColorMax(i,2,j) - vUnitCircle(j)*colorDistanceDiff;
                 break;
             end
         end
