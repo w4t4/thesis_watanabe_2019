@@ -10,7 +10,7 @@ load(strcat('../img/xyz/xyz',material,'S.mat'));
 load('mat/monitorColorMax.mat');
 load('mat/logScale.mat');
 
-scale = 0.9;
+scale = 0.6;
 SDsame = colorizeXYZ(wTonemap(xyzSD,1.3,scale,ccmat));
 %SDdifferent = colorizeXYZ(wTonemapDiff(xyzD,xyzSD,2,0.45,ccmat)) + wTonemapDiff(xyzS,xyzSD,1,0.9,ccmat);
 SDdifferent = colorizeXYZ(wTonemapDiff(xyzD,xyzSD,1,scale,ccmat)) + wTonemapDiff(xyzS,xyzSD,1,scale,ccmat);

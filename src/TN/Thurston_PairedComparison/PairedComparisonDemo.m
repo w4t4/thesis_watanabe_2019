@@ -45,14 +45,14 @@ if IsOctave, fflush(1); end
 
 %% Simulation of a psychophysical paired comparison experiment
 fprintf('Simulation of psychophysical experiment\n'); if IsOctave, fflush(1); end
-[mtx, OutOfNum, NumGreater] = FCN_ObsResSimulation(GroundTruth, cmbs, tnum, 1); % �Ō��1�́A���o�̕W���΍��i�P�[�XV�ɍ��킹��1�j
+[mtx, OutOfNum, NumGreater] = FCN_ObsResSimulation(GroundTruth, cmbs, tnum, 1); % 最後の1は、感覚の標準偏差（ケースVに合わせて1）
 
-% Analysis 1: Thurstaon's case V model based on z-score�i�T�[�X�g���̈�Δ�r�@�P�[�XV���f���B��@���V���v���ȕ��A��͌��ʂ������c�ށj
+% Analysis 1: Thurstaon's case V model based on z-score（サーストンの一対比較法ケースVモデル。手法がシンプルな分、解析結果が少し歪む）
 estimated_sv = FCN_PCanalysis_Thurston(mtx, 0.005);
 estimated_sv = estimated_sv - mean(estimated_sv);
 
-% Analysis 2: Maximum likelihood method�i�Ŗޖ@�B�f�[�^�̓����ɑ΂��f�[�^�����\���Ȃ�i����𖞂����Ă��邩�����Ȃ̂����j�A�T�[�X�g�����f����萸�x�������j
-InitValues = estimated_sv - estimated_sv(1); % �T�[�X�g���̌��ʂ������l�ɐݒ�B�������A�ō��l��0�ɂȂ�悤���K���i���R�x��������j
+% Analysis 2: Maximum likelihood method（最尤法。データの特徴に対しデータ数が十分なら（これを満たしているか微妙なのだが）、サーストンモデルより精度が高い）
+InitValues = estimated_sv - estimated_sv(1); % サーストンの結果を初期値に設定。ただし、最左値が0になるよう正規化（自由度を下げる）
 [estimated_sv2,NumGreater_v,OutOfNum_v] = FCN_PCanalysis_ML(OutOfNum, NumGreater, cmbs, InitValues, method);
 estimated_sv2 = estimated_sv2 - mean(estimated_sv2);
 
@@ -65,51 +65,51 @@ fprintf('Bootstrap analysis:\n');
 fprintf('  Bootstrap repetition number: %d\n\n\n', B);
 if IsOctave, fflush(1); end
 
-% �u�[�g�X�g���b�v�T���v���ۑ��ϐ�
-sv_th = zeros(B, stimnum); % �d�v�F�T�[�X�g���̈�Δ�r�@�ɂ��u�[�g�X�g���b�v�T���v���B�X���̌���ȂǂɎg���f�[�^�Ȃ̂ŕۑ��K�{�B�� �T�[�X�g���ł͌��ʂ��c�ށi�o�C�A�X��������j�̂Ńu�[�g�X�g���b�v�����܂������Ȃ�
-sv_ml = zeros(B, stimnum); % �d�v�F�Ŗޖ@�ɂ��u�[�g�X�g���b�v�T���v���B�X���̌���ȂǂɎg���f�[�^�Ȃ̂ŕۑ��K�{�B�� �����炪�x�^�[���B
+% ブートストラップサンプル保存変数
+sv_th = zeros(B, stimnum); % 重要：サーストンの一対比較法によるブートストラップサンプル。傾きの検定などに使うデータなので保存必須。→ サーストンでは結果が歪む（バイアスがかかる）のでブートストラップもうまくいかない
+sv_ml = zeros(B, stimnum); % 重要：最尤法によるブートストラップサンプル。傾きの検定などに使うデータなので保存必須。→ こちらがベターか。
 
 pg = 1;
-for b=1:B % �u�[�g�X�g���b�v�T���v���̍쐬�F�v�c��ȏ�������
+for b=1:B % ブートストラップサンプルの作成：要膨大な処理時間
     % show progress
     if b/B>pg*0.05
         fprintf('   progress...%2.0f%%\n', pg*0.05*100);if IsOctave, fflush(1); end
         pg = pg+1;
     end
 
-    % �팱�҉����V�~�����[�V�����P: �T�[�X�g���̈�Δ�r�̌��ʂ��u�[�g�X�g���b�v�I
-    [mtx_s, OutOfNum_s, NumGreater_s] = FCN_ObsResSimulation(estimated_sv, cmbs, tnum, 1); % �Ō��1�́A���o�̕W���΍��i�P�[�XV�ɍ��킹��1�j
+    % 被験者応答シミュレーション１: サーストンの一対比較の結果をブートストラップ！
+    [mtx_s, OutOfNum_s, NumGreater_s] = FCN_ObsResSimulation(estimated_sv, cmbs, tnum, 1); % 最後の1は、感覚の標準偏差（ケースVに合わせて1）
 
-    % �������ʂ̉�́F��@�P�i�T�[�X�g���̈�Δ�r�@�P�[�XV���f���j
+    % 実験結果の解析：手法１（サーストンの一対比較法ケースVモデル）
     sv_th(b,:) = FCN_PCanalysis_Thurston(mtx_s, 0.005);
     sv_th(b,:) = sv_th(b,:) - mean(sv_th(b,:));
     
     
-    % �팱�҉����V�~�����[�V�����Q�F�Ŗޖ@�̌��ʂ��u�[�g�X�g���b�v�I
-    [mtx_s, OutOfNum_s, NumGreater_s] = FCN_ObsResSimulation(estimated_sv2, cmbs, tnum, 1); % �Ō��1�́A���o�̕W���΍��i�P�[�XV�ɍ��킹��1�j
+    % 被験者応答シミュレーション２：最尤法の結果をブートストラップ！
+    [mtx_s, OutOfNum_s, NumGreater_s] = FCN_ObsResSimulation(estimated_sv2, cmbs, tnum, 1); % 最後の1は、感覚の標準偏差（ケースVに合わせて1）
 
-    % �\����́i�T�[�X�g���̈�Δ�r�@�P�[�XV���f���j
+    % 予備解析（サーストンの一対比較法ケースVモデル）
     prediction = FCN_PCanalysis_Thurston(mtx_s, 0.005);
     
-    % �������ʂ̉�́F��@�Q�i�Ŗޖ@�j
-    InitValues = prediction - prediction(1); % �T�[�X�g���̌��ʂ������l�ɐݒ�B�������A�ō��l��0�ɂȂ�悤���K���i���R�x��������j
+    % 実験結果の解析：手法２（最尤法）
+    InitValues = prediction - prediction(1); % サーストンの結果を初期値に設定。ただし、最左値が0になるよう正規化（自由度を下げる）
     [sv_ml(b,:), dummy1, dummy2] = FCN_PCanalysis_ML(OutOfNum_s, NumGreater_s, cmbs, InitValues, method);
     sv_ml(b,:) = sv_ml(b,:) - mean(sv_ml(b,:));    
 end
 
-% �P���ȕW���덷�F����o�C�A�X���l����ƕs�K��
-ses_th = std(sv_th); % �W���덷 by �T�[�X�g����Δ�r�@
-ses_ml = std(sv_ml); % �W���덷 by �Ŗޖ@
+% 単純な標準誤差：推定バイアスを考えると不適切
+ses_th = std(sv_th); % 標準誤差 by サーストン一対比較法
+ses_ml = std(sv_ml); % 標準誤差 by 最尤法
 fprintf('....Done!!\n\n\n');   if IsOctave, fflush(1); end
 
-% �u�[�g�X�g���b�v�T���v���Ɋ�Â�68%�M�����
-ranges68_th = zeros(stimnum, 3); % 68�M����ԁ@by �T�[�X�g����Δ�r�@
-ranges68_ml = zeros(stimnum, 3); % 68�M����ԁ@by �Ŗޖ@
+% ブートストラップサンプルに基づく68%信頼区間
+ranges68_th = zeros(stimnum, 3); % 68信頼区間　by サーストン一対比較法
+ranges68_ml = zeros(stimnum, 3); % 68信頼区間　by 最尤法
 ubi = round(B*84/100);
 lbi = round(B*16/100);
 mi = round(B./2);
 for s=1:stimnum
-    % �T�[�X�g���f�[�^
+    % サーストンデータ
     sdata = sort(sv_th(:,s));
     ranges68_th(s,1) = sdata(lbi)-sdata(mi); % lower bound
     ranges68_th(s,2) = sdata(ubi)-sdata(mi); % upper bound
@@ -122,28 +122,28 @@ for s=1:stimnum
     ranges68_ml(s,3) = sdata(mi);
 end
 
-%% ���ʂ̃v���b�g
-% �T�[�X�g���ƍŖޖ@�̌��ʂ̔�r: �G���[�o�[������l
+%% 結果のプロット
+% サーストンと最尤法の結果の比較: エラーバーつき推定値
 figure('Position',[1 1 800 300], 'Name', 'Ground truth vs Estimated')
 subplot(1,2,1); hold on;
 plot(GroundTruth, estimated_sv, 'ok');
-% errorbar(GroundTruth, estimated_sv, ses_th, '.k'); % �����ł͕W���덷���g���Ă��邪�A68 or 95%�M����Ԃ̕��������ǂ�
-errorbar(GroundTruth, ranges68_th(:,3), -ranges68_th(:,1), ranges68_th(:,2), '.k'); % 68%�M�����
+% errorbar(GroundTruth, estimated_sv, ses_th, '.k'); % ここでは標準誤差を使っているが、68 or 95%信頼区間の方が多分良い
+errorbar(GroundTruth, ranges68_th(:,3), -ranges68_th(:,1), ranges68_th(:,2), '.k'); % 68%信頼区間
 plot([-4 4], [-4 4],'--k')
     title('Estimated by Thurston method')
     xlabel('Ground truth');
     ylabel('Estimated sensation value');
 subplot(1,2,2); hold on;
 plot(GroundTruth, estimated_sv2, 'ok');
-% errorbar(GroundTruth, estimated_sv2, ses_ml, '.k'); % �����ł͕W���덷���g���Ă��邪�A68 or 95%�M����Ԃ̕��������ǂ�
-errorbar(GroundTruth, ranges68_ml(:,3), -ranges68_ml(:,1), ranges68_ml(:,2), '.k'); % 68%�M�����
+% errorbar(GroundTruth, estimated_sv2, ses_ml, '.k'); % ここでは標準誤差を使っているが、68 or 95%信頼区間の方が多分良い
+errorbar(GroundTruth, ranges68_ml(:,3), -ranges68_ml(:,1), ranges68_ml(:,2), '.k'); % 68%信頼区間
 plot([-4 4], [-4 4],'--k')
     title('Estimated by maximum likelihood method')
     xlabel('Ground truth');
     ylabel('Estimated sensation value');
 
     
-% �ŏ����o�_�̐���l�̃q�X�g�O����    
+% 最小感覚点の推定値のヒストグラム    
 [dummy, index] = min(GroundTruth);
 figure('Position',[1 1 800 300], 'Name', 'Histogram of estimated values')
 subplot(1,2,1); hold on;
@@ -155,7 +155,7 @@ subplot(1,2,2); hold on;
     title('Maximum likelihood');
 
 
-% �팱�҂̉����m���ƍŖސ��胂�f���̉����m���̔�r
+% 被験者の応答確率と最尤推定モデルの応答確率の比較
 params = estimated_sv2 - estimated_sv2(1);
 dummy = FCN_MLDS_negLL(params(2:end), cmbs, NumGreater_v, OutOfNum_v, 1);
     
