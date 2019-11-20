@@ -19,10 +19,10 @@ for i = 1:9
 end
 save('../img/dragon/Dsame.mat','Dsame');
 save('../img/dragon/Ddiff.mat','Ddiff');
-%figure;
-%montage(Dsame,'size',[3 3]);
-%figure;
-%montage(Ddiff,'size',[3 3]);
+figure;
+montage(Dsame/255,'size',[3 3]);
+figure;
+montage(Ddiff/255,'size',[3 3]);
 
 load('../img/mag3/SDsameBunny.mat');
 load('../img/mag3/SDdifferentBunny.mat');
@@ -39,10 +39,10 @@ for i = 1:9
     %wtColorCheck(Dsame);
     save('../img/bunny/Bdiff.mat','Bdiff');
 end
-%figure;
-%montage(Bsame,'size',[3 3]);
-%figure;
-%montage(Bdiff,'size',[3 3]);
+figure;
+montage(Bsame/255,'size',[3 3]);
+figure;
+montage(Bdiff/255,'size',[3 3]);
 
 % load('../img/mag3/SDsameSphere.mat');
 % load('../img/mag3/SDdifferentSphere.mat');

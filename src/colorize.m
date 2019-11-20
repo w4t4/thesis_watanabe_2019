@@ -1,6 +1,6 @@
 
 % Dragon or Bunny or Sphere
-material = 'Dragon';
+material = '';
 
 magnification = 3;
 
@@ -41,9 +41,19 @@ function coloredXyzData = colorizeXYZ(xyzMaterial)
     load('mat/fixedColorMax.mat');
     load('mat/upvplWhitePoints.mat');
     weight = ones(2,8);
-    %weight(2,7) = 0.3;
+    saturateMax = fixedColorMax;
+    % 0.087 ~ 0.34
+    m = zeros(2,8);
+    for i = 1:2
+        for j = 1:8
+            m = max(abs(fixedColorMax(:,i,j)));
+            if m ~= 0
+                saturateMax(:,i,j) = fixedColorMax(:,i,j)/m*0.13;
+            end
+        end
+    end
+    %saturateMax
  
-   
     for i = 1:9
         upvpl = upvplMaterial;
         for j = 1:iy
@@ -54,8 +64,13 @@ function coloredXyzData = colorizeXYZ(xyzMaterial)
                             upvpl(j,k,1) = upvplWhitePoints(l,1);
                             upvpl(j,k,2) = upvplWhitePoints(l,2);
                         else
-                            upvpl(j,k,1) = fixedColorMax(l,1,i-1)*weight(1,i-1)+upvplWhitePoints(l,1);
-                            upvpl(j,k,2) = fixedColorMax(l,2,i-1)*weight(2,i-1)+upvplWhitePoints(l,2);
+                            if max(abs(fixedColorMax(:,1,i-1))) < max(abs(saturateMax(:,1,i-1)))
+                                upvpl(j,k,1) = fixedColorMax(l,1,i-1)+upvplWhitePoints(l,1);
+                                upvpl(j,k,2) = fixedColorMax(l,2,i-1)+upvplWhitePoints(l,2);
+                            else
+                                upvpl(j,k,1) = saturateMax(l,1,i-1)+upvplWhitePoints(l,1);
+                                upvpl(j,k,2) = saturateMax(l,2,i-1)+upvplWhitePoints(l,2);
+                            end
                         end
                     end
                 end

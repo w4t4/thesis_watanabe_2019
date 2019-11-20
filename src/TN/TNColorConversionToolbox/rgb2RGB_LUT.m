@@ -35,7 +35,7 @@ for a=1:3	% rgb gun
 		comparison=32768;
         
         for i=1:15	% search for a level that could generate closest luminance to desired one
-            if rgb(b,a) > gamma(comparison,a);  
+            if rgb(b,a) > gamma(comparison,a);
                 comparison=comparison+index./2;
             else
                 comparison=comparison-index./2;
