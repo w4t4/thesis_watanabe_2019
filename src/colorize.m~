@@ -1,6 +1,6 @@
 
 % Dragon or Bunny or Sphere
-material = 'Dragon';
+material = '';
 
 magnification = 3;
 
@@ -12,6 +12,7 @@ load('mat/logScale.mat');
 
 scale = 0.3;
 SDsame = colorizeXYZ(wTonemapDiff(xyzS,xyzSD,1,scale,ccmat)) + colorizeXYZ(wTonemapDiff(xyzD,xyzSD,1,scale,ccmat));
+%SDdifferent = colorizeXYZ(wTonemapDiff(xyzD,xyzSD,2,0.45,ccmat)) + wTonemapDiff(xyzS,xyzSD,1,0.9,ccmat);
 SDdifferent = colorizeXYZ(wTonemapDiff(xyzD,xyzSD,1,scale,ccmat)) + wTonemapDiff(xyzS,xyzSD,1,scale,ccmat);
 aveBrightness = zeros(1,9);
 for i = 1:9

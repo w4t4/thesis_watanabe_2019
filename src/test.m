@@ -20,36 +20,39 @@ hold on;
 plot(abs(monitorColorMax(:,2,7)-upvplWhitePoints(:,2)),'b');
 hold off;
 bMaxSaturation = max(abs(monitorColorMax(:,2,7)-upvplWhitePoints(:,2)))
-% 
-% figure;
-% plot(abs(monitorColorMax(:,1,8)-upvplWhitePoints(:,1)),'b');
-% hold on;
-% plot(abs(monitorColorMax(:,2,8)-upvplWhitePoints(:,2)),'r');
-% hold off;
+ 
+% for i = 1:2
+%     figure;
+%     for j = 1:8
+%         plot(monitorColorMax(:,i,j)-upvplWhitePoints(:,i));
+%         hold on;
+%     end
+%     hold off;   
+% end
 
-fixedColorMax = zeros(size(monitorColorMax));
+
+fixedColorMax = monitorColorMax;
 for i = 1:8
     for j = 1:2
         fixedColorMax(:,j,i) = monitorColorMax(:,j,i)-upvplWhitePoints(:,j);
     end
 end
-fixedColorMax(:,3,:) = monitorColorMax(:,3,:);
+
 for i = 114:200
     for j = 1:8
         for k = 1:2
-            fixedColorMax(i,k,j) = fixedColorMax(i,k,j)*abs(monitorColorMax(i,2,7)-upvplWhitePoints(i,2))/bMaxSaturation;
+            fixedColorMax(i,k,j) = fixedColorMax(114,k,j)*abs(monitorColorMax(i,2,7)-upvplWhitePoints(i,2))/bMaxSaturation;
         end
     end
 end
 
-figure;
 for i = 1:2
+    figure;
     for j = 1:8
         plot(fixedColorMax(:,i,j));
         hold on;
     end
-    hold off;
-    figure;
+    hold off;   
 end
 
 save('mat/fixedColorMax.mat','fixedColorMax');

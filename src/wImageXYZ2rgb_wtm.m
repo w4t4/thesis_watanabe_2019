@@ -32,7 +32,7 @@ function rgb = wImageXYZ2rgb_wtm(XYZ, ccmat)
     
     rgb = reshape(rgb,iy,ix,iz);
     
-    imshow(rgb);
+    %imshow(rgb);
 
 end
 
