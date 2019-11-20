@@ -61,15 +61,17 @@ try
     end
     HideCursor(screenNumber);
     
-    for i = 1:36
+    for i = 1:1
+        
         materialOrder = randperm(4);
-        %materialOrder = [1 2 3 4];
         for j = 1:4
             OneorTwo = randi([1 2]);
-            colorLeft = combination(nckOrder(1,i,materialOrder(j)),OneorTwo);
-            colorRight = combination(nckOrder(1,i,materialOrder(j)),3-OneorTwo);
-            rgbLeft = stimuli(:,:,:,colorLeft,materialOrder(j));
-            rgbRight = stimuli(:,:,:,colorRight,materialOrder(j));
+            colorLeft = combination(nckOrder(i,j),OneorTwo);
+            colorRight = combination(nckOrder(i,j),3-OneorTwo);
+            rgbLeft = stimuli(:,:,:,combination(nckOrder(i,j),OneorTwo),materialOrder(j));
+            rgbRight = stimuli(:,:,:,combination(nckOrder(i,j),3-OneorTwo),materialOrder(j));
+            combination(nckOrder(i,j),OneorTwo)
+            combination(nckOrder(i,j),3-OneorTwo)
             %rgbLeft = Dsame(:,:,:,i);
             %rgbRight = Ddiff(:,:,:,i);
             leftStimulus = Screen('MakeTexture', windowPtr, rgbLeft);
@@ -88,12 +90,10 @@ try
             % wait key input
             [secs, keyCode] = KbWait([],3);
             if keyCode(leftKey)
-                materialOrder(j)
-                victoryTable(colorLeft,colorRight,materialOrder(j)) = victoryTable(colorLeft,colorRight,materialOrder(j)) + 1;
+                victoryTable(combination(nckOrder(i,j),OneorTwo),stimuli(:,:,:,combination(nckOrder(i,j),3-OneorTwo),materialOrder) ...
+                    = victoryTable(po,materialOrder) + 1;
                 a = "hidari";
             elseif keyCode(rightKey)
-                materialOrder(j)
-                victoryTable(colorRight,colorLeft,materialOrder(j)) = victoryTable(colorRight,colorLeft,materialOrder(j)) + 1;
                 a = "migi";
             elseif keyCode(escapeKey)
                 break;
