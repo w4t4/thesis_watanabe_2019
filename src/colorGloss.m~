@@ -84,11 +84,22 @@ try
             end
 
             Screen('Flip', windowPtr);
+                [clicks,x,y,whichButton] = GetClicks(windowPtr);
+                disp(whichButton)
+                if whichButton == 1
+                    materialOrder(j)
+                    victoryTable(colorLeft,colorRight,materialOrder(j)) = victoryTable(colorLeft,colorRight,materialOrder(j)) + 1;
+                    a = "hidari";
+                elseif whichButton == 3
+                    materialOrder(j)
+                    victoryTable(colorRight,colorLeft,materialOrder(j)) = victoryTable(colorRight,colorLeft,materialOrder(j)) + 1;
+                    a = "migi";
+                end        
 
             % wait key input
             %[secs, keyCode] = KbWait([],3);
             whichButton = 0;
-            while(whichButton ~= 1 && whichButton ~= 3)
+            while(whichButton == 1 || whichButton == 3)
                 [clicks,x,y,whichButton] = GetClicks(windowPtr);
                 disp(whichButton)
                 if whichButton == 1

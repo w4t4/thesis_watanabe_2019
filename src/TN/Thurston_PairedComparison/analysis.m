@@ -50,7 +50,6 @@ OutOfNum = (ones(size(vTable))-eye(size(vTable,1)))*tnum;
 mtx = NumGreater./ones(size(vTable))/tnum+eye(size(vTable,1))*0.5;
 
 
-
 % Analysis 1: Thurstaon's case V model based on z-score（サーストンの一対比較法ケースVモデル。手法がシンプルな分、解析結果が少し歪む）
 estimated_sv = FCN_PCanalysis_Thurston(mtx, 0.005);
 estimated_sv = estimated_sv - mean(estimated_sv);
