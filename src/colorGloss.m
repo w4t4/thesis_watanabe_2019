@@ -62,9 +62,9 @@ try
     HideCursor(screenNumber);
     
     for i = 1:36
-        materialOrder = randperm(4);
-        %materialOrder = [1 2 3 4];
-        for j = 1:4
+        %materialOrder = randperm(4);
+        materialOrder = [1 2 3 4];
+        for j = 1:1
             OneorTwo = randi([1 2]);
             colorLeft = combination(nckOrder(1,i,materialOrder(j)),OneorTwo);
             colorRight = combination(nckOrder(1,i,materialOrder(j)),3-OneorTwo);

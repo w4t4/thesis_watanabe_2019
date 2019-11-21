@@ -11,7 +11,7 @@ method = input('Please enter 1, 2, or 3 (default: 3):   ');
 
 % parameter setting
 B = 1000; % Repetition number in Boostrap
-tnum = 10; % trial number in each stimulus pair in Psychophyiscal experiment
+tnum = 2; % trial number in each stimulus pair in Psychophyiscal experiment
 
 % make ground truth (psychological values such as 'glossiness')
 % GroundTruth = randn(1,35).*1.5;
@@ -44,7 +44,11 @@ if IsOctave, fflush(1); end
 
 %% Simulation of a psychophysical paired comparison experiment
 fprintf('Simulation of psychophysical experiment\n'); if IsOctave, fflush(1); end
-[mtx, OutOfNum, NumGreater] = FCN_ObsResSimulation(GroundTruth, cmbs, tnum, 1); % 最後の1は、感覚の標準偏差（ケースVに合わせて1）
+%[mtx, OutOfNum, NumGreater] = FCN_ObsResSimulation(GroundTruth, cmbs, tnum, 1); % 最後の1は、感覚の標準偏差（ケースVに合わせて1）
+NumGreater = vTable;
+OutOfNum = (ones(size(vTable))-eye(size(vTable,1)))*tnum;
+
+
 
 % Analysis 1: Thurstaon's case V model based on z-score（サーストンの一対比較法ケースVモデル。手法がシンプルな分、解析結果が少し歪む）
 estimated_sv = FCN_PCanalysis_Thurston(mtx, 0.005);
@@ -78,6 +82,9 @@ for b=1:B % ブートストラップサンプルの作成：要膨大な処理�
 
     % 被験者応答シミュレーション１: サーストンの一対比較の結果をブートストラップ！
     [mtx_s, OutOfNum_s, NumGreater_s] = FCN_ObsResSimulation(estimated_sv, cmbs, tnum, 1); % 最後の1は、感覚の標準偏差（ケースVに合わせて1）
+    
+    
+    
 
     % 実験結果の解析：手法１（サーストンの一対比較法ケースVモデル）
     sv_th(b,:) = FCN_PCanalysis_Thurston(mtx_s, 0.005);
@@ -124,28 +131,12 @@ end
 %% 結果のプロット
 % サーストンと最尤法の結果の比較: エラーバーつき推定値
 figure('Position',[1 1 800 300], 'Name', 'Ground truth vs Estimated')
-subplot(1,2,1); hold on;
 sn = [1 2 3 4 5 6 7 8 9];
+errorbar(sn, ranges95_ml(:,3), -ranges95_ml(:,1), ranges95_ml(:,2), '.k'); % 95%信頼区間
 plot(sn, estimated_sv, 'ok');
-% errorbar(GroundTruth, estimated_sv, ses_th, '.k'); % ここでは標準誤差を使っているが、68 or 95%信頼区間の方が多分良い
-errorbar(sn, ranges95_th(:,3), -ranges95_th(:,1), ranges95_th(:,2), '.k'); % 68%信頼区間
-
     
-% 最小感覚点の推定値のヒストグラム    3
-
-[dummy, index] = min(GroundTruth);
-figure('Position',[1 1 800 300], 'Name', 'Histogram of estimated values')
-subplot(1,2,1); hold on;
-    hist(sv_th(:,index), 20);
-    title('Thurston method');
-
-subplot(1,2,2); hold on;
-    hist(sv_ml(:,index), 20);
-    title('Maximum likelihood');
-
-
 % 被験者の応答確率と最尤推定モデルの応答確率の比較
-params = estimated_sv2 - estimated_sv2(1);
-dummy = FCN_MLDS_negLL(params(2:end), cmbs, NumGreater_v, OutOfNum_v, 1);
+% params = estimated_sv2 - estimated_sv2(1);
+% dummy = FCN_MLDS_negLL(params(2:end), cmbs, NumGreater_v, OutOfNum_v, 1);
     
     

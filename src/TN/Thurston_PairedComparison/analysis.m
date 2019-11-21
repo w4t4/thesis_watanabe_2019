@@ -1,5 +1,5 @@
 %% Initialization
-clear all
+%clear all
 more off
 
 % choose ML method
@@ -11,7 +11,7 @@ method = input('Please enter 1, 2, or 3 (default: 3):   ');
 
 % parameter setting
 B = 1000; % Repetition number in Boostrap
-tnum = 10; % trial number in each stimulus pair in Psychophyiscal experiment
+tnum = 2; % trial number in each stimulus pair in Psychophyiscal experiment
 
 % make ground truth (psychological values such as 'glossiness')
 % GroundTruth = randn(1,35).*1.5;
@@ -44,7 +44,12 @@ if IsOctave, fflush(1); end
 
 %% Simulation of a psychophysical paired comparison experiment
 fprintf('Simulation of psychophysical experiment\n'); if IsOctave, fflush(1); end
-[mtx, OutOfNum, NumGreater] = FCN_ObsResSimulation(GroundTruth, cmbs, tnum, 1); % 最後の1は、感覚の標準偏差（ケースVに合わせて1）
+%[mtx, OutOfNum, NumGreater] = FCN_ObsResSimulation(GroundTruth, cmbs, tnum, 1); % 最後の1は、感覚の標準偏差（ケースVに合わせて1）
+NumGreater = vTable;
+OutOfNum = (ones(size(vTable))-eye(size(vTable,1)))*tnum;
+mtx = NumGreater./ones(size(vTable))/tnum+eye(size(vTable,1))*0.5;
+
+
 
 % Analysis 1: Thurstaon's case V model based on z-score（サーストンの一対比較法ケースVモデル。手法がシンプルな分、解析結果が少し歪む）
 estimated_sv = FCN_PCanalysis_Thurston(mtx, 0.005);
@@ -78,6 +83,9 @@ for b=1:B % ブートストラップサンプルの作成：要膨大な処理�
 
     % 被験者応答シミュレーション１: サーストンの一対比較の結果をブートストラップ！
     [mtx_s, OutOfNum_s, NumGreater_s] = FCN_ObsResSimulation(estimated_sv, cmbs, tnum, 1); % 最後の1は、感覚の標準偏差（ケースVに合わせて1）
+    
+    
+    
 
     % 実験結果の解析：手法１（サーストンの一対比較法ケースVモデル）
     sv_th(b,:) = FCN_PCanalysis_Thurston(mtx_s, 0.005);
