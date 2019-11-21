@@ -124,12 +124,28 @@ end
 %% 結果のプロット
 % サーストンと最尤法の結果の比較: エラーバーつき推定値
 figure('Position',[1 1 800 300], 'Name', 'Ground truth vs Estimated')
+subplot(1,2,1); hold on;
 sn = [1 2 3 4 5 6 7 8 9];
-errorbar(sn, ranges95_ml(:,3), -ranges95_ml(:,1), ranges95_ml(:,2), '.k'); % 95%信頼区間
 plot(sn, estimated_sv, 'ok');
+% errorbar(GroundTruth, estimated_sv, ses_th, '.k'); % ここでは標準誤差を使っているが、68 or 95%信頼区間の方が多分良い
+errorbar(sn, ranges95_th(:,3), -ranges95_th(:,1), ranges95_th(:,2), '.k'); % 68%信頼区間
+
     
+% 最小感覚点の推定値のヒストグラム    3
+
+[dummy, index] = min(GroundTruth);
+figure('Position',[1 1 800 300], 'Name', 'Histogram of estimated values')
+subplot(1,2,1); hold on;
+    hist(sv_th(:,index), 20);
+    title('Thurston method');
+
+subplot(1,2,2); hold on;
+    hist(sv_ml(:,index), 20);
+    title('Maximum likelihood');
+
+
 % 被験者の応答確率と最尤推定モデルの応答確率の比較
-% params = estimated_sv2 - estimated_sv2(1);
-% dummy = FCN_MLDS_negLL(params(2:end), cmbs, NumGreater_v, OutOfNum_v, 1);
+params = estimated_sv2 - estimated_sv2(1);
+dummy = FCN_MLDS_negLL(params(2:end), cmbs, NumGreater_v, OutOfNum_v, 1);
     
     
