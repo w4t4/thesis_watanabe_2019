@@ -45,7 +45,7 @@ if IsOctave, fflush(1); end
 %% Simulation of a psychophysical paired comparison experiment
 fprintf('Simulation of psychophysical experiment\n'); if IsOctave, fflush(1); end
 %[mtx, OutOfNum, NumGreater] = FCN_ObsResSimulation(GroundTruth, cmbs, tnum, 1); % 最後の1は、感覚の標準偏差（ケースVに合わせて1）
-NumGreater = vTable;
+NumGreater = vTable(:,:,4);
 OutOfNum = (ones(size(vTable))-eye(size(vTable,1)))*tnum;
 mtx = NumGreater./ones(size(vTable))/tnum+eye(size(vTable,1))*0.5;
 
@@ -132,7 +132,10 @@ end
 % サーストンと最尤法の結果の比較: エラーバーつき推定値
 figure('Position',[1 1 800 300], 'Name', 'Ground truth vs Estimated')
 sn = [1 2 3 4 5 6 7 8 9];
+hold on;
 errorbar(sn, ranges95_ml(:,3), -ranges95_ml(:,1), ranges95_ml(:,2), '.k'); % 95%信頼区間
+hold on;
+xlim([0 9])
 plot(sn, estimated_sv, 'ok');
     
 % 被験者の応答確率と最尤推定モデルの応答確率の比較

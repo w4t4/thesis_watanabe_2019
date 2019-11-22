@@ -34,14 +34,14 @@ try
     load('mat/ccmat.mat');
     
     imSize = size(Dsame);
-    stimuli = zeros(imSize(1),imSize(2),imSize(3),imSize(4),6);
+    stimuli = zeros(imSize(1),imSize(2),imSize(3),imSize(4),4);
     stimuli(:,:,:,:,1) = Dsame;
     stimuli(:,:,:,:,2) = Ddiff;
     stimuli(:,:,:,:,3) = Bsame;
     stimuli(:,:,:,:,4) = Bdiff;
     
     % display initial text
-    for i = 1:60*2
+    for i = 1:RefleshRate*5
         Screen('TextSize', windowPtr, 24);
         myText = ['choose more glossy one.'];
         DrawFormattedText(windowPtr, myText, 'center', 'center', [255 255 255]);
@@ -65,13 +65,13 @@ try
     for i = 1:4
         nckOrder(:,:,i) = randperm(nchoosek(9,2));
     end
-    %HideCursor(screenNumber);
+    HideCursor(screenNumber);
     
-    for i = 1:3
+    for i = 1:36
         materialOrder = randperm(4);
         %materialOrder = [1 2 3 4];
         SetMouse(screenWidth/2,screenHeight/2,screenNumber);
-        for j = 1:1
+        for j = 1:4
             OneorTwo = randi([1 2]);
             colorLeft = combination(nckOrder(1,i,materialOrder(j)),OneorTwo);
             colorRight = combination(nckOrder(1,i,materialOrder(j)),3-OneorTwo);
