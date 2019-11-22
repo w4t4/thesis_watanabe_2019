@@ -19,7 +19,7 @@
 % ワークスペース消去、more off、etc...
 % ______________________________________
 clear all % ワークスペース内の変数を消去
-[OS, Software, timestr] = FCN_ExpInitialization; % OS: OS名、Software: MATLAB/Octave、timestr: 現在の時刻の文字列
+%[OS, Software, timestr] = FCN_ExpInitialization; % OS: OS名、Software: MATLAB/Octave、timestr: 現在の時刻の文字列
 
 
 %***************************************
@@ -27,8 +27,8 @@ clear all % ワークスペース内の変数を消去
 % ハードウェアキャリブレーションを行っている人は
 % 不要な可能性がある。
 % ______________________________________
-load('ccmat.mat'); % 'ccmat'という変数ができる
-gamma=load('gamma.ilp');  % gamma.lut、gamma.ilutも可。色変換計算過程が違う。詳細は別途。
+%load('ccmat.mat'); % 'ccmat'という変数ができる
+%gamma=load('gamma.ilp');  % gamma.lut、gamma.ilutも可。色変換計算過程が違う。詳細は別途。
 
 
 %***************************************

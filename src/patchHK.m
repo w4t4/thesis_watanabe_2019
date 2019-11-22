@@ -1,5 +1,5 @@
 
-[OS, Software, timestr] = FCN_ExpInitialization;
+%[OS, Software, timestr] = FCN_ExpInitialization;
 AssertOpenGL;
 ListenChar(2);
 bgColor = [0 0 0];
@@ -7,7 +7,7 @@ screenWidth = 1920;
 screenHeight = 1080;
 screenNumber=max(Screen('Screens'));
 InitializeMatlabOpenGL;
-gamma=load('gamma.ilp');
+%gamma=load('gamma.ilp');
 try
     % set window
     [windowPtr, windowRect] = Screen('OpenWindow', screenNumber, bgColor, [0 0 screenWidth screenHeight]);
@@ -20,9 +20,9 @@ try
     rightKey = KbName('RightArrow');
     
     % load stimulus meanLuminance
-    load('ml.mat');
-    load('luminance.mat');
-    load('ccmatrix.mat');
+    load('mat/ml.mat');
+    load('mat/luminance.mat');
+    load('mat/ccmat.mat');
     
     % display initial text
     for i = 1:60*2

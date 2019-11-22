@@ -1,3 +1,5 @@
+
+
 AssertOpenGL;
 ListenChar(2);
 bgColor = [0 0 0];
@@ -13,6 +15,10 @@ try
     %[windowPtr, windowRect] = Screen('OpenWindow', screenNumber, bgColor, [0 0 screenWidth screenHeight]);
     Priority(MaxPriority(windowPtr));
     [offwin1,offwinrect]=Screen('OpenOffscreenWindow',windowPtr, 0);
+    
+    
+    FlipInterval = Screen('GetFlipInterval', windowPtr); % モニタ１フレームの時間
+    RefleshRate = 1./FlipInterval; % モニタ
 
     % Key 
     myKeyCheck;
@@ -59,55 +65,52 @@ try
     for i = 1:4
         nckOrder(:,:,i) = randperm(nchoosek(9,2));
     end
-    HideCursor(screenNumber);
+    %HideCursor(screenNumber);
     
     for i = 1:3
-        %materialOrder = randperm(4);
-        materialOrder = [1 2 3 4];
+        materialOrder = randperm(4);
+        %materialOrder = [1 2 3 4];
+        SetMouse(screenWidth/2,screenHeight/2,screenNumber);
         for j = 1:1
             OneorTwo = randi([1 2]);
             colorLeft = combination(nckOrder(1,i,materialOrder(j)),OneorTwo);
             colorRight = combination(nckOrder(1,i,materialOrder(j)),3-OneorTwo);
             rgbLeft = stimuli(:,:,:,colorLeft,materialOrder(j));
             rgbRight = stimuli(:,:,:,colorRight,materialOrder(j));
-            %rgbLeft = Dsame(:,:,:,i);
-            %rgbRight = Ddiff(:,:,:,i);
             leftStimulus = Screen('MakeTexture', windowPtr, rgbLeft);
             rightStimulus = Screen('MakeTexture', windowPtr, rgbRight);
 
-            for k = 1:60*displayStimuliTime
-
+            for k = 1:RefleshRate*displayStimuliTime
                 Screen('DrawTexture', windowPtr, leftStimulus, [], leftPosition);
                 Screen('DrawTexture', windowPtr, rightStimulus, [], rightPosition);
                 Screen('Flip', windowPtr);
-
             end
 
             Screen('Flip', windowPtr);
 
-            % wait key input
-            %[secs, keyCode] = KbWait([],3);
+            % wait click input
             whichButton = 0;
             while(whichButton ~= 1 && whichButton ~= 3)
-                [clicks,x,y,whichButton] = GetClicks(windowPtr);
-                disp(whichButton)
+                
+                [clicks,x,y,whichButton] = GetClicks(windowPtr,0);
+                disp(whichButton);
+                whichButton = whichButton(1);
                 if whichButton == 1
-                    materialOrder(j)
-                    victoryTable(colorLeft,colorRight,materialOrder(j)) = victoryTable(colorLeft,colorRight,materialOrder(j)) + 1;
+                    victoryTable(colorLeft,colorRight,materialOrder(j)) ...
+                        = victoryTable(colorLeft,colorRight,materialOrder(j)) + 1;
                     a = "hidari";
                 elseif whichButton == 3
-                    materialOrder(j)
-                    victoryTable(colorRight,colorLeft,materialOrder(j)) = victoryTable(colorRight,colorLeft,materialOrder(j)) + 1;
+                    victoryTable(colorRight,colorLeft,materialOrder(j)) ...
+                        = victoryTable(colorRight,colorLeft,materialOrder(j)) + 1;
                     a = "migi";
                 end
                 [keyIsDown, secs, keyCode, deltaSecs] = KbCheck([]);
                 if keyCode(escapeKey)
-                    Screen('CloseAll');
+                    error('escape key is pressed.');
                 end
             end
-            for k = 1:60*intervalTime
-                Screen('Flip', windowPtr);
-            end
+            Screen('Flip', windowPtr);
+            WaitSecs(intervalTime);
         end
     end
     
