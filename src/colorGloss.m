@@ -99,11 +99,15 @@ try
                     materialOrder(j)
                     victoryTable(colorRight,colorLeft,materialOrder(j)) = victoryTable(colorRight,colorLeft,materialOrder(j)) + 1;
                     a = "migi";
-                end        
+                end
+                [keyIsDown, secs, keyCode, deltaSecs] = KbCheck([]);
+                if keyCode(escapeKey)
+                    Screen('CloseAll');
+                end
             end
             for k = 1:60*intervalTime
                 Screen('Flip', windowPtr);
-            end     
+            end
         end
     end
     
