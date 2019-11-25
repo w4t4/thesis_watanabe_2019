@@ -53,7 +53,7 @@ try
     [iy,ix,iz] = size(Dsame(:,:,:,1));
     distance = mx/2;
     scale = 2/9;
-    displayStimuliTime = 1;
+    displayStimuliTime = 10;
     intervalTime = 1;
     leftPosition = [mx-ix*scale-distance/2, my-iy*scale, mx+ix*scale-distance/2, my+iy*scale]; 
     rightPosition = [mx-ix*scale+distance/2, my-iy*scale, mx+ix*scale+distance/2, my+iy*scale];
