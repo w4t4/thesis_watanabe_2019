@@ -1,6 +1,6 @@
 
 % Dragon or Bunny or Sphere
-material = '';
+material = 'Bunny';
 
 magnification = 3;
 
