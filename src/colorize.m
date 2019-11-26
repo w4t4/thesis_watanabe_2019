@@ -1,6 +1,6 @@
 
 % Dragon or Bunny or Sphere
-material = 'Bunny';
+material = 'Dragon';
 
 magnification = 3;
 
@@ -10,7 +10,7 @@ load(strcat('../img/xyz/xyz',material,'S.mat'));
 load('mat/monitorColorMax.mat');
 load('mat/logScale.mat');
 
-scale = 0.3;
+scale = 0.4;
 SDsame = colorizeXYZ(wTonemapDiff(xyzS,xyzSD,1,scale,ccmat)) + colorizeXYZ(wTonemapDiff(xyzD,xyzSD,1,scale,ccmat));
 SDdifferent = colorizeXYZ(wTonemapDiff(xyzD,xyzSD,1,scale,ccmat)) + wTonemapDiff(xyzS,xyzSD,1,scale,ccmat);
 aveBrightness = zeros(1,9);
@@ -48,7 +48,8 @@ function coloredXyzData = colorizeXYZ(xyzMaterial)
         for j = 1:8
             m = max(abs(fixedColorMax(:,i,j)));
             if m ~= 0
-                saturateMax(:,i,j) = fixedColorMax(:,i,j)/m*0.13;
+                %0.13
+                saturateMax(:,i,j) = fixedColorMax(:,i,j)/m*0.09;
             end
         end
     end

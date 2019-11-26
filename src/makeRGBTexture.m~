@@ -32,13 +32,13 @@ Bdiff = SDdifferent;
 for i = 1:9
     Bsame(:,:,:,i) = wImageXYZ2rgb_wtm(SDsame(:,:,:,i),ccmat);
     %wtColorCheck(Dsame);
+    save('../img/bunny/Bsame.mat','Bsame');
 end
 for i = 1:9
     Bdiff(:,:,:,i) = wImageXYZ2rgb_wtm(SDdifferent(:,:,:,i),ccmat);
     %wtColorCheck(Dsame);
+    save('../img/bunny/Bdiff.mat','Bdiff');
 end
-save('../img/bunny/Bsame.mat','Bsame');
-save('../img/bunny/Bdiff.mat','Bdiff');
 figure;
 montage(Bsame/255,'size',[3 3]);
 figure;

@@ -45,9 +45,9 @@ if IsOctave, fflush(1); end
 %% Simulation of a psychophysical paired comparison experiment
 fprintf('Simulation of psychophysical experiment\n'); if IsOctave, fflush(1); end
 %[mtx, OutOfNum, NumGreater] = FCN_ObsResSimulation(GroundTruth, cmbs, tnum, 1); % 最後の1は、感覚の標準偏差（ケースVに合わせて1）
-NumGreater = vTable(:,:,4);
-OutOfNum = (ones(size(vTable))-eye(size(vTable,1)))*tnum;
-mtx = NumGreater./ones(size(vTable))/tnum+eye(size(vTable,1))*0.5;
+NumGreater = victoryTable(:,:,4);
+OutOfNum = (ones(size(victoryTable))-eye(size(victoryTable,1)))*tnum;
+mtx = NumGreater./ones(size(victoryTable))/tnum+eye(size(victoryTable,1))*0.5;
 
 
 % Analysis 1: Thurstaon's case V model based on z-score（サーストンの一対比較法ケースVモデル。手法がシンプルな分、解析結果が少し歪む）
@@ -136,6 +136,7 @@ hold on;
 errorbar(sn, ranges95_ml(:,3), -ranges95_ml(:,1), ranges95_ml(:,2), '.k'); % 95%信頼区間
 hold on;
 xlim([0 9])
+ylim([-6 4])
 plot(sn, estimated_sv, 'ok');
     
 % 被験者の応答確率と最尤推定モデルの応答確率の比較
