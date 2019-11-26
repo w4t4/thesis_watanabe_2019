@@ -11,7 +11,7 @@ method = input('Please enter 1, 2, or 3 (default: 3):   ');
 
 % parameter setting
 B = 1000; % Repetition number in Boostrap
-tnum = 2; % trial number in each stimulus pair in Psychophyiscal experiment
+tnum = 4; % trial number in each stimulus pair in Psychophyiscal experiment
 
 % make ground truth (psychological values such as 'glossiness')
 % GroundTruth = randn(1,35).*1.5;
