@@ -1,40 +1,20 @@
-% wrgb2XYZ
+function XYZ = wrgb2XYZ(RGB,ccmat)
+%
+% transfer RGB(x,y,3,0~256,uint8) to xyY3D(x,y,3,double)
+% using calibrated data ccmat
 % 
-% Calculate XYZ values (0-1) from rgb values (CIE1931 coordinates) 
-% without tonemap procedure.
+% by OKD(use TNtoolbox function:RGBTorgb_LUT,rgb2XYZ)
 %
-%
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Usage: 
-%    rgb = XYZ2rgb(XYZ, ccmat);
-%   
-% Input:  
-%   XYZ(image): [iy ix 3]
-%   lw: parameter of Reinhard function
-%   ccmat:  color conversion matrix created by makeccmatrix.m
-%
-% Output:
-%   rgb:    rgb vector or matrices
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 
 
-function XYZ = wrgb2XYZ(rgb, ccmat)
 
-    [iy,ix,iz] = size(rgb);
+% gamma correction: rgb to RGB(for the monitor)
+LUT = load('mat/20191108_w.lut');
+rgb = RGBTorgb_LUT(uint16(RGB)*257,LUT);
+%rgb = RGB16bit2rgb_LUT(uint16(RGB)*257, LUT);       % size_rgb: (x*y) ✕ 3  (2D)
 
-    iLUT = load('mat/20191108_w.ilut');
-    rgb = uint8(rgb2RGB_iLUT(rgb',iLUT)/257);
-    size(rgb)
-    
-    rgb = reshape(rgb,iy,ix,iz);
-
-    XYZ = rgb2XYZ(rgb,ccmat);
-    
-    XYZ = reshape(XYZ,[],3)';
-    
-    
-    %imshow(rgb);
+% convert RGB to xyY
+XYZ = rgb2XYZ(rgb', ccmat);                         % size_XYZ: 3 ✕ (x*y)  (2D)
+XYZ = XYZ';
 
 end
-
 

@@ -55,7 +55,7 @@ try
     leftPosition = [mx-px*scale-distance/2, my-py*scale, mx+px*scale-distance/2, my+py*scale]; 
     rightPosition = [mx-px*scale+distance/2, my-py*scale, mx+px*scale+distance/2, my+py*scale];
     patchData = zeros(2,9);
-    repeat = 1;
+    repeat = 2;
     C = makecform('xyz2xyl');
     
     % generate random order
@@ -69,16 +69,16 @@ try
 %     d = mod(displayOrder-1,9) + 1;
 %     c = ceil((displayOrder)/9);
     
-    for i = 1:9*repeat
-        SetMouse(screenWidth/2,screenHeight/2,screenNumber);
+    for i = 1:9*2*repeat
+        SetMouse(screenWidth/2+randi(800)-200,screenHeight/2,screenNumber);
         OneorTwo = randi([1 2]);
-        mcPatch = wImageXYZ2rgb_wtm(mc(:,mod(displayOrder(i)-1,9)+1,ceil(displayOrder(i)/9)),ccmat);
+        mcPatch = mc(:,mod(displayOrder(i)-1,9)+1,ceil(displayOrder(i)/9));
         while true
             [x,y,buttons] = GetMouse;
             if x < 300
                 SetMouse(301,screenHeight/2,screenNumber);
             end
-            l = (x - 300)/(screenWidth - 300) * 100;
+            l = (x - 300)/(screenWidth - 300) * 130;
             if OneorTwo == 1
                 Screen('FillRect', windowPtr, l, leftPosition);
                 Screen('FillRect', windowPtr, mcPatch, rightPosition);
@@ -90,11 +90,15 @@ try
             DrawFormattedText(windowPtr, num2str(l), 'right', 'center', [255 255 255]);
             Screen('Flip', windowPtr);
             if any(buttons)
-                col = applycform([x/10 x/10 x/10] * ccmat.rgb2xyz / 255, C);
+                col = applycform(wrgb2XYZ(ones(1,3)*l,ccmat), C);
                 patchData(ceil(displayOrder(i)/9),mod(displayOrder(i)-1,9)+1) = ...
                 patchData(ceil(displayOrder(i)/9),mod(displayOrder(i)-1,9)+1) + col(3);
                 disp(l);
                 break;
+            end
+            [keyIsDown, secs, keyCode, deltaSecs] = KbCheck([]);
+            if keyCode(escapeKey)
+                error('escape key is pressed.');
             end
         end
         for j = 1:60*intervalTime
