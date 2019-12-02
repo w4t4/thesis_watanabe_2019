@@ -54,24 +54,26 @@ try
     intervalTime = 1;
     leftPosition = [mx-px*scale-distance/2, my-py*scale, mx+px*scale-distance/2, my+py*scale]; 
     rightPosition = [mx-px*scale+distance/2, my-py*scale, mx+px*scale+distance/2, my+py*scale];
-    patchData = zeros(1,9);
-    repeat = 2;
+    patchData = zeros(2,9);
+    repeat = 1;
     C = makecform('xyz2xyl');
     
     % generate random order
-    displayOrder = randperm(9*repeat);
-    for i = 1:9*repeat
-        displayOrder(i) = mod(displayOrder(i)-1, 9) + 1;
+    displayOrder = randperm(9*2*repeat);
+    for i = 1:9*2*repeat
+        displayOrder(i) = mod(displayOrder(i)-1, 18) + 1;
     end
     
     HideCursor(screenNumber);
+
+%     d = mod(displayOrder-1,9) + 1;
+%     c = ceil((displayOrder)/9);
     
     %for i = 1:9*repeat
     for i = 1:1
         SetMouse(screenWidth/2,screenHeight/2,screenNumber);
         OneorTwo = randi([1 2]);
-        % wait key input  and  judge whether correct
-        mcPatch = wImageXYZ2rgb_wtm(mc(:,1,2),ccmat)
+        mcPatch = wImageXYZ2rgb_wtm(mc(:,mod(displayOrder(i)-1,9)+1,ceil(displayOrder(i)/9)),ccmat);
         while true
             [x,y,buttons] = GetMouse;
             if OneorTwo == 1
@@ -81,11 +83,12 @@ try
                 Screen('FillRect', windowPtr, x/10, rightPosition);
                 Screen('FillRect', windowPtr, mcPatch, leftPosition);
             end
+            DrawFormattedText(windowPtr, num2str(x), 'left', 'center', [255 255 255]);
             Screen('Flip', windowPtr);
             if any(buttons)
-                col = applycform([x/10 x/10 x/10] * ccmat.rgb2xyz / 255, C)
-                patchData(1,displayOrder(i)) = patchData(1,displayOrder(i)) + col(3);
-                disp(displayOrder(i));
+                col = applycform([x/10 x/10 x/10] * ccmat.rgb2xyz / 255, C);
+                patchData(ceil(displayOrder(i)/9),mod(displayOrder(i)-1,9)+1) = ...
+                patchData(ceil(displayOrder(i)/9),mod(displayOrder(i)-1,9)+1) + col(3);
                 disp(x/10);
                 break;
             end
@@ -107,7 +110,7 @@ try
     hold off;
 
 catch
-    Screen('CloseAll');
+    Screen('CloseAll');ls
     ShowCursor;
     a = "dame";
     ListenChar(0);

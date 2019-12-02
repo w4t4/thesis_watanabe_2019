@@ -55,23 +55,25 @@ try
     leftPosition = [mx-px*scale-distance/2, my-py*scale, mx+px*scale-distance/2, my+py*scale]; 
     rightPosition = [mx-px*scale+distance/2, my-py*scale, mx+px*scale+distance/2, my+py*scale];
     patchData = zeros(1,9);
-    repeat = 2;
+    repeat = 1;
     C = makecform('xyz2xyl');
     
     % generate random order
-    displayOrder = randperm(9*repeat);
-    for i = 1:9*repeat
-        displayOrder(i) = mod(displayOrder(i)-1, 9) + 1;
+    displayOrder = randperm(9*2*repeat);
+    for i = 1:9*2*repeat
+        displayOrder(i) = mod(displayOrder(i)-1, 18) + 1;
     end
     
     HideCursor(screenNumber);
+    for i = 1:9*2*repeat
+        disp(mod(displayOrder(i),9))
+    ceil (ceil((displayOrder(i)-1)/9))
     
     %for i = 1:9*repeat
-    for i = 
+    for i = 1:1
         SetMouse(screenWidth/2,screenHeight/2,screenNumber);
         OneorTwo = randi([1 2]);
-        % wait key input  and  judge whether correct
-        mcPatch = wImageXYZ2rgb_wtm(mc(:,1,2),ccmat)
+        mcPatch = wImageXYZ2rgb_wtm(mc(:,mod(displayOrder(i),9),displayOrder(i)/2),ccmat);
         while true
             [x,y,buttons] = GetMouse;
             if OneorTwo == 1
@@ -81,11 +83,11 @@ try
                 Screen('FillRect', windowPtr, x/10, rightPosition);
                 Screen('FillRect', windowPtr, mcPatch, leftPosition);
             end
+            DrawFormattedText(windowPtr, num2str(x), 'left', 'center', [255 255 255]);
             Screen('Flip', windowPtr);
             if any(buttons)
-                col = applycform([x/10 x/10 x/10] * ccmat.rgb2xyz / 255, C)
+                col = applycform([x/10 x/10 x/10] * ccmat.rgb2xyz / 255, C);
                 patchData(1,displayOrder(i)) = patchData(1,displayOrder(i)) + col(3);
-                disp(displayOrder(i));
                 disp(x/10);
                 break;
             end
