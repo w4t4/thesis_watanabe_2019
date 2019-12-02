@@ -66,7 +66,7 @@ try
     victoryTable = zeros(9,9,4);
     nckOrder = zeros(1,nchoosek(9,2),4);
     
-    repetition = 2;
+    repetition = 4;
     HideCursor(screenNumber);
     
     for r = 1:repetition

@@ -1,18 +1,18 @@
 
 load('../img/mag3/SDdifferentDragon.mat');
 mc = zeros(3,9,2);
-luminance = zeros(2,9);
+luminance = zeros(1,9);
 for i = 1:9
     load('../img/mag3/SDsameDragon.mat');
-    mc(:,i,1) = calcMeanColor(SDsame(:,:,:,i));
-    luminance(1,i) = getLuminance(transpose(mc(:,i)));
+    ml(:,i,1) = calcMeanColor(SDsame(:,:,:,i));
+    luminance(floor((i-1)/9) + 1,mod(i,9) + 1) = getLuminance(transpose(ml(:,i)));
 end
 for i = 1:9
-    mc(:,i,2) = calcMeanColor(SDdifferent(:,:,:,i));
-    luminance(2,i) = getLuminance(transpose(mc(:,i)));
+    ml(:,i,2) = calcMeanColor(Ddiff(:,:,:,i));
+    luminance(floor((i-1)/9) + 1,mod(i,9) + 1) = getLuminance(transpose(ml(:,i)));
 end
-save('mat/mc.mat', 'mc');
-save('mat/luminance.mat', 'luminance');
+save('ml.mat', 'ml');
+save('luminance.mat', 'luminance');
 
 function meanColor = calcMeanColor(xyz)
     [iy,ix,iz] = size(xyz);
@@ -33,7 +33,6 @@ function meanColor = calcMeanColor(xyz)
         end
         meanColor(i) = sum / notZeroCount;
     end
-    meanColor = applycform(meanColor,cu2x)
 end
 
 function l = getLuminance(xyz)
