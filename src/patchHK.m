@@ -69,27 +69,31 @@ try
 %     d = mod(displayOrder-1,9) + 1;
 %     c = ceil((displayOrder)/9);
     
-    %for i = 1:9*repeat
-    for i = 1:1
+    for i = 1:9*repeat
         SetMouse(screenWidth/2,screenHeight/2,screenNumber);
         OneorTwo = randi([1 2]);
         mcPatch = wImageXYZ2rgb_wtm(mc(:,mod(displayOrder(i)-1,9)+1,ceil(displayOrder(i)/9)),ccmat);
         while true
             [x,y,buttons] = GetMouse;
+            if x < 300
+                SetMouse(301,screenHeight/2,screenNumber);
+            end
+            l = (x - 300)/(screenWidth - 300) * 100;
             if OneorTwo == 1
-                Screen('FillRect', windowPtr, x/10, leftPosition);
+                Screen('FillRect', windowPtr, l, leftPosition);
                 Screen('FillRect', windowPtr, mcPatch, rightPosition);
             else
-                Screen('FillRect', windowPtr, x/10, rightPosition);
+                Screen('FillRect', windowPtr, l, rightPosition);
                 Screen('FillRect', windowPtr, mcPatch, leftPosition);
             end
             DrawFormattedText(windowPtr, num2str(x), 'left', 'center', [255 255 255]);
+            DrawFormattedText(windowPtr, num2str(l), 'right', 'center', [255 255 255]);
             Screen('Flip', windowPtr);
             if any(buttons)
                 col = applycform([x/10 x/10 x/10] * ccmat.rgb2xyz / 255, C);
                 patchData(ceil(displayOrder(i)/9),mod(displayOrder(i)-1,9)+1) = ...
                 patchData(ceil(displayOrder(i)/9),mod(displayOrder(i)-1,9)+1) + col(3);
-                disp(x/10);
+                disp(l);
                 break;
             end
         end
