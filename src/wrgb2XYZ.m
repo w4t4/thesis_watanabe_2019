@@ -22,15 +22,16 @@ function XYZ = wrgb2XYZ(rgb, ccmat)
 
     [iy,ix,iz] = size(rgb);
 
-    XYZ = reshape(XYZ,[],3)';
-    
-    rgb = XYZ2rgb(XYZ,ccmat);
-    size(rgb);
-    
-    LUT = load('mat/20191108_w.lut');
-    rgb = uint8(rgb2RGB_LUT(rgb',LUT)/257);
+    iLUT = load('mat/20191108_w.ilut');
+    rgb = uint8(rgb2RGB_iLUT(rgb',iLUT)/257);
+    size(rgb)
     
     rgb = reshape(rgb,iy,ix,iz);
+
+    XYZ = rgb2XYZ(rgb,ccmat);
+    
+    XYZ = reshape(XYZ,[],3)';
+    
     
     %imshow(rgb);
 
