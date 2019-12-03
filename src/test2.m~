@@ -18,4 +18,4 @@ for i = 1:2
         end
     end
 end
-montage(a/255,'size',[2 9]);
+montage(a/255,
