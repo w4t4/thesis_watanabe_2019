@@ -55,7 +55,7 @@ try
     leftPosition = [mx-px*scale-distance/2, my-py*scale, mx+px*scale-distance/2, my+py*scale]; 
     rightPosition = [mx-px*scale+distance/2, my-py*scale, mx+px*scale+distance/2, my+py*scale];
     patchData = zeros(2,9);
-    repeat = 2;
+    repeat = 3;
     C = makecform('xyz2xyl');
     
     % generate random order
@@ -86,8 +86,8 @@ try
                 Screen('FillRect', windowPtr, l, rightPosition);
                 Screen('FillRect', windowPtr, mcPatch, leftPosition);
             end
-            DrawFormattedText(windowPtr, num2str(x), 'left', 'center', [255 255 255]);
-            DrawFormattedText(windowPtr, num2str(l), 'right', 'center', [255 255 255]);
+            %DrawFormattedText(windowPtr, num2str(x), 'left', 'center', [255 255 255]);
+            %DrawFormattedText(windowPtr, num2str(l), 'right', 'center', [255 255 255]);
             Screen('Flip', windowPtr);
             if any(buttons)
                 col = applycform(wrgb2XYZ(ones(1,3)*l,ccmat), C);
