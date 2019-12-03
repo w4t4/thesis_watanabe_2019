@@ -2,7 +2,7 @@ clear all
 
 dt = char(datetime('now','Format','yyyy-MM-dd''T''HHmmss'));
 sn = input('Observer initial?: ','s');
-datafilename = sprintf('../data/patch/%s_%s.mat', sn, dt);
+datafilename = sprintf('../data/gloss/%s_%s.mat', sn, dt);
 
 AssertOpenGL;
 ListenChar(2);
@@ -113,7 +113,7 @@ try
     Screen('CloseAll');
     ShowCursor;
     ListenChar(0);
-    save(datafilename,'patchData')
+    save(datafilename,'victoryTable')
     
     plot(patchData(1,:),'o');
     hold on;
