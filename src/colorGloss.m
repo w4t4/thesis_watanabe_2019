@@ -47,8 +47,8 @@ try
     stimuli(:,:,:,:,4) = Bdiff;
     
     % display initial text
-    Screen('TextSize', windowPtr, 24);
-    myText = ['choose more glossy one.'];
+    Screen('TextSize', windowPtr, 35);
+    myText = ['click to start'];
     DrawFormattedText(windowPtr, myText, 'center', 'center', [255 255 255]);
     Screen('Flip', windowPtr);
     [clicks,x,y,whichButton] = GetClicks(windowPtr,0);

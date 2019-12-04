@@ -39,8 +39,8 @@ try
     load('mat/ccmat.mat');
     
     % display initial text
-    Screen('TextSize', windowPtr, 24);
-    myText = ['Adjust a luminance of square to the other'];
+    Screen('TextSize', windowPtr, 35);
+    myText = ['Click to start'];
     DrawFormattedText(windowPtr, myText, 'center', 'center', [255 255 255]);
     Screen('Flip', windowPtr);
     [clicks,x,y,whichButton] = GetClicks(windowPtr,0);
@@ -65,8 +65,6 @@ try
     for i = 1:9*2*repeat
         displayOrder(i) = mod(displayOrder(i)-1, 18) + 1;
     end
-    
-    
 
 %     d = mod(displayOrder-1,9) + 1;
 %     c = ceil((displayOrder)/9);
@@ -115,10 +113,10 @@ try
     ListenChar(0);
     save(datafilename,'patchData')
     
-    plot(patchData(1,:),'o');
-    hold on;
-    plot(luminance(1,:));
-    hold off;
+%     plot(patchData(1,:),'o');
+%     hold on;
+%     plot(luminance(1,:));
+%     hold off;
 
 catch
     Screen('CloseAll');ls
