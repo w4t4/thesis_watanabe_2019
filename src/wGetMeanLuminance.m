@@ -24,7 +24,7 @@ function meanColorRGB = calcMeanColor(rgb)
     sum = zeros(1,1,3);
     for j = 1:ix
         for k = 1:iy
-            if (max(rgb(k,j,:)) >= 15)
+            if (max(rgb(k,j,:)) >= 25)
                 notZeroCount = notZeroCount + 1;
                 sum = sum + rgb(k,j,:);
             end
