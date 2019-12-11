@@ -81,6 +81,7 @@ try
             %materialOrder = [1 2 3 4];
             SetMouse(screenWidth/2,screenHeight/2,screenNumber);
             for j = 1:4
+                
                 OneorTwo = randi([1 2]);
                 colorLeft = combination(nckOrder(1,i,materialOrder(j)),OneorTwo);
                 colorRight = combination(nckOrder(1,i,materialOrder(j)),3-OneorTwo);
