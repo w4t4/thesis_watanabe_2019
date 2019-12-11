@@ -93,39 +93,34 @@ try
                 while any(buttons)
                     [x,y,buttons] = GetMouse;
                 end
-                flag = 0;
+                buttons = buttons(1);
+                
                 for k = 1:RefleshRate*1000
-                    [x,y,buttons] = GetMouse;
-                    %buttons = buttons(1)
-                    if k < RefleshRate*displayStimuliTime
-                        Screen('DrawTexture', windowPtr, leftStimulus, [], leftPosition);
-                        Screen('DrawTexture', windowPtr, rightStimulus, [], rightPosition);
-                        Screen('Flip', windowPtr);
-                    else
-                        Screen('Flip', windowPtr);
+                if k < RefleshRate*DisplayStimuliTime
+                    Screen('DrawTexture', windowPtr, leftStimulus, [], leftPosition);
+                    Screen('DrawTexture', windowPtr, rightStimulus, [], rightPosition);
+                    Screen('Flip', windowPtr);
+                else
+                    Screen('Flip', windowPtr);
+                end
+
+                % wait click input
+                
+                if(buttons == 1 || buttons == 3)
+
+                    whichButton = whichButton(1);
+                    if whichButton == 1
+                        victoryTable(colorLeft,colorRight,materialOrder(j)) ...
+                            = victoryTable(colorLeft,colorRight,materialOrder(j)) + 1;
+                        a = "hidari";
+                    elseif whichButton == 3
+                        victoryTable(colorRight,colorLeft,materialOrder(j)) ...
+                            = victoryTable(colorRight,colorLeft,materialOrder(j)) + 1;
+                        a = "migi";
                     end
-
-                    % wait click input
-
-                    if(buttons(1) == 1 || buttons(3) == 1)
-
-                        flag = 1;
-                        if buttons(1) == 1
-                            victoryTable(colorLeft,colorRight,materialOrder(j)) ...
-                                = victoryTable(colorLeft,colorRight,materialOrder(j)) + 1;
-                            a = "hidari";
-                        elseif buttons(3) == 1
-                            victoryTable(colorRight,colorLeft,materialOrder(j)) ...
-                                = victoryTable(colorRight,colorLeft,materialOrder(j)) + 1;
-                            a = "migi";
-                        end
-                        [keyIsDown, secs, keyCode, deltaSecs] = KbCheck([]);
-                        if keyCode(escapeKey)
-                            error('escape key is pressed.');
-                        end
-                    end
-                    if flag == 1
-                        break;
+                    [keyIsDown, secs, keyCode, deltaSecs] = KbCheck([]);
+                    if keyCode(escapeKey)
+                        error('escape key is pressed.');
                     end
                 end
                 Screen('Flip', windowPtr);
