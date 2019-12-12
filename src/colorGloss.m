@@ -17,7 +17,7 @@ try
     PsychImaging('PrepareConfiguration');
     PsychImaging('AddTask', 'General', 'FloatingPoint32BitIfPossible');
     [windowPtr, windowRect] = PsychImaging('OpenWindow', screenNumber, 0);
-    %[windowPtr, windowRect] = Screen('OpenWindow', screenNumber, bgColor, [0 0 screenWidth screenHeight]);
+    %[windowPtr, windowRect] = Screen('OpenWindow', screenvicNumber, bgColor, [0 0 screenWidth screenHeight]);
     Priority(MaxPriority(windowPtr));
     [offwin1,offwinrect]=Screen('OpenOffscreenWindow',windowPtr, 0);
     
