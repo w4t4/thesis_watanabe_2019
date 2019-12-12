@@ -11,7 +11,7 @@ method = input('Please enter 1, 2, or 3 (default: 3):   ');
 
 % parameter setting
 B = 1000; % Repetition number in Boostrap
-tnum = 4; % trial number in each stimulus pair in Psychophyiscal experiment
+tnum = 16; % trial number in each stimulus pair in Psychophyiscal experiment
 
 % make ground truth (psychological values such as 'glossiness')
 % GroundTruth = randn(1,35).*1.5;
@@ -45,7 +45,7 @@ if IsOctave, fflush(1); end
 %% Simulation of a psychophysical paired comparison experiment
 fprintf('Simulation of psychophysical experiment\n'); if IsOctave, fflush(1); end
 %[mtx, OutOfNum, NumGreater] = FCN_ObsResSimulation(GroundTruth, cmbs, tnum, 1); % 最後の1は、感覚の標準偏差（ケースVに合わせて1）
-NumGreater = victoryTable(:,:,4);
+NumGreater = poyo(:,:,4);
 OutOfNum = (ones(size(victoryTable))-eye(size(victoryTable,1)))*tnum;
 mtx = NumGreater./ones(size(victoryTable))/tnum+eye(size(victoryTable,1))*0.5;
 
@@ -135,8 +135,10 @@ sn = [1 2 3 4 5 6 7 8 9];
 hold on;
 errorbar(sn, ranges95_ml(:,3), -ranges95_ml(:,1), ranges95_ml(:,2), '.k'); % 95%信頼区間
 hold on;
+title('NAll,Bunny,D') 
+xlabel('Color')
 xlim([0 9])
-ylim([-6 4])
+ylim([-2.3 2.5])
 plot(sn, estimated_sv, 'ok');
     
 % 被験者の応答確率と最尤推定モデルの応答確率の比較
