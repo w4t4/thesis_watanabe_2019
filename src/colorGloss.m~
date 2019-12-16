@@ -46,12 +46,10 @@ try
     stimuli(:,:,:,:,3) = Bsame;
     stimuli(:,:,:,:,4) = Bdiff;
     
-    SetMouse(screenWidth/2,screenHeight/2,screenNumber);
-    
     % display initial text
     Screen('TextSize', windowPtr, 35);
-    startText = ['click to start'];
-    DrawFormattedText(windowPtr, startText, 'center', 'center', [255 255 255]);
+    myText = ['click to start'];
+    DrawFormattedText(windowPtr, myText, 'center', 'center', [255 255 255]);
     Screen('Flip', windowPtr);
     [clicks,x,y,whichButton] = GetClicks(windowPtr,0);
     Screen('Flip', windowPtr);
@@ -84,15 +82,7 @@ try
             SetMouse(screenWidth/2,screenHeight/2,screenNumber);
             for j = 1:4
                 
-                trialCount = 36*4*(i-1)*(r-1)+4*(i-1)+j
-                if trialCount == 36*4*4/2
-                    pauseText = 'click to resume';
-                    DrawFormattedText(windowPtr, pauseText, 'center', 'center', [255 255 255]);
-                    Screen('Flip', windowPtr);
-                    [clicks,x,y,whichButton] = GetClicks(windowPtr,0);
-                    Screen('Flip', windowPtr);
-                    WaitSecs(2);
-                end
+                if 36*(i-1)*(r-1)+4*(i-1)+j
                 
                 OneorTwo = randi([1 2]);
                 colorLeft = combination(nckOrder(1,i,materialOrder(j)),OneorTwo);
