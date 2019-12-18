@@ -14,7 +14,7 @@ InitializeMatlabOpenGL;
 
 try
     % set window
-    PsychImaging('PrepareConfiguration')s;
+    PsychImaging('PrepareConfiguration');
     PsychImaging('AddTask', 'General', 'FloatingPoint32BitIfPossible');
     [windowPtr, windowRect] = PsychImaging('OpenWindow', screenNumber, 0);
     %[windowPtr, windowRect] = Screen('OpenWindow', screenvicNumber, bgColor, [0 0 screenWidth screenHeight]);
