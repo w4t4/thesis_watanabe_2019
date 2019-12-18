@@ -1,9 +1,11 @@
 %load('mat/luminance.mat');
-plot(a(1,:));
+plot(patch(1,:));
 hold on;
-plot(a(2,:));
+xlabel = ['red' 'orange' 'yellow' 'yellow green' 'green' 'blue green' 'cyan' 'blue' 'mazenta'];
+
+plot(patch(2,:));
 hold on;
-title('NAll')
+title('4 average')
 plot(luminance(1,:));
 legend({'SD','D','refLum'},'Location','northwest')
 hold off;
