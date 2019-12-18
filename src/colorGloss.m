@@ -84,7 +84,7 @@ try
             SetMouse(screenWidth/2,screenHeight/2,screenNumber);
             for j = 1:4
                 
-                trialCount = 36*4*(i-1)*(r-1)+4*(i-1)+j
+                trialCount = 36*4*i*(r-1)+4*(i-1)+j
                 if trialCount == 36*4*4/2
                     pauseText = 'click to resume';
                     DrawFormattedText(windowPtr, pauseText, 'center', 'center', [255 255 255]);
@@ -146,6 +146,11 @@ try
             end
         end
     end
+    finishText = 'The experiment is over.';
+    DrawFormattedText(windowPtr, finishText, 'center', 'center', [255 255 255]);
+    Screen('Flip', windowPtr);
+    [clicks,x,y,whichButton] = GetClicks(windowPtr,0);
+    
     save(datafilename,'victoryTable');
     Screen('CloseAll');
     ShowCursor;
