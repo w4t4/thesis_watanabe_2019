@@ -69,7 +69,8 @@ try
 %     d = mod(displayOrder-1,9) + 1;
 %     c = ceil((displayOrder)/9);
     
-    for i = 1:9*2*repeat
+   % for i = 1:9*2*repeat
+    for i = 1:1
         SetMouse(screenWidth/2+randi(800)-200,screenHeight/2,screenNumber);
         OneorTwo = randi([1 2]);
         mcPatch = mc(:,mod(displayOrder(i)-1,9)+1,ceil(displayOrder(i)/9));
@@ -107,6 +108,11 @@ try
     end
     
     patchData = patchData / repeat;
+    
+    finishText = 'The experiment is over.';
+    DrawFormattedText(windowPtr, finishText, 'center', 'center', [255 255 255]);
+    Screen('Flip', windowPtr);
+    [clicks,x,y,whichButton] = GetClicks(windowPtr,0);
     
     Screen('CloseAll');
     ShowCursor;

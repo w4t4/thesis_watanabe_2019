@@ -84,7 +84,7 @@ try
             SetMouse(screenWidth/2,screenHeight/2,screenNumber);
             for j = 1:4
                 
-                trialCount = 36*4*i*(r-1)+4*(i-1)+j
+                trialCount = 36*4*(r-1)+4*(i-1)+j
                 if trialCount == 36*4*4/2
                     pauseText = 'click to resume';
                     DrawFormattedText(windowPtr, pauseText, 'center', 'center', [255 255 255]);
