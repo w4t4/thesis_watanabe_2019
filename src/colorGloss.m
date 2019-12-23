@@ -50,7 +50,7 @@ try
     
     % display initial text
     Screen('TextSize', windowPtr, 35);
-    startText = ['click to start'];
+    startText = ['Click to start'];
     DrawFormattedText(windowPtr, startText, 'center', 'center', [255 255 255]);
     Screen('Flip', windowPtr);
     [clicks,x,y,whichButton] = GetClicks(windowPtr,0);
@@ -86,7 +86,7 @@ try
                 
                 trialCount = 36*4*(r-1)+4*(i-1)+j
                 if trialCount == 36*4*4/2
-                    pauseText = 'click to resume';
+                    pauseText = 'Click to resume';
                     DrawFormattedText(windowPtr, pauseText, 'center', 'center', [255 255 255]);
                     Screen('Flip', windowPtr);
                     [clicks,x,y,whichButton] = GetClicks(windowPtr,0);
