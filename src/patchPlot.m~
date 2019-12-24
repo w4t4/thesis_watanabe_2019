@@ -1,7 +1,7 @@
 close all
 %load('mat/luminance.mat');
 plot(aveP(1,:),'ro');
-xticklabels({'gray', 'red', 'orange', 'yellow', 'green', 'blue green', 'cyan', 'blue', 'mazenta'});
+xticklabels({'gray', 'red', 'orange', 'yellow',ｌ 'green', 'blue green', 'cyan', 'blue', 'mazenta'});
 hold on;
 
 
