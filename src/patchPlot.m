@@ -1,13 +1,11 @@
 close all
 %load('mat/luminance.mat');
-plot(aveP(1,:),'ro');
-xticklabels({'gray', 'red', 'orange', 'yellow', 'green', 'blue green', 'cyan', 'blue', 'mazenta'});
+title('Subject A');
+plot(patchData(1,:),'-o','LineWidth',3,'MarkerSize',8,'MarkerFaceColor','[0 0.45 0.73]');
+xticklabels({'gray', 'red', 'orange', 'yellow', 'green', 'blue-green', 'cyan', 'blue', 'mazenta'});
+xlabel('colors');
+ylabel('luminance(cd/m^2)');
 hold on;
 
-
-figure;
-plot(aveP(2,:),'bo');
-hold on;
-title('6 average')
-plot(luminance(1,:));
-hold off;
+plot(patchData(2,:),'-o','LineWidth',3,'MarkerSize',8,'MarkerFaceColor','[0.85 0.33 0.10]');
+%plot(luminance(1,:));
