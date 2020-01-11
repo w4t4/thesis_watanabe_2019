@@ -1,0 +1,3 @@
+gscatter(np(:,1,1),nv(:,1,1))
+hold on
+gscat
