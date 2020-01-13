@@ -52,7 +52,7 @@ try
     px = 300;
     py = 300;
     distance = mx/1.75;
-    scale = 2.5/9;
+    scale = 3.5/9;
     intervalTime = 1;
     leftPosition = [mx-px*scale-distance/2, my-py*scale, mx+px*scale-distance/2, my+py*scale]; 
     rightPosition = [mx-px*scale+distance/2, my-py*scale, mx+px*scale+distance/2, my+py*scale];
@@ -88,6 +88,7 @@ try
             end
             %DrawFormattedText(windowPtr, num2str(x), 'left', 'center', [255 255 255]);
             %DrawFormattedText(windowPtr, num2str(l), 'right', 'center', [255 255 255]);
+            imageArray = Screen('GetImage',windowPtr);
             Screen('Flip', windowPtr);
             if any(buttons)
                 col = applycform(wrgb2XYZ(ones(1,3)*l,ccmat), C);

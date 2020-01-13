@@ -84,6 +84,8 @@ try
             SetMouse(screenWidth/2,screenHeight/2,screenNumber);
             for j = 1:4
                 
+                imageArray = Screen('GetImage',windowPtr);
+                
                 trialCount = 36*4*(r-1)+4*(i-1)+j
                 if trialCount == 36*4*4/2
                     pauseText = 'Click to resume';
@@ -101,7 +103,7 @@ try
                 rgbRight = stimuli(:,:,:,colorRight,materialOrder(j));
                 leftStimulus = Screen('MakeTexture', windowPtr, rgbLeft);
                 rightStimulus = Screen('MakeTexture', windowPtr, rgbRight);
-
+                
                 [x,y,buttons] = GetMouse;
                 while any(buttons)
                     [x,y,buttons] = GetMouse;
@@ -113,6 +115,7 @@ try
                     if k < RefleshRate*displayStimuliTime
                         Screen('DrawTexture', windowPtr, leftStimulus, [], leftPosition);
                         Screen('DrawTexture', windowPtr, rightStimulus, [], rightPosition);
+                        
                         Screen('Flip', windowPtr);
                     else
                         Screen('Flip', windowPtr);
