@@ -12,7 +12,7 @@ method = 3;
 
 % parameter setting
 B = 1000; % Repetition number in Boostrap
-tnum = 4; % trial number in each stimulus pair in Psychophyiscal experiment
+tnum = 28; % trial number in each stimulus pair in Psychophyiscal experiment
 
 % make ground truth (psychological values such as 'glossiness')
 % GroundTruth = randn(1,35).*1.5;
@@ -46,7 +46,7 @@ if IsOctave, fflush(1); end
 %% Simulation of a psychophysical paired comparison experiment
 fprintf('Simulation of psychophysical experiment\n'); if IsOctave, fflush(1); end
 %[mtx, OutOfNum, NumGreater] = FCN_ObsResSimulation(GroundTruth, cmbs, tnum, 1); % 最後の1は、感覚の標準偏差（ケースVに合わせて1）
-NumGreater = gg(:,:,4);
+NumGreater = gall(:,:,4);
 OutOfNum = (ones(size(victoryTable))-eye(size(victoryTable,1)))*tnum;
 mtx = NumGreater./ones(size(victoryTable))/tnum+eye(size(victoryTable,1))*0.5;
 
