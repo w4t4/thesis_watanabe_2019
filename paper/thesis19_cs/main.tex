@@ -1,0 +1,65 @@
+\documentclass[a4j,12pt,onecolumn,oneside,final]{jreport}
+
+%\usepackage{gthesis}
+\usepackage{gthesis_myown}
+
+\usepackage{amsmath,amsthm,amssymb,ascmac}
+%\usepackage{fancybox}
+\usepackage{slashbox}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage[dvipdfmx]{color}
+%\usepackage[dviout]{color,graphics}
+\usepackage{graphicx}
+\usepackage{color}
+%\usepackage{psfrag}
+%\usepackage{upgreek}
+\usepackage{bm}
+%\usepackage{wrapfig}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{my-macros}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\年度{令和元年度}
+\提出年月{令和2年1月}
+
+\題名{光沢感知覚に対する色度情報の寄与}
+\梗概題名{光沢感知覚に対する色度情報の寄与}
+
+\指導教員名A{永井 岳大}
+\職名A{准教授}
+
+\指導教員名B{}
+\職名B{}
+
+\所属学科{情報通信系}{}
+\学籍番号{16B16967}
+\氏名{渡辺 侑真}
+
+\内容梗概{\input{abstract}}
+
+
+\begin{document}
+% ----------------------------------------------------------------------
+% 表紙
+\maketitle
+% ----------------------------------------------------------------------
+% 目次
+\setcounter{page}{1}
+\renewcommand{\thepage}{\roman{page}}
+\setcounter{tocdepth}{1}
+\tableofcontents
+\clearpage
+% ----------------------------------------------------------------------
+% 内容
+\setcounter{page}{1}
+\renewcommand{\thepage}{\arabic{page}}
+\input{introduction}
+\input{experiment1}
+\input{experiment2}
+%\input{body-c}
+\input{conclusion}
+\input{acknowledgment}
+\input{reference}
+%\input{appendix}
+% ----------------------------------------------------------------------
+\end{document}

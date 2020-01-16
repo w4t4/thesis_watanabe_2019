@@ -27,3 +27,5 @@ end
 for i = 1:4
     nv(:,i,7) = normalize(vg(:,3,i));
 end
+
+nv(1,:,:) = [];

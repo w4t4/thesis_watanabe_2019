@@ -30,3 +30,5 @@ np(:,1,6) = normalize(transpose(pf(1,:)));
 np(:,2,6) = normalize(transpose(pf(2,:)));
 np(:,1,7) = normalize(transpose(pg(1,:)));
 np(:,2,7) = normalize(transpose(pg(2,:)));
+
+np(1,:,:) = [];
