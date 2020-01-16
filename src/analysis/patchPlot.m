@@ -24,19 +24,19 @@ for i = 1:2
     
     figure;
     % individual
-    plot(x,pa(i,:),'--o','Color',[1 0.5 0.5],'MarkerFaceColor',[1 0.5 0.5]);
+    plot(x,pa(i,:),'--o','Color',[1 0.5 0.5]);
     hold on;
-    plot(x,pb(i,:),'--o','Color',[0.75 0.75 0.5],'MarkerFaceColor',[0.75 0.75 0.5]);
+    plot(x,pb(i,:),'--o','Color',[0.75 0.75 0.5]);
     hold on;
-    plot(x,pc(i,:),'--o','Color',[0.5 1 0.5],'MarkerFaceColor',[0.5 1 0.5]);
+    plot(x,pc(i,:),'--o','Color',[0.5 1 0.5]);
     hold on;
-    plot(x,pd(i,:),'--o','Color',[0.5 0.75 0.75],'MarkerFaceColor',[0.5 0.75 0.75]);
+    plot(x,pd(i,:),'--o','Color',[0.5 0.75 0.75]);
     hold on;
-    plot(x,pe(i,:),'--o','Color',[0.5 0.5 1],'MarkerFaceColor',[0.5 0.5 1]);
+    plot(x,pe(i,:),'--o','Color',[0.5 0.5 1]);
     hold on;
-    plot(x,pf(i,:),'--o','Color',[0.75 0.5 0.75],'MarkerFaceColor',[0.75 0.5 0.75]);
+    plot(x,pf(i,:),'--o','Color',[0.75 0.5 0.75]);
     hold on;
-    plot(x,pg(i,:),'--o','Color',[0.9 0.7 0.5],'MarkerFaceColor',[0.9 0.7 0.5]);
+    plot(x,pg(i,:),'--o','Color',[0.9 0.7 0.5]);
     hold on;
     
     % average

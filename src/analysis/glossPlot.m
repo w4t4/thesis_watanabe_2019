@@ -5,6 +5,7 @@ load('vd.mat');
 load('ve.mat');
 load('vf.mat');
 load('vg.mat');
+load('vave.mat');
 
 %vave = zeros(9,4);
 %vave = (va(:,3,:) + vb(:,3,:) + vc(:,3,:) + vd(:,3,:) + ve(:,3,:) + vf(:,3,:) + vg(:,3,:)) / 7;
@@ -37,6 +38,6 @@ for i = 1:4
     xlabel('色度','FontSize',17)
     xlim([0 10])
     ylabel('選好尺度値','FontSize',17);
-    ylim([-5.5 4])
+    ylim([-3 3])
     hold off;
 end
