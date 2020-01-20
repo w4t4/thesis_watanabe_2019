@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.7.1-161114-2.6 (utf8.euc) (TeX Live 2017/Debian) (preloaded format=platex 2019.12.25)  20 JAN 2020 18:00
+This is e-pTeX, Version 3.14159265-p3.7.1-161114-2.6 (utf8.euc) (TeX Live 2017/Debian) (preloaded format=platex 2019.12.25)  20 JAN 2020 20:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -276,7 +276,11 @@ Missing character: There is no ^^95 in font cmr12!
  [4]
 File: ./img/ex1_stimuli.png Graphic file (type bmp)
 <./img/ex1_stimuli.png>
- [5]
+
+
+LaTeX Warning: Citation `stanfordModels' on page 5 undefined on input line 68.
+
+[5]
 
 LaTeX Font Warning: Font shape `JT1/mc/m/sc' undefined
 (Font)              using `JT1/mc/m/n' instead on input line 75.
@@ -288,12 +292,6 @@ LaTeX Font Warning: Font shape `JY1/mc/m/sc' undefined
 [6]
 File: ./img/ex1_procedure.png Graphic file (type bmp)
 <./img/ex1_procedure.png>
-Missing character: There is no ^^e2 in font cmr12!
-Missing character: There is no ^^9c in font cmr12!
-Missing character: There is no ^^95 in font cmr12!
-Missing character: There is no ^^e2 in font cmr12!
-Missing character: There is no ^^9c in font cmr12!
-Missing character: There is no ^^95 in font cmr12!
 File: ./img/ex1_res_DSD_p.png Graphic file (type bmp)
 <./img/ex1_res_DSD_p.png>
 
@@ -335,10 +333,10 @@ File: ./img/patchStimuli.png Graphic file (type bmp)
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
+[11]
 Missing character: There is no ^^e2 in font cmr12!
 Missing character: There is no ^^9c in font cmr12!
 Missing character: There is no ^^95 in font cmr12!
-[11]
 File: ./img/ex2_res_SD_p.png Graphic file (type bmp)
 <./img/ex2_res_SD_p.png>
 
@@ -350,13 +348,20 @@ File: ./img/ex2_res_SD_p.png Graphic file (type bmp)
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
+[12]
+
+LaTeX Warning: Text page 13 contains only floats.
+
+
+Overfull \vbox (0.97832pt too high) has occurred while \output is active []
+
+
+[13]
 File: ./img/ex3_DSD.png Graphic file (type bmp)
 <./img/ex3_DSD.png>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
 File: ./img/ex3_BSD.png Graphic file (type bmp)
 <./img/ex3_BSD.png>
+
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -370,43 +375,35 @@ File: ./img/ex3_BD.png Graphic file (type bmp)
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-) (./conclusion.tex [12]
-
-LaTeX Warning: Text page 13 contains only floats.
-
-
-Overfull \vbox (0.97832pt too high) has occurred while \output is active []
-
-
-[13] [14] [15] [16]
+) (./conclusion.tex [14]
 第4章.
-) (./acknowledgment.tex [17]) (./reference.tex [18]
+[15]) (./acknowledgment.tex [16]) (./reference.tex [17]
 
 LaTeX Font Warning: Font shape `JT1/mc/m/it' undefined
-(Font)              using `JT1/mc/m/n' instead on input line 17.
+(Font)              using `JT1/mc/m/n' instead on input line 8.
 
 
 LaTeX Font Warning: Font shape `JY1/mc/m/it' undefined
-(Font)              using `JY1/mc/m/n' instead on input line 17.
+(Font)              using `JY1/mc/m/n' instead on input line 8.
 
-) [19] (./main.aux)
+) [18] (./main.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+
+LaTeX Warning: There were undefined references.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 2258 strings out of 494735
- 27213 string characters out of 6176125
- 87751 words of memory out of 5000000
- 5695 multiletter control sequences out of 15000+600000
+ 2254 strings out of 494735
+ 27203 string characters out of 6176125
+ 86751 words of memory out of 5000000
+ 5691 multiletter control sequences out of 15000+600000
  28094 words of font info for 108 fonts, out of 8000000 for 9000
  264 hyphenation exceptions out of 8191
  27i,9n,26p,283b,291s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on main.dvi (22 pages, 43940 bytes).
+Output written on main.dvi (21 pages, 42760 bytes).
