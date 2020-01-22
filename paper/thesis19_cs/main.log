@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.7.1-161114-2.6 (utf8.euc) (TeX Live 2017/Debian) (preloaded format=platex 2019.12.25)  20 JAN 2020 20:55
+This is e-pTeX, Version 3.14159265-p3.7.1-161114-2.6 (utf8.euc) (TeX Live 2017/Debian) (preloaded format=platex 2019.12.25)  23 JAN 2020 06:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -263,11 +263,11 @@ LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <17.28> not available
 
 ] [2]
 第2章.
-[3]
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <14.4> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 27.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 9.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <14.4> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 27.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 9.
+[3]
 File: ./img/darkroom_p.png Graphic file (type bmp)
 <./img/darkroom_p.png>
 Missing character: There is no ^^e2 in font cmr12!
@@ -278,16 +278,19 @@ File: ./img/ex1_stimuli.png Graphic file (type bmp)
 <./img/ex1_stimuli.png>
 
 
-LaTeX Warning: Citation `stanfordModels' on page 5 undefined on input line 68.
+LaTeX Warning: Reference `ex1_stimuli' on page 5 undefined on input line 57.
+
+
+LaTeX Warning: Reference `render_param' on page 5 undefined on input line 70.
 
 [5]
 
 LaTeX Font Warning: Font shape `JT1/mc/m/sc' undefined
-(Font)              using `JT1/mc/m/n' instead on input line 75.
+(Font)              using `JT1/mc/m/n' instead on input line 74.
 
 
 LaTeX Font Warning: Font shape `JY1/mc/m/sc' undefined
-(Font)              using `JY1/mc/m/n' instead on input line 75.
+(Font)              using `JY1/mc/m/n' instead on input line 74.
 
 [6]
 File: ./img/ex1_procedure.png Graphic file (type bmp)
@@ -380,11 +383,11 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 [15]) (./acknowledgment.tex [16]) (./reference.tex [17]
 
 LaTeX Font Warning: Font shape `JT1/mc/m/it' undefined
-(Font)              using `JT1/mc/m/n' instead on input line 8.
+(Font)              using `JT1/mc/m/n' instead on input line 9.
 
 
 LaTeX Font Warning: Font shape `JY1/mc/m/it' undefined
-(Font)              using `JY1/mc/m/n' instead on input line 8.
+(Font)              using `JY1/mc/m/n' instead on input line 9.
 
 ) [18] (./main.aux)
 
@@ -398,12 +401,12 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 2254 strings out of 494735
- 27203 string characters out of 6176125
- 86751 words of memory out of 5000000
- 5691 multiletter control sequences out of 15000+600000
+ 2257 strings out of 494735
+ 27234 string characters out of 6176125
+ 85751 words of memory out of 5000000
+ 5694 multiletter control sequences out of 15000+600000
  28094 words of font info for 108 fonts, out of 8000000 for 9000
  264 hyphenation exceptions out of 8191
  27i,9n,26p,283b,291s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on main.dvi (21 pages, 42760 bytes).
+Output written on main.dvi (21 pages, 42380 bytes).

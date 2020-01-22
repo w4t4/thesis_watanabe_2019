@@ -7,6 +7,7 @@ magnification = 3;
 load(strcat('../img/xyz/xyz',material,'SD.mat'));
 load(strcat('../img/xyz/xyz',material,'D.mat'));
 load(strcat('../img/xyz/xyz',material,'S.mat'));
+load('mat/ccmat.mat');
 load('mat/monitorColorMax.mat');
 load('mat/logScale.mat');
 
