@@ -21,8 +21,8 @@
 \contentsline {section}{\numberline {3.2}実験方法}{11}
 \contentsline {subsection}{\numberline {3.2.1}実験環境，被験者}{11}
 \contentsline {subsection}{\numberline {3.2.2}実験刺激}{11}
-\contentsline {subsection}{\numberline {3.2.3}実験手続き}{11}
-\contentsline {section}{\numberline {3.3}実験結果}{12}
+\contentsline {subsection}{\numberline {3.2.3}実験手続き}{12}
+\contentsline {section}{\numberline {3.3}実験結果}{13}
 \contentsline {chapter}{{\advance \hangindent 1in {第4章}} \nobreakspace {} 結論}{15}
-\contentsline {chapter}{\bf 謝辞}{17}
-\contentsline {chapter}{\bf 参考文献}{17}
+\contentsline {chapter}{\bf 謝辞}{18}
+\contentsline {chapter}{\bf 参考文献}{18}
