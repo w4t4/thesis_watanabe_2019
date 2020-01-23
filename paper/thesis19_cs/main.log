@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.7.1-161114-2.6 (utf8.euc) (TeX Live 2017/Debian) (preloaded format=platex 2019.12.25)  23 JAN 2020 12:52
+This is e-pTeX, Version 3.14159265-p3.7.1-161114-2.6 (utf8.euc) (TeX Live 2017/Debian) (preloaded format=platex 2019.12.25)  23 JAN 2020 19:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -267,93 +267,78 @@ Missing character: There is no ^^95 in font cmr12!
  [4]
 File: ./img/ex1_stimuli.png Graphic file (type bmp)
 <./img/ex1_stimuli.png>
- [5]
+File: ./img/ex1_stimuli_d_p.png Graphic file (type bmp)
+<./img/ex1_stimuli_d_p.png>
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+File: ./img/ex1_stimuli_b_p.png Graphic file (type bmp)
+<./img/ex1_stimuli_b_p.png>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[5]
 
 LaTeX Font Warning: Font shape `JT1/mc/m/sc' undefined
-(Font)              using `JT1/mc/m/n' instead on input line 74.
+(Font)              using `JT1/mc/m/n' instead on input line 90.
 
 
 LaTeX Font Warning: Font shape `JY1/mc/m/sc' undefined
-(Font)              using `JY1/mc/m/n' instead on input line 74.
+(Font)              using `JY1/mc/m/n' instead on input line 90.
 
 [6]
 File: ./img/ex1_procedure.png Graphic file (type bmp)
 <./img/ex1_procedure.png>
+ [7] [8]
 File: ./img/ex1_res_DSD_p.png Graphic file (type bmp)
 <./img/ex1_res_DSD_p.png>
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
 File: ./img/ex1_res_BSD_p.png Graphic file (type bmp)
 <./img/ex1_res_BSD_p.png>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
+ [9]
 File: ./img/ex1_res_DD_p.png Graphic file (type bmp)
 <./img/ex1_res_DD_p.png>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
 File: ./img/ex1_res_BD_p.png Graphic file (type bmp)
 <./img/ex1_res_BD_p.png>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[7]
-
-LaTeX Warning: Text page 8 contains only floats.
-
-[8]
-
-LaTeX Warning: Text page 9 contains only floats.
-
-[9]) (./experiment2.tex [10]
+ [10]) (./experiment2.tex [11]
 第3章.
 File: ./img/ex2_stimuli2.png Graphic file (type bmp)
 <./img/ex2_stimuli2.png>
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-File: ./img/patchStimuli.png Graphic file (type bmp)
-<./img/patchStimuli.png>
+File: ./img/ex2_stimuli_p.png Graphic file (type bmp)
+<./img/ex2_stimuli_p.png>
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[11]
+[12]
 File: ./img/ex2_procedure.png Graphic file (type bmp)
 <./img/ex2_procedure.png>
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[12]
+[13]
 Missing character: There is no ^^e2 in font cmr12!
 Missing character: There is no ^^9c in font cmr12!
 Missing character: There is no ^^95 in font cmr12!
 File: ./img/ex2_res_SD_p.png Graphic file (type bmp)
 <./img/ex2_res_SD_p.png>
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
 File: ./img/ex2_res_SD_p.png Graphic file (type bmp)
 <./img/ex2_res_SD_p.png>
 
+
 LaTeX Warning: `h' float specifier changed to `ht'.
 
+[14] [15]
 File: ./img/ex3_DSD.png Graphic file (type bmp)
 <./img/ex3_DSD.png>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
 File: ./img/ex3_BSD.png Graphic file (type bmp)
 <./img/ex3_BSD.png>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
 File: ./img/ex3_DD.png Graphic file (type bmp)
 <./img/ex3_DD.png>
+
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -362,21 +347,12 @@ File: ./img/ex3_BD.png Graphic file (type bmp)
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-) (./conclusion.tex [13]
 
-LaTeX Warning: Text page 14 contains only floats.
+LaTeX Warning: `h' float specifier changed to `ht'.
 
-
-Overfull \vbox (0.97832pt too high) has occurred while \output is active []
-
-
-[14]
+) (./conclusion.tex [16] [17] [18]
 第4章.
-[15]
-
-LaTeX Warning: Text page 16 contains only floats.
-
-[16]) (./acknowledgment.tex [17]) (./reference.tex [18]
+) (./acknowledgment.tex [19]) (./reference.tex [20]
 
 LaTeX Font Warning: Font shape `JT1/mc/m/it' undefined
 (Font)              using `JT1/mc/m/n' instead on input line 9.
@@ -385,7 +361,7 @@ LaTeX Font Warning: Font shape `JT1/mc/m/it' undefined
 LaTeX Font Warning: Font shape `JY1/mc/m/it' undefined
 (Font)              using `JY1/mc/m/n' instead on input line 9.
 
-) [19] (./main.aux)
+) [21] (./main.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
@@ -394,12 +370,12 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 2263 strings out of 494735
- 27355 string characters out of 6176125
- 85751 words of memory out of 5000000
- 5699 multiletter control sequences out of 15000+600000
+ 2271 strings out of 494735
+ 27552 string characters out of 6176125
+ 86751 words of memory out of 5000000
+ 5705 multiletter control sequences out of 15000+600000
  28094 words of font info for 108 fonts, out of 8000000 for 9000
  264 hyphenation exceptions out of 8191
  27i,9n,26p,283b,291s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on main.dvi (22 pages, 42720 bytes).
+Output written on main.dvi (24 pages, 44120 bytes).

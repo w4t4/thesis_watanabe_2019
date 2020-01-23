@@ -39,5 +39,6 @@ for i = 1:4
     xlim([0 10])
     ylabel('選好尺度値','FontSize',17);
     ylim([-3 3])
+    legend({'HF','IR','MH','MK','OT','SA','SY','Average'},'Position',[0.1 0.1 0.3 0.6])
     hold off;
 end
