@@ -10,13 +10,13 @@
 \contentsline {subsection}{\numberline {2.2.2}実験環境}{4}
 \contentsline {subsection}{\numberline {2.2.3}実験刺激}{5}
 \contentsline {subsubsection}{レンダリング}{6}
-\contentsline {subsubsection}{着色}{6}
-\contentsline {subsection}{\numberline {2.2.4}実験手続き}{7}
+\contentsline {subsubsection}{色度の付与}{6}
+\contentsline {subsection}{\numberline {2.2.4}実験手続き}{8}
 \contentsline {section}{\numberline {2.3}実験結果}{8}
 \contentsline {subsection}{\numberline {2.3.1}解析方法}{8}
 \contentsline {subsection}{\numberline {2.3.2}各色度の刺激に対する選好尺度値}{9}
 \contentsline {section}{\numberline {2.4}考察}{11}
-\contentsline {chapter}{{\advance \hangindent 1in {第3章}} \nobreakspace {} 実験2}{12}
+\contentsline {chapter}{{\advance \hangindent 1in {第3章}} \nobreakspace {} 実験2 -光沢感と明るさ感の関連性-}{12}
 \contentsline {section}{\numberline {3.1}目的}{12}
 \contentsline {section}{\numberline {3.2}実験方法}{12}
 \contentsline {subsection}{\numberline {3.2.1}実験環境，被験者}{12}
@@ -27,6 +27,8 @@
 \contentsline {subsection}{\numberline {3.3.2}実験1との関連性}{16}
 \contentsline {subsection}{\numberline {3.3.3}考察}{17}
 \contentsline {chapter}{{\advance \hangindent 1in {第4章}} \nobreakspace {} 総合考察}{18}
-\contentsline {chapter}{{\advance \hangindent 1in {第5章}} \nobreakspace {} 結論}{19}
-\contentsline {chapter}{\bf 謝辞}{20}
-\contentsline {chapter}{\bf 参考文献}{20}
+\contentsline {section}{\numberline {4.1}光沢感知覚に対する色度情報の寄与}{18}
+\contentsline {section}{\numberline {4.2}今後の課題}{19}
+\contentsline {chapter}{{\advance \hangindent 1in {第5章}} \nobreakspace {} 結論}{20}
+\contentsline {chapter}{\bf 謝辞}{21}
+\contentsline {chapter}{\bf 参考文献}{21}
