@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.7.1-161114-2.6 (utf8.euc) (TeX Live 2017/Debian) (preloaded format=platex 2019.12.25)  27 JAN 2020 20:35
+This is e-pTeX, Version 3.14159265-p3.7.1-161114-2.6 (utf8.euc) (TeX Live 2017/Debian) (preloaded format=platex 2019.12.25)  27 JAN 2020 20:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -250,24 +250,34 @@ LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <17.28> not available
 (Font)              Font shape `JT1/gt/m/n' tried instead on input line 3.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <17.28> not available
 (Font)              Font shape `JY1/gt/m/n' tried instead on input line 3.
+
+LaTeX Warning: Citation `Motoyoshi' on page 1 undefined on input line 16.
+
+
+LaTeX Warning: Citation `Marlow' on page 1 undefined on input line 17.
+
 [1
 
-] [2]) (./experiment1.tex
+]
+
+LaTeX Warning: Citation `h-k effect' on page 2 undefined on input line 26.
+
+[2] [3]) (./experiment1.tex
 第2章.
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <14.4> not available
 (Font)              Font shape `JT1/gt/m/n' tried instead on input line 8.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <14.4> not available
 (Font)              Font shape `JY1/gt/m/n' tried instead on input line 8.
-[3]
+[4]
 File: ./img/darkroom_p.png Graphic file (type bmp)
 <./img/darkroom_p.png>
 Missing character: There is no ^^e2 in font cmr12!
 Missing character: There is no ^^9c in font cmr12!
 Missing character: There is no ^^95 in font cmr12!
- [4]
+ [5]
 File: ./img/ex1_stimuli.png Graphic file (type bmp)
 <./img/ex1_stimuli.png>
- [5]
+ [6]
 
 LaTeX Font Warning: Font shape `JT1/mc/m/sc' undefined
 (Font)              using `JT1/mc/m/n' instead on input line 76.
@@ -276,7 +286,7 @@ LaTeX Font Warning: Font shape `JT1/mc/m/sc' undefined
 LaTeX Font Warning: Font shape `JY1/mc/m/sc' undefined
 (Font)              using `JY1/mc/m/n' instead on input line 76.
 
-[6]
+[7]
 File: ./img/ex1_stimuli_d_p.png Graphic file (type bmp)
 <./img/ex1_stimuli_d_p.png>
 File: ./img/ex1_stimuli_b_p.png Graphic file (type bmp)
@@ -287,17 +297,17 @@ File: ./img/ex1_procedure.png Graphic file (type bmp)
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[7] [8]
+[8] [9]
 File: ./img/ex1_res_DSD_p.png Graphic file (type bmp)
 <./img/ex1_res_DSD_p.png>
 File: ./img/ex1_res_BSD_p.png Graphic file (type bmp)
 <./img/ex1_res_BSD_p.png>
- [9]
+ [10]
 File: ./img/ex1_res_DD_p.png Graphic file (type bmp)
 <./img/ex1_res_DD_p.png>
 File: ./img/ex1_res_BD_p.png Graphic file (type bmp)
 <./img/ex1_res_BD_p.png>
- [10] [11]) (./experiment2.tex
+ [11] [12]) (./experiment2.tex
 第3章.
 File: ./img/ex2_stimuli2.png Graphic file (type bmp)
 <./img/ex2_stimuli2.png>
@@ -309,14 +319,14 @@ File: ./img/ex2_stimuli_p.png Graphic file (type bmp)
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[12]
+[13]
 File: ./img/ex2_procedure.png Graphic file (type bmp)
 <./img/ex2_procedure.png>
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[13]
+[14]
 Missing character: There is no ^^e2 in font cmr12!
 Missing character: There is no ^^9c in font cmr12!
 Missing character: There is no ^^95 in font cmr12!
@@ -324,7 +334,7 @@ File: ./img/ex2_res_SD_p.png Graphic file (type bmp)
 <./img/ex2_res_SD_p.png>
 File: ./img/ex2_res_D_p.png Graphic file (type bmp)
 <./img/ex2_res_D_p.png>
- [14] [15]
+ [15] [16]
 File: ./img/ex3_DSD.png Graphic file (type bmp)
 <./img/ex3_DSD.png>
 File: ./img/ex3_BSD.png Graphic file (type bmp)
@@ -343,13 +353,13 @@ File: ./img/ex3_BD.png Graphic file (type bmp)
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[16]
+[17]
 Overfull \vbox (31.3112pt too high) has occurred while \output is active []
 
 
-[17]) (./discussion.tex
+[18]) (./discussion.tex
 第4章.
-[18] [19]) (./conclusion.tex
+[19] [20]) (./conclusion.tex
 第5章.
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 6.
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
@@ -357,8 +367,8 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 6.
- [20])
-(./acknowledgment.tex) (./reference.tex [21]
+ [21])
+(./acknowledgment.tex) (./reference.tex [22]
 
 LaTeX Font Warning: Font shape `JT1/mc/m/it' undefined
 (Font)              using `JT1/mc/m/n' instead on input line 9.
@@ -367,21 +377,24 @@ LaTeX Font Warning: Font shape `JT1/mc/m/it' undefined
 LaTeX Font Warning: Font shape `JY1/mc/m/it' undefined
 (Font)              using `JY1/mc/m/n' instead on input line 9.
 
-) [22] (./main.aux)
+) [23] (./main.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+
+LaTeX Warning: There were undefined references.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 2297 strings out of 494735
- 27976 string characters out of 6176125
- 86751 words of memory out of 5000000
- 5724 multiletter control sequences out of 15000+600000
+ 2300 strings out of 494735
+ 28007 string characters out of 6176125
+ 87751 words of memory out of 5000000
+ 5727 multiletter control sequences out of 15000+600000
  28094 words of font info for 108 fonts, out of 8000000 for 9000
  264 hyphenation exceptions out of 8191
  27i,9n,26p,309b,291s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on main.dvi (25 pages, 58108 bytes).
+Output written on main.dvi (26 pages, 61720 bytes).
