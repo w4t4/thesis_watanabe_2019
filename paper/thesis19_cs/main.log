@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.7.1-161114-2.6 (utf8.euc) (TeX Live 2017/Debian) (preloaded format=platex 2019.12.25)  27 JAN 2020 20:59
+This is e-pTeX, Version 3.14159265-p3.7.1-161114-2.6 (utf8.euc) (TeX Live 2017/Debian) (preloaded format=platex 2019.12.25)  28 JAN 2020 17:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -250,24 +250,20 @@ LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <17.28> not available
 (Font)              Font shape `JT1/gt/m/n' tried instead on input line 3.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <17.28> not available
 (Font)              Font shape `JY1/gt/m/n' tried instead on input line 3.
-
-LaTeX Warning: Citation `Motoyoshi' on page 1 undefined on input line 16.
-
-
-LaTeX Warning: Citation `Marlow' on page 1 undefined on input line 17.
-
 [1
 
 ]
-
-LaTeX Warning: Citation `h-k effect' on page 2 undefined on input line 26.
-
-[2] [3]) (./experiment1.tex
+File: ./img/SaturatedLowGloss.png Graphic file (type bmp)
+<./img/SaturatedLowGloss.png>
+ [2] [3]) (./experiment1.tex
 第2章.
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <14.4> not available
 (Font)              Font shape `JT1/gt/m/n' tried instead on input line 8.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <14.4> not available
 (Font)              Font shape `JY1/gt/m/n' tried instead on input line 8.
+
+LaTeX Warning: Citation `Hunter' on page 4 undefined on input line 16.
+
 [4]
 File: ./img/darkroom_p.png Graphic file (type bmp)
 <./img/darkroom_p.png>
@@ -280,11 +276,11 @@ File: ./img/ex1_stimuli.png Graphic file (type bmp)
  [6]
 
 LaTeX Font Warning: Font shape `JT1/mc/m/sc' undefined
-(Font)              using `JT1/mc/m/n' instead on input line 76.
+(Font)              using `JT1/mc/m/n' instead on input line 75.
 
 
 LaTeX Font Warning: Font shape `JY1/mc/m/sc' undefined
-(Font)              using `JY1/mc/m/n' instead on input line 76.
+(Font)              using `JY1/mc/m/n' instead on input line 75.
 
 [7]
 File: ./img/ex1_stimuli_d_p.png Graphic file (type bmp)
@@ -359,7 +355,7 @@ Overfull \vbox (31.3112pt too high) has occurred while \output is active []
 
 [18]) (./discussion.tex
 第4章.
-[19] [20]) (./conclusion.tex
+[19] [20] [21]) (./conclusion.tex
 第5章.
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 6.
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
@@ -367,17 +363,17 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 6.
- [21])
-(./acknowledgment.tex) (./reference.tex [22]
+ [22])
+(./acknowledgment.tex) (./reference.tex [23]
 
 LaTeX Font Warning: Font shape `JT1/mc/m/it' undefined
-(Font)              using `JT1/mc/m/n' instead on input line 9.
+(Font)              using `JT1/mc/m/n' instead on input line 8.
 
 
 LaTeX Font Warning: Font shape `JY1/mc/m/it' undefined
-(Font)              using `JY1/mc/m/n' instead on input line 9.
+(Font)              using `JY1/mc/m/n' instead on input line 8.
 
-) [23] (./main.aux)
+) [24] (./main.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
@@ -389,12 +385,12 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 2300 strings out of 494735
- 28007 string characters out of 6176125
+ 2305 strings out of 494735
+ 28123 string characters out of 6176125
  87751 words of memory out of 5000000
- 5727 multiletter control sequences out of 15000+600000
+ 5731 multiletter control sequences out of 15000+600000
  28094 words of font info for 108 fonts, out of 8000000 for 9000
  264 hyphenation exceptions out of 8191
  27i,9n,26p,309b,291s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on main.dvi (26 pages, 61720 bytes).
+Output written on main.dvi (27 pages, 65872 bytes).
