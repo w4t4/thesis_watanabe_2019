@@ -2,33 +2,35 @@
 \contentsline {section}{\numberline {1.1}研究背景}{1}
 \contentsline {section}{\numberline {1.2}本研究の目的}{3}
 \contentsline {section}{\numberline {1.3}本論文の構成}{3}
-\contentsline {chapter}{{\advance \hangindent 1in {第2章}} \nobreakspace {} 実験1 -色情報による光沢感変化-}{4}
+\contentsline {chapter}{{\advance \hangindent 1in {第2章}} \nobreakspace {} 実験1 -色度による光沢感変化-}{4}
 \contentsline {section}{\numberline {2.1}目的}{4}
-\contentsline {subsection}{\numberline {2.1.1}仮説}{4}
+\contentsline {subsection}{\numberline {2.1.1}作業仮説}{4}
 \contentsline {section}{\numberline {2.2}実験方法}{5}
 \contentsline {subsection}{\numberline {2.2.1}被験者}{5}
 \contentsline {subsection}{\numberline {2.2.2}実験環境}{5}
 \contentsline {subsection}{\numberline {2.2.3}実験刺激}{6}
-\contentsline {subsubsection}{レンダリング}{7}
-\contentsline {subsubsection}{色度の付与}{7}
+\contentsline {subsubsection}{レンダリング}{6}
+\contentsline {subsubsection}{彩色}{7}
 \contentsline {subsection}{\numberline {2.2.4}実験手続き}{9}
-\contentsline {section}{\numberline {2.3}実験結果}{9}
-\contentsline {subsection}{\numberline {2.3.1}解析方法}{9}
-\contentsline {subsection}{\numberline {2.3.2}各色度の刺激に対する選好尺度値}{10}
-\contentsline {section}{\numberline {2.4}考察}{12}
-\contentsline {chapter}{{\advance \hangindent 1in {第3章}} \nobreakspace {} 実験2 -光沢感と明るさ感の関連性-}{13}
-\contentsline {section}{\numberline {3.1}目的}{13}
-\contentsline {section}{\numberline {3.2}実験方法}{13}
-\contentsline {subsection}{\numberline {3.2.1}実験環境，被験者}{13}
-\contentsline {subsection}{\numberline {3.2.2}実験刺激}{13}
-\contentsline {subsection}{\numberline {3.2.3}実験手続き}{14}
-\contentsline {section}{\numberline {3.3}実験結果}{15}
-\contentsline {subsection}{\numberline {3.3.1}H-K効果の大きさ}{15}
-\contentsline {subsection}{\numberline {3.3.2}実験1との関連性}{17}
-\contentsline {subsection}{\numberline {3.3.3}考察}{18}
-\contentsline {chapter}{{\advance \hangindent 1in {第4章}} \nobreakspace {} 総合考察}{19}
-\contentsline {section}{\numberline {4.1}光沢感知覚に対する色度情報の寄与}{19}
-\contentsline {section}{\numberline {4.2}今後の課題}{20}
-\contentsline {chapter}{{\advance \hangindent 1in {第5章}} \nobreakspace {} 結論}{22}
-\contentsline {chapter}{\bf 謝辞}{23}
-\contentsline {chapter}{\bf 参考文献}{23}
+\contentsline {section}{\numberline {2.3}実験結果}{10}
+\contentsline {subsection}{\numberline {2.3.1}解析方法}{10}
+\contentsline {subsection}{\numberline {2.3.2}各色度の刺激に対する選好尺度値}{11}
+\contentsline {section}{\numberline {2.4}考察}{13}
+\contentsline {chapter}{{\advance \hangindent 1in {第3章}} \nobreakspace {} 実験2 -光沢感と明るさ感の関連性-}{15}
+\contentsline {section}{\numberline {3.1}目的}{15}
+\contentsline {section}{\numberline {3.2}実験方法}{15}
+\contentsline {subsection}{\numberline {3.2.1}実験環境，被験者}{15}
+\contentsline {subsection}{\numberline {3.2.2}実験刺激}{15}
+\contentsline {subsection}{\numberline {3.2.3}実験手続き}{16}
+\contentsline {section}{\numberline {3.3}実験結果}{17}
+\contentsline {subsection}{\numberline {3.3.1}H-K効果の大きさ}{17}
+\contentsline {subsection}{\numberline {3.3.2}実験1との関連性}{19}
+\contentsline {subsection}{\numberline {3.3.3}考察}{21}
+\contentsline {chapter}{{\advance \hangindent 1in {第4章}} \nobreakspace {} 総合考察}{22}
+\contentsline {section}{\numberline {4.1}光沢感知覚に対する色度情報の寄与}{22}
+\contentsline {section}{\numberline {4.2}光沢感知覚に対する色度情報の寄与}{22}
+\contentsline {section}{\numberline {4.3}色度情報の寄与と明るさ感の影響}{23}
+\contentsline {section}{\numberline {4.4}今後の課題}{23}
+\contentsline {chapter}{{\advance \hangindent 1in {第5章}} \nobreakspace {} 結論}{25}
+\contentsline {chapter}{\bf 謝辞}{26}
+\contentsline {chapter}{\bf 参考文献}{26}

@@ -78,6 +78,7 @@ function coloredXyzData = colorizeXYZ(xyzMaterial)
                 end
             end
         end
+        disp(upvpl(400,400,:));
         disp(i);
         coloredXyzData(:,:,:,i) = applycform(upvpl,cu2x);
     end
