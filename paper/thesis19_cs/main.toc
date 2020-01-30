@@ -28,9 +28,9 @@
 \contentsline {subsection}{\numberline {3.3.3}考察}{21}
 \contentsline {chapter}{{\advance \hangindent 1in {第4章}} \nobreakspace {} 総合考察}{22}
 \contentsline {section}{\numberline {4.1}光沢感知覚に対する色度情報の寄与}{22}
-\contentsline {section}{\numberline {4.2}光沢感知覚に対する色度情報の寄与}{22}
+\contentsline {section}{\numberline {4.2}ハイライトの明るさ感コントラストの影響}{22}
 \contentsline {section}{\numberline {4.3}色度情報の寄与と明るさ感の影響}{23}
-\contentsline {section}{\numberline {4.4}今後の課題}{23}
+\contentsline {section}{\numberline {4.4}今後の課題}{24}
 \contentsline {chapter}{{\advance \hangindent 1in {第5章}} \nobreakspace {} 結論}{25}
 \contentsline {chapter}{\bf 謝辞}{26}
 \contentsline {chapter}{\bf 参考文献}{26}
