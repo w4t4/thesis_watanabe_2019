@@ -33,4 +33,4 @@
 \contentsline {section}{\numberline {4.4}今後の課題}{27}
 \contentsline {chapter}{{\advance \hangindent 1in {第5章}} \nobreakspace {} 結論}{28}
 \contentsline {chapter}{\bf 謝辞}{29}
-\contentsline {chapter}{{\advance \hangindent 1in {第6章}} \nobreakspace {} 参考文献}{30}
+\contentsline {chapter}{\bf 参考文献}{30}
