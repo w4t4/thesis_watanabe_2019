@@ -25,12 +25,12 @@
 \contentsline {section}{\numberline {3.3}実験結果}{17}
 \contentsline {subsection}{\numberline {3.3.1}H-K効果の大きさ}{17}
 \contentsline {subsection}{\numberline {3.3.2}実験1との関連性}{19}
-\contentsline {section}{\numberline {3.4}考察}{21}
-\contentsline {chapter}{{\advance \hangindent 1in {第4章}} \nobreakspace {} 総合考察}{22}
-\contentsline {section}{\numberline {4.1}光沢感知覚に対する色度情報の寄与}{22}
-\contentsline {section}{\numberline {4.2}ハイライトの明るさ感コントラストの影響}{22}
-\contentsline {section}{\numberline {4.3}色度情報の寄与と明るさ感の影響}{23}
-\contentsline {section}{\numberline {4.4}今後の課題}{24}
-\contentsline {chapter}{{\advance \hangindent 1in {第5章}} \nobreakspace {} 結論}{25}
-\contentsline {chapter}{\bf 謝辞}{26}
-\contentsline {chapter}{\bf 参考文献}{26}
+\contentsline {section}{\numberline {3.4}考察}{24}
+\contentsline {chapter}{{\advance \hangindent 1in {第4章}} \nobreakspace {} 総合考察}{25}
+\contentsline {section}{\numberline {4.1}光沢感知覚に対する色度情報の寄与}{25}
+\contentsline {section}{\numberline {4.2}ハイライトの明るさ感コントラストの影響}{25}
+\contentsline {section}{\numberline {4.3}色度情報の寄与と明るさ感の影響}{26}
+\contentsline {section}{\numberline {4.4}今後の課題}{27}
+\contentsline {chapter}{{\advance \hangindent 1in {第5章}} \nobreakspace {} 結論}{28}
+\contentsline {chapter}{\bf 謝辞}{29}
+\contentsline {chapter}{{\advance \hangindent 1in {第6章}} \nobreakspace {} 参考文献}{30}
