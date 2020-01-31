@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.7.1-161114-2.6 (utf8.euc) (TeX Live 2017/Debian) (preloaded format=platex 2019.12.25)  30 JAN 2020 18:18
+This is e-pTeX, Version 3.14159265-p3.7.1-161114-2.6 (utf8.euc) (TeX Live 2017/Debian) (preloaded format=platex 2019.12.25)  31 JAN 2020 09:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -285,18 +285,25 @@ LaTeX Font Warning: Font shape `JY1/mc/m/sc' undefined
 File: ./img/CIE1976.jpg Graphic file (type bmp)
 <./img/CIE1976.jpg>
 
-Overfull \hbox (30.76077pt too wide) in paragraph at lines 123--129
- [][][][] 
- []
+
+LaTeX Warning: `h' float specifier changed to `ht'.
 
 File: ./img/ex1_stimuli_d_p.png Graphic file (type bmp)
 <./img/ex1_stimuli_d_p.png>
-[8]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 File: ./img/ex1_stimuli_b_p.png Graphic file (type bmp)
 <./img/ex1_stimuli_b_p.png>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 File: ./img/ex1_procedure.png Graphic file (type bmp)
 <./img/ex1_procedure.png>
- [9] [10]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[8] [9] [10]
 File: ./img/ex1_res_DSD_p.png Graphic file (type bmp)
 <./img/ex1_res_DSD_p.png>
 File: ./img/ex1_res_BSD_p.png Graphic file (type bmp)
@@ -328,9 +335,16 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 [16]
 File: ./img/ex2_res_SD_p.png Graphic file (type bmp)
 <./img/ex2_res_SD_p.png>
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 File: ./img/ex2_res_D_p.png Graphic file (type bmp)
 <./img/ex2_res_D_p.png>
- [17] [18]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[17] [18]
 File: ./img/ex3_DSD.png Graphic file (type bmp)
 <./img/ex3_DSD.png>
 File: ./img/ex3_BSD.png Graphic file (type bmp)
@@ -364,18 +378,27 @@ LaTeX Font Warning: Font shape `JT1/mc/m/it' undefined
 LaTeX Font Warning: Font shape `JY1/mc/m/it' undefined
 (Font)              using `JY1/mc/m/n' instead on input line 8.
 
+
+Underfull \hbox (badness 1655) in paragraph at lines 49--51
+[]\OT1/cmr/m/n/12 Turk, G., Levoy, M. (2005). Stan-ford Com-puter Graph-ics Lab
+-o-ra-tory.
+ []
+
 ) [27] (./main.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
  2328 strings out of 494735
  28516 string characters out of 6176125
- 88744 words of memory out of 5000000
+ 87744 words of memory out of 5000000
  5742 multiletter control sequences out of 15000+600000
  28094 words of font info for 108 fonts, out of 8000000 for 9000
  264 hyphenation exceptions out of 8191
- 27i,11n,26p,572b,291s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 27i,11n,26p,564b,291s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on main.dvi (32 pages, 89308 bytes).
+Output written on main.dvi (32 pages, 91684 bytes).

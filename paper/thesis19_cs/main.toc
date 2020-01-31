@@ -12,8 +12,8 @@
 \contentsline {subsubsection}{レンダリング}{6}
 \contentsline {subsubsection}{彩色}{7}
 \contentsline {subsection}{\numberline {2.2.4}実験手続き}{9}
-\contentsline {section}{\numberline {2.3}実験結果}{10}
-\contentsline {subsection}{\numberline {2.3.1}解析方法}{10}
+\contentsline {section}{\numberline {2.3}実験結果}{9}
+\contentsline {subsection}{\numberline {2.3.1}解析方法}{9}
 \contentsline {subsection}{\numberline {2.3.2}各色度の刺激に対する選好尺度値}{11}
 \contentsline {section}{\numberline {2.4}考察}{13}
 \contentsline {chapter}{{\advance \hangindent 1in {第3章}} \nobreakspace {} 実験2 -光沢感と明るさ感の関連性-}{15}
@@ -25,7 +25,7 @@
 \contentsline {section}{\numberline {3.3}実験結果}{17}
 \contentsline {subsection}{\numberline {3.3.1}H-K効果の大きさ}{17}
 \contentsline {subsection}{\numberline {3.3.2}実験1との関連性}{19}
-\contentsline {subsection}{\numberline {3.3.3}考察}{21}
+\contentsline {section}{\numberline {3.4}考察}{21}
 \contentsline {chapter}{{\advance \hangindent 1in {第4章}} \nobreakspace {} 総合考察}{22}
 \contentsline {section}{\numberline {4.1}光沢感知覚に対する色度情報の寄与}{22}
 \contentsline {section}{\numberline {4.2}ハイライトの明るさ感コントラストの影響}{22}
