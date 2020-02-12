@@ -43,27 +43,6 @@ WaitSecs(0.2);
 fprintf('Trial number per condition: %d\n\n\n', tnum);
 if IsOctave, fflush(1); end
 
-%% Simulation of a psychophysical paired comparison experiment
-fprintf('Simulation of psychophysical experiment\n'); if IsOctave, fflush(1); end
-%[mtx, OutOfNum, NumGreater] = FCN_ObsResSimulation(GroundTruth, cmbs, tnum, 1); % 最後の1は、感覚の標準偏差（ケースVに合わせて1）
-NumGreater = gall(:,:,4);
-OutOfNum = (ones(size(victoryTable))-eye(size(victoryTable,1)))*tnum;
-mtx = NumGreater./ones(size(victoryTable))/tnum+eye(size(victoryTable,1))*0.5;
-
-
-% Analysis 1: Thurstaon's case V model based on z-score（サーストンの一対比較法ケースVモデル。手法がシンプルな分、解析結果が少し歪む）
-estimated_sv = FCN_PCanalysis_Thurston(mtx, 0.005);
-estimated_sv = estimated_sv - mean(estimated_sv);
-
-% Analysis 2: Maximum likelihood method（最尤法。データの特徴に対しデータ数が十分なら（これを満たしているか微妙なのだが）、サーストンモデルより精度が高い）
-InitValues = estimated_sv - estimated_sv(1); % サーストンの結果を初期値に設定。ただし、最左値が0になるよう正規化（自由度を下げる）
-[estimated_sv2,NumGreater_v,OutOfNum_v] = FCN_PCanalysis_ML(OutOfNum, NumGreater, cmbs, InitValues, method);
-estimated_sv2 = estimated_sv2 - mean(estimated_sv2);
-
-fprintf('....Done!!\n\n\n');    if IsOctave, fflush(1); end
-WaitSecs(0.8);
-
-
 %% Bootstrap analysis 
 fprintf('Bootstrap analysis:\n');
 fprintf('  Bootstrap repetition number: %d\n\n\n', B);
