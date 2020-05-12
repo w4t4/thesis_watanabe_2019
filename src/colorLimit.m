@@ -1,3 +1,6 @@
+%% モニターの色域を調べるプログラム
+% mat/にlogScale.mat,monitorColorMax.mat,upvplWhitePoints.matを生成する
+
 cx2u = makecform('xyz2upvpl');
 cu2x = makecform('upvpl2xyz');
 

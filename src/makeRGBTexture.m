@@ -1,64 +1,41 @@
 load('mat/ccmat.mat');
 
-load('../img/mag3/SDsameDragon.mat');
-load('../img/mag3/SDdifferentDragon.mat');
-[ix,iy,iz] = size(SDsame(:,:,:,1));
-Dsame = zeros(ix,iy,iz,9);
-Ddiff = zeros(ix,iy,iz,9);
-
-m = 1/2;
-l = 60;
+load('./mat/Dragon/coloredSD.mat');
+load('./mat/Dragon/coloredD.mat');
+[ix,iy,iz] = size(coloredSD(:,:,:,1));
+dragonSD = zeros(ix,iy,iz,9);
+dragonD = zeros(ix,iy,iz,9);
 
 for i = 1:9
-    Dsame(:,:,:,i) = wImageXYZ2rgb_wtm(SDsame(:,:,:,i),ccmat);
+    dragonSD(:,:,:,i) = wImageXYZ2rgb_wtm(coloredSD(:,:,:,i),ccmat);
+end
+for i = 1:9
+    dragonD(:,:,:,i) = wImageXYZ2rgb_wtm(coloredD(:,:,:,i),ccmat);
+end
+save('./stimuli/dragonSD.mat','dragonSD');
+save('./stimuli/dragonD.mat','dragonD');
+figure;
+montage(dragonSD/255,'size',[3 3]);
+figure;
+montage(dragonD/255,'size',[3 3]);
+
+load('./mat/Bunny/coloredSD.mat');
+load('./mat/Bunny/coloredD.mat');
+bunnySD = zeros(ix,iy,iz,9);
+bunnyD = zeros(ix,iy,iz,9);
+
+for i = 1:9
+    bunnySD(:,:,:,i) = wImageXYZ2rgb_wtm(coloredSD(:,:,:,i),ccmat);
     %wtColorCheck(Dsame);
 end
 for i = 1:9
-    Ddiff(:,:,:,i) = wImageXYZ2rgb_wtm(SDdifferent(:,:,:,i),ccmat);
+    bunnyD(:,:,:,i) = wImageXYZ2rgb_wtm(coloredD(:,:,:,i),ccmat);
     %wtColorCheck(Dsame);
 end
-%save('../img/dragon/Dsame.mat','Dsame');
-%save('../img/dragon/Ddiff.mat','Ddiff');
+save('./stimuli/bunnySD.mat','bunnySD');
+save('./stimuli/bunnyD.mat','bunnyD');
 figure;
-montage(Dsame/255,'size',[3 3]);
+montage(bunnySD/255,'size',[3 3]);
 figure;
-montage(Ddiff/255,'size',[3 3]);
+montage(bunnyD/255,'size',[3 3]);
 
-load('../img/mag3/SDsameBunny.mat');
-load('../img/mag3/SDdifferentBunny.mat');
-Bsame = SDsame;
-Bdiff = SDdifferent;
-
-for i = 1:9
-    Bsame(:,:,:,i) = wImageXYZ2rgb_wtm(SDsame(:,:,:,i),ccmat);
-    %wtColorCheck(Dsame);
-end
-for i = 1:9
-    Bdiff(:,:,:,i) = wImageXYZ2rgb_wtm(SDdifferent(:,:,:,i),ccmat);
-    %wtColorCheck(Dsame);
-end
-save('../img/bunny/Bsame.mat','Bsame');
-save('../img/bunny/Bdiff.mat','Bdiff');
-figure;
-montage(Bsame/255,'size',[3 3]);
-figure;
-montage(Bdiff/255,'size',[3 3]);
-
-% load('../img/mag3/SDsameSphere.mat');
-% load('../img/mag3/SDdifferentSphere.mat');
-% Ssame = SDsame;
-% Sdiff = SDdifferent;
-% for i = 1:9
-%     Ssame(:,:,:,i) = wImageXYZ2rgb_wtm(SDsame(:,:,:,i),ccmat);
-%     %wtColorCheck(Dsame);
-%     save('../img/sphere/Ssame.mat','Ssame');
-% end
-% for i = 1:9
-%     Sdiff(:,:,:,i) = wImageXYZ2rgb_wtm(SDdifferent(:,:,:,i),ccmat);
-%     %wtColorCheck(Dsame);
-%     save('../img/sphere/Sdiff.mat','Sdiff');
-% end
-% %figure;
-% %montage(Ssame,'size',[3 3]);
-% %figure;
-% %montage(Sdiff,'size',[3 3]);

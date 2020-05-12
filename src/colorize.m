@@ -1,36 +1,31 @@
+%% xyz形式のファイルを読み込みSD条件とD条件に彩色するプログラム
+clear all;
 
 % Dragon or Bunny
-material = 'Dragon';
+material = 'Bunny';
 
-magnification = 3;
-
-load(strcat('../img/xyz/xyz',material,'SD.mat'));
-load(strcat('../img/xyz/xyz',material,'D.mat'));
-load(strcat('../img/xyz/xyz',material,'S.mat'));
+load(strcat('./mat/',material,'/xyzSD.mat'));
+load(strcat('./mat/',material,'/xyzD.mat'));
+load(strcat('./mat/',material,'/xyzS.mat'));
 load('mat/ccmat.mat');
 load('mat/monitorColorMax.mat');
 load('mat/logScale.mat');
 
 scale = 0.4;
-SDsame = colorizeXYZ(wTonemapDiff(xyzS,xyzSD,1,scale,ccmat)) + colorizeXYZ(wTonemapDiff(xyzD,xyzSD,1,scale,ccmat));
-SDdifferent = colorizeXYZ(wTonemapDiff(xyzD,xyzSD,1,scale,ccmat)) + wTonemapDiff(xyzS,xyzSD,1,scale,ccmat);
+coloredSD = colorizeXYZ(wTonemapDiff(xyzS,xyzSD,1,scale,ccmat)) + colorizeXYZ(wTonemapDiff(xyzD,xyzSD,1,scale,ccmat));
+coloredD = colorizeXYZ(wTonemapDiff(xyzD,xyzSD,1,scale,ccmat)) + wTonemapDiff(xyzS,xyzSD,1,scale,ccmat);
 aveBrightness = zeros(1,9);
 for i = 1:9
     %figure;
-    wImageXYZ2rgb_wtm(SDsame(:,:,:,i),ccmat);
+    wImageXYZ2rgb_wtm(coloredSD(:,:,:,i),ccmat);
     %figure;
-    wImageXYZ2rgb_wtm(SDdifferent(:,:,:,i),ccmat);
+    wImageXYZ2rgb_wtm(coloredD(:,:,:,i),ccmat);
 end
-cx2u = makecform('xyz2upvpl');
-po = applycform(SDsame(:,:,:,1),cx2u);
-same = max(max(po))
-pyon = applycform(SDdifferent(:,:,:,1),cx2u);
-diff = max(max(pyon))
 
-ss = strcat('../img/mag',num2str(magnification),'/SDsame',material,'.mat');
-sd = strcat('../img/mag',num2str(magnification),'/SDdifferent',material,'.mat');
-save(ss,'SDsame');
-save(sd,'SDdifferent');
+ss = strcat('./mat/',material,'/coloredSD');
+sd = strcat('./mat/',material,'/coloredD');
+save(ss,'coloredSD');
+save(sd,'coloredD');
 
 function coloredXyzData = colorizeXYZ(xyzMaterial)
     cx2u = makecform('xyz2upvpl');
@@ -54,8 +49,8 @@ function coloredXyzData = colorizeXYZ(xyzMaterial)
             end
         end
     end
+    
     %saturateMax
- 
     for i = 1:9
         upvpl = upvplMaterial;
         for j = 1:iy
