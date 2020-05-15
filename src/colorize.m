@@ -45,7 +45,7 @@ function coloredXyzData = colorizeXYZ(xyzMaterial)
             m = max(abs(fixedColorMax(:,i,j)));
             if m ~= 0
                 %0.13
-                saturateMax(:,i,j) = fixedColorMax(:,i,j)/m*0.09;
+                saturateMax(:,i,j) = fixedColorMax(:,i,j)/m*0.13;
             end
         end
     end
